@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Page does not exist...</title>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Jura:400,300,500,600&subset=latin,latin-ext">
+        <link rel="shortcut icon" href="favicon.ico">
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/jquery-func.js"></script>
+        <style>
+            html, body {
+                color: #1b1b1b;
+                font-family: 'Jura', sans-serif;
+                background: #ffffff;
+                text-align: center;
+                font-size: 17px;
+                width: 100%;
+                height: 100%;
+                min-width: 320px;
+                min-height: 300px;
+                display: table;
+            }
+
+            a {
+                color: #330000;
+            }
+
+            a:hover {
+                color: #990000;
+            }
+
+            a:focus, .active a {
+                color: #990000;
+                outline: none;
+            }
+
+            p {
+                margin-bottom: 10px;
+            }
+
+            h1, h2, h3, h4, strong {
+                color: #000000;
+            }
+
+            h1 {
+                font-size: 35px;
+                margin-bottom: 8px;
+            }
+
+            h3 {
+                font-size: 18px;
+                text-align: center;
+                line-height: 22px;
+            }
+
+            /* Content div */
+
+            #content {
+                position: relative;
+                width: 90%;
+                min-width: 310px;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            header {
+                position: relative;
+                text-align: left;
+                width: 185px;
+                height: 120px;
+                margin: 0 auto 40px auto;
+            }
+        
+            #logo {
+                margin: 10px 0 0 20px;
+                font-size: 20px;
+                width: 200px;
+                float: left;
+                display: inline-block;
+            }
+
+            #top-vline {
+                position: absolute;
+                top: 20px;
+                left: 10px;
+                width: 1px;
+                height: 120px;
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=0 );
+            }
+
+            #top-hline1 {
+                position: absolute;
+                bottom: 0px; 
+                left: -15px;
+                width: 220px;
+                height: 1px;
+                background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 100%);
+                background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+            }
+            
+            footer {
+                position: relative;
+                margin-top: 40px;
+                width: 100%;
+                height: 80px;
+                font-size: 16px;
+                text-align: center;
+                display: table;
+            }
+
+            footer img {
+                margin: 0 5px 0 5px;
+                width: 25px;
+                height: 25px;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px transparent;
+            }
+            
+            /* Buzz hover effect */
+            @-webkit-keyframes hvr-buzz {
+              50% {
+                -webkit-transform: translateX(3px) rotate(2deg);
+                transform: translateX(3px) rotate(2deg);
+              }
+              100% {
+                -webkit-transform: translateX(-3px) rotate(-2deg);
+                transform: translateX(-3px) rotate(-2deg);
+              }
+            }
+            @keyframes hvr-buzz {
+              50% {
+                -webkit-transform: translateX(3px) rotate(2deg);
+                transform: translateX(3px) rotate(2deg);
+              }
+              100% {
+                -webkit-transform: translateX(-3px) rotate(-2deg);
+                transform: translateX(-3px) rotate(-2deg);
+              }
+            }
+
+            footer img:hover, footer img:focus, footer img:active {
+              -webkit-animation-name: hvr-buzz;
+              animation-name: hvr-buzz;
+              -webkit-animation-duration: 0.15s;
+              animation-duration: 0.15s;
+              -webkit-animation-timing-function: linear;
+              animation-timing-function: linear;
+              -webkit-animation-iteration-count: infinite;
+              animation-iteration-count: infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <header>
+                <div id="logo">
+                    <h1>Tomasz Myśliwiec</h1>
+                    <h2>Front-end Developer</h2>
+                    <div id="top-vline"></div>
+                    <div id="top-hline1"></div>
+                </div>
+            </header>
+            <main>
+                <h3>Error404. The page you are looking for does not exist:-(</h3>
+                <h3>Back to the <a href="http://mysliwiec.pro/">main page</a> or <a href="javascript: history.go(-1)">previous location</a>.</h3>
+            </main>
+            <noscript>
+                To view the full content of this site please enable JavaScript!
+            </noscript>
+            <!--[if lte IE 9]>
+                <div id="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
+            <![endif]-->
+            <footer>
+                <span class="email-icon"></span>
+                <a href="https://www.facebook.com/mysliwiec.pro/"><img src="img/fb_b&w.png" alt="Facebook icon" /></a>
+                <a href="https://www.linkedin.com/in/tomekmy/"><img src="img/linkedin_b&w.png" alt="LinkedIn icon" /></a>
+                <a href="https://github.com/tomekmy"><img src="img/github_b&w.png" alt="gitHub icon" /></a>
+            </footer>
+
+        </div>
+    </body>
+</html>
