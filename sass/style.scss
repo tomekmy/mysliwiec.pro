@@ -1,9 +1,18 @@
-html, body {
+// body font size
+$browser-context: 17;
+// function to convert px to em
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em
+}
+
+html,
+body {
   color: #1b1b1b;
   font-family: 'Jura', sans-serif;
   background: #ffffff;
   text-align: center;
-  font-size: 17px;
+  line-height: 1;
+  font-size: em(17);
   width: 100%;
   height: 100%;
   min-width: 320px;
@@ -32,20 +41,25 @@ p {
   margin-bottom: 10px;
 }
 
-h1, h2, h3, h4, strong {
+h1,
+h2,
+h3,
+h4,
+strong {
   color: #000000;
 }
 
 h1 {
-  font-size: 35px;
+  font-size: em(35);
   margin-bottom: 8px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: em(18);
   text-align: center;
   line-height: 22px;
 }
+
 
 /* Content div */
 
@@ -68,7 +82,7 @@ header {
 
 #logo {
   margin: 10px 0 0 20px;
-  font-size: 20px;
+  font-size: em(20);
   width: 200px;
   float: left;
   a {
@@ -111,19 +125,20 @@ header {
   background: linear-gradient(to right, #000000 85%, #ffffff 100%);
 }
 
-noscript, #oldie {
+noscript,
+#oldie {
   position: relative;
   display: block;
   margin-top: 30px;
   color: #990000;
-  font-size: 14px;
+  font-size: em(14);
 }
 
 nav {
   position: relative;
   float: left;
   margin: 50px 0 0 20px;
-  font-size: 23px;
+  font-size: em(23);
   text-align: left;
   z-index: 999;
   /*    border-style: solid;
@@ -158,7 +173,7 @@ main {
 #mainText {
   margin-left: 20%;
   text-align: left;
-  font-size: 30px;
+  font-size: em(30);
   width: 430px;
   line-height: 33px;
   p {
@@ -186,6 +201,7 @@ main {
   opacity: 1;
 }
 
+
 /* Footer */
 
 footer {
@@ -194,7 +210,7 @@ footer {
   margin-top: 30px;
   width: 100%;
   height: 80px;
-  font-size: 16px;
+  font-size: em(16);
   text-align: left;
   display: table;
 }
@@ -212,7 +228,7 @@ footer img {
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-box-shadow: 0 0 1px transparent;
-          box-shadow: 0 0 1px transparent;
+  box-shadow: 0 0 1px transparent;
 }
 
 #footer-icons a {
@@ -225,7 +241,7 @@ footer img {
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-box-shadow: 0 0 1px transparent;
-          box-shadow: 0 0 1px transparent;
+  box-shadow: 0 0 1px transparent;
 }
 
 #facebook-icon:after {
@@ -245,6 +261,7 @@ footer img {
   left: 5px;
   top: 2px;
 }
+
 
 /* gitHub logo */
 
@@ -413,6 +430,7 @@ footer img {
   }
 }
 
+
 /* Mail Icon */
 
 .email {
@@ -424,7 +442,8 @@ footer img {
   height: 11px;
   background-color: #171516;
   border: 1px solid #ffffff;
-  &:after, &:before {
+  &:after,
+  &:before {
     position: absolute;
     border-top: none;
     border: 1px solid #ffffff;
@@ -490,10 +509,75 @@ footer img {
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
 }
 
+
 /* End of Footer */
+
+
 /* End of Content div */
 
+
+/* Conctact */
+
+.row {
+  margin: 15px 0;
+  position: relative;
+  min-height: 80px;
+  text-align: left;
+}
+
+.contact_wrapper {
+  position: relative;
+  width: 100%;
+  .contact_details {
+    position: relative;
+    float: left;
+    left: 7%;
+    font-size: 1.7em;
+    line-height: 1.3;
+    width: 40%;
+  }
+  form {
+    position: relative;
+    float: right;
+    right: 7%;
+    width: 40%;
+    input,
+    textarea {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid #dfdfe4;
+      border-radius: 0;
+      outline: none;
+      height: 40px;
+      width: 100%;
+      font-size: em(16);
+      margin: 0 0 20px 0;
+      padding: 0;
+      box-shadow: none;
+      box-sizing: content-box;
+      text-indent: 15px;
+      transition: all 0.3s;
+      &:focus {
+        border-bottom: 2px solid #252525;
+      }
+    }
+    textarea {
+      height: 200px;
+    }
+    label {
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-size: em(19);
+      text-indent: 15px;
+      color: #dfdfe4;
+    }
+  }
+}
+
+
 /* For desktop */
+
 
 /*@media (min-width: 530px) {
     html, body {
@@ -505,34 +589,33 @@ footer img {
     }
 }*/
 
+
 /* Buzz hover effect */
+
 @-webkit-keyframes hvr-buzz {
   50% {
     -webkit-transform: translateX(3px) rotate(2deg);
     transform: translateX(3px) rotate(2deg);
   }
-
   100% {
     -webkit-transform: translateX(-3px) rotate(-2deg);
     transform: translateX(-3px) rotate(-2deg);
   }
 }
-
 
 @keyframes hvr-buzz {
   50% {
     -webkit-transform: translateX(3px) rotate(2deg);
     transform: translateX(3px) rotate(2deg);
   }
-
   100% {
     -webkit-transform: translateX(-3px) rotate(-2deg);
     transform: translateX(-3px) rotate(-2deg);
   }
 }
 
-
-footer img:hover, #footer-icons a:hover {
+footer img:hover,
+#footer-icons a:hover {
   -webkit-animation-name: hvr-buzz;
   animation-name: hvr-buzz;
   -webkit-animation-duration: 0.15s;

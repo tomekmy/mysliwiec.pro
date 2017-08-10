@@ -1,3 +1,23 @@
 <div id="contentWrapper">
-    <p>Contact</p>
+    <div class="contact_wrapper">
+        <div class="contact_details">
+           <p>Currently I live in Zielonka near Warsaw (Poland).</p>
+           <p>If you want to contact with me please use the button links in the footer.</p>
+        </div>
+        <form action="php/mail.php">
+            <div class="row">
+                <label for="your_name">Your name</label>
+                <input id="your_name" type="text" />
+            </div>
+            <div class="row">
+                <label for="email">Email address</label>
+                <input id="email" type="email" />
+            </div>
+            <div class="row">
+                <label for="message">Message</label>
+                <textarea id="message" rows="7" cols="15"></textarea>
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </div>
