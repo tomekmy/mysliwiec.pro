@@ -163,15 +163,16 @@ nav {
 }
 
 main {
-  position: relative;
-  height: calc(100% - 270px);
-  margin-top: 40px;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 260px);
+  margin-top: 30px;
 }
 
 #contentWrapper {
   position: relative;
-  left: 260px;
-  width: calc(100% - 260px);
+  left: 250px;
+  width: calc(100% - 250px);
   height: 100%;
 }
 
@@ -210,7 +211,7 @@ main {
 /* Footer */
 
 footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   margin-top: 30px;
   width: 100%;
@@ -471,7 +472,7 @@ footer img {
 #footer-hline {
   position: absolute;
   top: 0px;
-  left: -5.5%;
+  left: -5.55%;
   width: 27%;
   min-width: 260px;
   height: 1px;
@@ -494,7 +495,7 @@ footer img {
 #footer-hline-right {
   position: absolute;
   top: 0px;
-  right: -5.5%;
+  right: -5.55%;
   width: 15%;
   min-width: 200px;
   height: 1px;
