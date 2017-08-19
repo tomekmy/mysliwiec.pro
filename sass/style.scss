@@ -576,10 +576,11 @@ footer img {
       }
     }
     textarea {
-      height: 120px;
+      height: 150px;
       margin: 20px 0 20px 0;
       border: 2px solid $border-input;
       padding: 15px;
+      box-sizing: border-box;
       text-indent: 0;
       &:focus {
         border: 2px solid $border-input-active;
