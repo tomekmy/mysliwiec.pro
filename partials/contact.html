@@ -6,22 +6,22 @@
         </div>
         <form action="php/mail.php">
             <div class="row">
-                <label for="your_name">Your name</label>
-                <input id="your_name" type="text" />
+                <input id="your_name" type="text" tabindex="1" />
+                <label for="your_name">Your name</label>                
             </div>
             <div class="row">
-                <label for="email">Email address</label>
-                <input id="email" type="email" />
+                <input id="email" type="email" tabindex="2" />
+                <label for="email">Email address</label>                
             </div>
             <div class="row">
-                <label for="subject">Subject</label>
-                <input id="subject" type="text" placeholder="Nothing special" />
+                <input id="subject" type="text" placeholder="Nothing special" tabindex="3" />
+                <label for="subject">Subject</label>                
             </div>
             <div class="row">
-                <label for="message">Message</label>
-                <textarea id="message" rows="7" cols="15"></textarea>
+                <textarea id="message" rows="7" cols="15" tabindex="4"></textarea>
+                <label for="message">Message</label>                
             </div>
-            <input class="submitButton" type="submit" value="Submit" />
+            <a class="submitButton" tabindex="5">Submit</a>
         </form>
     </div>
 </div>

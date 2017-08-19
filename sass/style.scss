@@ -571,6 +571,9 @@ footer img {
       &:focus {
         border-bottom: 2px solid $border-input-active;
       }
+      &:focus + label {
+        color: $border-input-active;
+      }
     }
     textarea {
       height: 120px;
@@ -592,15 +595,39 @@ footer img {
     }
     .submitButton {
       position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      overflow: hidden;
       width: 150px;
       height: 40px;
+      line-height: 40px;
       border: 2px solid $border-input;
       font-weight: 600;
-      text-indent: 0;
       cursor: pointer;
       outline: none;
-      &:hover {
-        border: 2px solid $border-input-active;
+      transition-property: all;
+      transition-duration: .6s;
+      transition-timing-function: ease;
+      &:after {
+        background: #ACACAC;
+        content: "";
+        height: 155px;
+        left: -75px;
+        opacity: .2;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: 99;
+      }
+    }
+    .submitButton:hover, .submitButton:focus {
+      border: 2px solid $border-input-active;
+      &:after {
+        left: 120%;
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
   }
