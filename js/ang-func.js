@@ -3,8 +3,8 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 myApp.factory('appServices', function ($timeout) {
   return {
     mainLag: function () {
-      if ($('#mainText span').length > 115) {
-        $('#mainText span:last').remove();
+      if ($('.contentWrapper__mainText span').length > 115) {
+        $('.contentWrapper__mainText span:last').remove();
         $('body').css('overflow', 'hidden');
         var mainTimer = $timeout(function () {
           $('body').css('overflow', 'visible');
@@ -83,7 +83,8 @@ myApp.controller('NavCtrl', function ($scope, $location) {
 });
 
 myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices) {
-  $('#mainText p:eq(0)').show().textillate({ in: {
+  // $('.contentWrapper__mainText').html($scope.dataJSON.main.mainText);
+  $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
     effect: 'bounceIn',
     delay: 40
   },
@@ -96,7 +97,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
   }
   });
   var timer1 = $timeout(function () {
-    $('#mainText p:eq(1)').show().textillate({ in: {
+    $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
       effect: 'bounceIn',
       delay: 40
     },
@@ -110,11 +111,11 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
     });
   }, 500);
   var timer2 = $timeout(function () {
-    $('#mainText p:eq(2)').show().textillate({ in: {
+    $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
       effect: 'bounceIn',
       delay: 40,
       callback: function () {
-        $('#mainText p:eq(2)').append('<span></span>');
+        $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
       }
     },
     out: {
@@ -132,9 +133,9 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
   $scope.$on('$routeChangeStart', function (next, current) {
     $timeout.cancel(timer1);
     $timeout.cancel(timer2);
-    $('#mainText p').textillate('stop');
-    if ($('#mainText span').length > 115) {
-      $('#mainText p').textillate('out');
+    $('.contentWrapper__mainText p').textillate('stop');
+    if ($('.contentWrapper__mainText span').length > 115) {
+      $('.contentWrapper__mainText p').textillate('out');
     }
   });
 });

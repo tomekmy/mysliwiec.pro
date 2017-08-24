@@ -1,0 +1,12 @@
+{
+  "menu" : {
+    "main" : "START",
+    "about" : "ABOUT",
+    "portfolio" : "PORTFOLIO",
+    "blog" : "BLOG",
+    "contact" : "CONTACT"
+  },
+  "main" : {
+    "mainText" : "<p>Hello.</p><p>I'm Web Developer / Front-end Developer.</p><p>I'm coding websites and web applications.</p>"
+  }
+}

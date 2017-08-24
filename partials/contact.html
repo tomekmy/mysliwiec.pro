@@ -1,27 +1,27 @@
-<div id="contentWrapper">
-    <div class="contact_wrapper">
-        <div class="contact_details">
+<div class="contentWrapper">
+    <div class="contentWrapper__contactWrapper">
+        <div class="contentWrapper__contactWrapper__contactDetails">
            <p>Currently I live in Zielonka near Warsaw (Poland).</p>
            <p>If you want to contact with me please use the button links in the footer.</p>
         </div>
         <form action="php/mail.php">
             <div class="row">
-                <input id="your_name" type="text" tabindex="1" />
+                <input class="contentWrapper__contactWrapper__your_name" type="text" tabindex="1" />
                 <label for="your_name">Your name</label>                
             </div>
             <div class="row">
-                <input id="email" type="email" tabindex="2" />
+                <input class="contentWrapper__contactWrapper__email" type="email" tabindex="2" />
                 <label for="email">Email address</label>                
             </div>
             <div class="row">
-                <input id="subject" type="text" placeholder="Nothing special" tabindex="3" />
+                <input class="contentWrapper__contactWrapper__subject" type="text" placeholder="Nothing special" tabindex="3" />
                 <label for="subject">Subject</label>                
             </div>
             <div class="row">
-                <textarea id="message" rows="7" cols="15" tabindex="4"></textarea>
+                <textarea class="contentWrapper__contactWrapper__message" rows="7" cols="15" tabindex="4"></textarea>
                 <label for="message">Message</label>                
             </div>
-            <a class="submitButton" tabindex="5">Submit</a>
+            <a class="contentWrapper__contactWrapper__submitButton" tabindex="5">Submit</a>
         </form>
     </div>
 </div>

@@ -1,3 +1,5 @@
+// TODO: Make comatible with BEM
+
 // body font size
 $browser-context: 17;
 // border input color
@@ -66,7 +68,7 @@ h3 {
 
 /* Content div */
 
-#content {
+.content {
   position: relative;
   width: 90%;
   min-width: 310px;
@@ -75,7 +77,7 @@ h3 {
   margin-right: auto;
 }
 
-header {
+.content__header {
   position: relative;
   left: 0px;
   text-align: left;
@@ -83,7 +85,7 @@ header {
   height: 120px;
 }
 
-#logo {
+.content__header__logo {
   margin: 10px 0 0 20px;
   font-size: em(20);
   width: 200px;
@@ -97,7 +99,7 @@ header {
   }
 }
 
-#top-vline {
+.content__header__top-vline {
   position: absolute;
   width: 1px;
   height: 470px;
@@ -106,7 +108,7 @@ header {
   background: linear-gradient(to bottom, #000000 65%, #ffffff 100%);
 }
 
-#top-hline1 {
+.content__header__top-hline1 {
   position: absolute;
   top: 124px;
   left: -1000px;
@@ -117,7 +119,7 @@ header {
   background: linear-gradient(to right, #000000 85%, #ffffff 100%);
 }
 
-#top-hline2 {
+.content__header__top-hline2 {
   position: absolute;
   bottom: -40px;
   left: -1000px;
@@ -129,7 +131,7 @@ header {
 }
 
 noscript,
-#oldie {
+.oldie {
   position: relative;
   display: block;
   margin-top: 30px;
@@ -169,14 +171,14 @@ main {
   margin-top: 30px;
 }
 
-#contentWrapper {
+.contentWrapper {
   position: relative;
   left: 250px;
   width: calc(100% - 250px);
   height: 100%;
 }
 
-#mainText {
+.contentWrapper__mainText {
   margin-left: 20%;
   text-align: left;
   font-size: em(30);
@@ -221,10 +223,22 @@ footer {
   display: table;
 }
 
-#footer-icons {
+.footer-icons {
   padding-left: 20px;
   display: table-cell;
   vertical-align: middle;
+  a {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px 0 5px;
+    background: #171516;
+    border-radius: 50px;
+    display: inline-block;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-box-shadow: 0 0 1px transparent;
+    box-shadow: 0 0 1px transparent;
+  }
 }
 
 footer img {
@@ -237,20 +251,7 @@ footer img {
   box-shadow: 0 0 1px transparent;
 }
 
-#footer-icons a {
-  width: 25px;
-  height: 25px;
-  margin: 0 5px 0 5px;
-  background: #171516;
-  border-radius: 50px;
-  display: inline-block;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-box-shadow: 0 0 1px transparent;
-  box-shadow: 0 0 1px transparent;
-}
-
-#facebook-icon:after {
+.facebook-icon:after {
   content: "f";
   color: #ffffff;
   font: bold 22px arial;
@@ -259,7 +260,7 @@ footer img {
   top: 1px;
 }
 
-#linkedin-icon:after {
+.linkedin-icon:after {
   content: "in";
   color: #ffffff;
   font: bold 19px arial;
@@ -469,7 +470,7 @@ footer img {
   }
 }
 
-#footer-hline {
+.footer-hline {
   position: absolute;
   top: 0px;
   left: -5.55%;
@@ -481,7 +482,7 @@ footer img {
   background: linear-gradient(to right, #000000 80%, #ffffff 100%);
 }
 
-#footer-vline {
+.footer-vline {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -492,7 +493,7 @@ footer img {
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
 }
 
-#footer-hline-right {
+.footer-hline-right {
   position: absolute;
   top: 0px;
   right: -5.55%;
@@ -504,7 +505,7 @@ footer img {
   background: linear-gradient(to left, #000000 80%, #ffffff 100%);
 }
 
-#footer-vline-right {
+.footer-vline-right {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -531,11 +532,11 @@ footer img {
   text-align: left;
 }
 
-.contact_wrapper {
+.contentWrapper__contactWrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  .contact_details {
+  .contentWrapper__contactWrapper__contactDetails {
     position: absolute;
     float: left;
     left: 7%;
@@ -594,7 +595,7 @@ footer img {
       text-indent: 15px;
       color: $border-input;
     }
-    .submitButton {
+    .contentWrapper__contactWrapper__submitButton {
       position: relative;
       display: inline-block;
       vertical-align: middle;
@@ -624,7 +625,7 @@ footer img {
         z-index: 99;
       }
     }
-    .submitButton:hover, .submitButton:focus {
+    .contentWrapper__contactWrapper__submitButton:hover, .contentWrapper__contactWrapper__submitButton:focus {
       border: 2px solid $border-input-active;
       &:after {
         left: 120%;
@@ -674,7 +675,7 @@ footer img {
 }
 
 footer img:hover,
-#footer-icons a:hover {
+.footer-icons a:hover {
   -webkit-animation-name: hvr-buzz;
   animation-name: hvr-buzz;
   -webkit-animation-duration: 0.15s;

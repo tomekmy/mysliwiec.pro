@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
     <title>Tomasz Myśliwiec - Front-end Developer | Web Developer</title>
     <meta name="description" content="Nazywam się Tomasz Myśliwiec i jestem Front-end / Web Developerem. Zajmuję kodowaniem stron i aplikacji internetowych oraz kodowaniem newsletterów.">
     <meta property="og:image" content="http://mysliwiec.pro/img/social.png" />
@@ -28,43 +28,38 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.textillate.js"></script>
+    <script type="text/javascript" src="js/jquery.browserLanguage.js"></script>
 </head>
 
 <body>
-    <div id="content">
-        <header>
-            <div id="logo">
+    <div class="content">
+        <header class="content__header">
+            <div class="content__header__logo">
                 <h1><a href="/" title="Start"><span>T</span>omasz <span>M</span>yśliwiec</a></h1>
                 <h2>Front-end Developer</h2>
             </div>
-            <div id="top-vline"></div>
-            <div id="top-hline1"></div>
+            <div class="content__header__top-vline"></div>
+            <div class="content__header__top-hline1"></div>
         </header>
         <noscript>
             To view the full content of this site please enable JavaScript!
         </noscript>
         <!--[if lte IE 9]>
-                <div id="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
+                <div class="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
             <![endif]-->
         <nav ng-controller="NavCtrl">
-            <ul>
-                <li ng-class="{active: nav.isActive('/main')}"><a href="#/main">START</a></li>
-                <li ng-class="{active: nav.isActive('/about')}"><a href="#/about">O MNIE</a></li>
-                <li ng-class="{active: nav.isActive('/portfolio')}"><a href="#/portfolio">PORTFOLIO</a></li>
-                <li ng-class="{active: nav.isActive('/blog')}"><a href="#/blog">BLOG</a></li>
-                <li ng-class="{active: nav.isActive('/contact')}"><a href="#/contact">KONTAKT</a></li>
-            </ul>
-            <div id="top-hline2"></div>
+            <ul></ul>
+            <div class="content__header__top-hline2"></div>
         </nav>
 
         <main ng-view class="animate"></main>
         <footer>
-            <div id="footer-icons">
+            <div class="footer-icons">
                 <a href="https://www.facebook.com/mysliwiec.pro/">
-                    <div id="facebook-icon"></div>
+                    <div class="facebook-icon"></div>
                 </a>
                 <a href="https://www.linkedin.com/in/tomekmy/">
-                    <div id="linkedin-icon"></div>
+                    <div class="linkedin-icon"></div>
                 </a>
                 <a href="https://github.com/tomekmy/">
                     <div class="logo-github-small">
@@ -91,10 +86,10 @@
                     </div>
                 </a>
             </div>
-            <div id="footer-hline"></div>
-            <div id="footer-vline"></div>
-            <div id="footer-hline-right"></div>
-            <div id="footer-vline-right"></div>
+            <div class="footer-hline"></div>
+            <div class="footer-vline"></div>
+            <div class="footer-hline-right"></div>
+            <div class="footer-vline-right"></div>
         </footer>
     </div>
     <script type="text/javascript" src="js/ang-func.js"></script>
