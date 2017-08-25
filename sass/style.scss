@@ -223,7 +223,7 @@ footer {
   display: table;
 }
 
-.footer-icons {
+.footer__icons {
   padding-left: 20px;
   display: table-cell;
   vertical-align: middle;
@@ -675,7 +675,7 @@ footer img {
 }
 
 footer img:hover,
-.footer-icons a:hover {
+.footer__icons a:hover {
   -webkit-animation-name: hvr-buzz;
   animation-name: hvr-buzz;
   -webkit-animation-duration: 0.15s;

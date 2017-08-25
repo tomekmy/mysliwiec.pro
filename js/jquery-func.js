@@ -11,21 +11,9 @@
   };
 })(jQuery);
 
-function readData () {
-  var languageFile = '/text_data/en.json';
-  // Web browser language detection
-  $.browserLanguage(function (language) {
-    if (language === 'Polish') {
-      languageFile = '/text_data/pl.json';
-      console.log('Using polish language');
-    }
-  });
-  return $.getJSON(languageFile);
-}
-
 $(document).ready(function () {
-  // var dataJSON;
-  readData().done(function (data) {
+  var dataJSON = $.getJSON(window.languageFile);
+  dataJSON.done(function (data) {
     $.each(data.menu, function (key, val) {
       $('nav ul').append('<li ng-class="{active: nav.isActive(\'/' + key + '\')}"><a href="#/' + key + '">' + val + '</a></li>');
     });
@@ -35,10 +23,9 @@ $(document).ready(function () {
     function () {
       $(this).stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
     });
-    // console.log('readData();: ', dataJSON);
   });
   $('.content__header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
-  $('.footer-icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
+  $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
 });
 
 // Add mail to selector and blinking eye function

@@ -28,7 +28,20 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.textillate.js"></script>
-    <script type="text/javascript" src="js/jquery.browserLanguage.js"></script>
+    <script>
+        // Detect user language
+        var userLang = navigator.language || navigator.userLanguage;
+        console.log('Detected user language is: ' + userLang);        
+        // Set global variable with data path file depends on language
+        var languageFile;
+        if (userLang === 'pl') {
+            languageFile = '/text_data/pl.json';
+            console.log('Using polish language');
+        } else {
+            languageFile = '/text_data/en.json';
+            console.log('Using english language');
+        }
+    </script>
 </head>
 
 <body>
@@ -45,16 +58,17 @@
             To view the full content of this site please enable JavaScript!
         </noscript>
         <!--[if lte IE 9]>
-                <div class="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
-            <![endif]-->
+            <div class="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
+        <![endif]-->
         <nav ng-controller="NavCtrl">
+            <!-- Menu items (li) are generated in jquery-func.js file -->
             <ul></ul>
             <div class="content__header__top-hline2"></div>
         </nav>
 
         <main ng-view class="animate"></main>
         <footer>
-            <div class="footer-icons">
+            <div class="footer__icons">
                 <a href="https://www.facebook.com/mysliwiec.pro/">
                     <div class="facebook-icon"></div>
                 </a>

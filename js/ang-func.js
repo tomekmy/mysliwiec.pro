@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 
-myApp.factory('appServices', function ($timeout) {
+myApp.factory('appServices', function ($timeout, $http) {
   return {
     mainLag: function () {
       if ($('.contentWrapper__mainText span').length > 115) {
@@ -12,6 +12,10 @@ myApp.factory('appServices', function ($timeout) {
         console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
         return mainTimer;
       }
+    },
+    getData: function () {
+      console.log('Read data from: ' + window.languageFile);
+      return $http.get(window.languageFile);
     },
     footerPosition: function () {
       var footerPos = 0;
@@ -83,61 +87,66 @@ myApp.controller('NavCtrl', function ($scope, $location) {
 });
 
 myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices) {
-  // $('.contentWrapper__mainText').html($scope.dataJSON.main.mainText);
-  $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
-    effect: 'bounceIn',
-    delay: 40
-  },
-  out: {
-    effect: 'hinge',
-    delay: 70,
-    shuffle: true,
-    sync: false,
-    delayScale: 7
-  }
-  });
-  var timer1 = $timeout(function () {
-    $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
-      effect: 'bounceIn',
-      delay: 40
-    },
-    out: {
-      effect: 'hinge',
-      delay: 40,
-      shuffle: true,
-      sync: false,
-      delayScale: 2
-    }
-    });
-  }, 500);
-  var timer2 = $timeout(function () {
-    $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
-      effect: 'bounceIn',
-      delay: 40,
-      callback: function () {
-        $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
+  appServices.getData().then(
+    function (resolve) {
+      // console.log(resolve.data.main.mainText);
+      $('.contentWrapper__mainText').html(resolve.data.main.mainText);
+      $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
+        effect: 'bounceIn',
+        delay: 40
+      },
+      out: {
+        effect: 'hinge',
+        delay: 70,
+        shuffle: true,
+        sync: false,
+        delayScale: 7
       }
-    },
-    out: {
-      effect: 'hinge',
-      delay: 40,
-      shuffle: true,
-      sync: false,
-      delayScale: 2
-    }
-    });
-  }, 3100);
+      });
+      var timer1 = $timeout(function () {
+        $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
+          effect: 'bounceIn',
+          delay: 40
+        },
+        out: {
+          effect: 'hinge',
+          delay: 40,
+          shuffle: true,
+          sync: false,
+          delayScale: 2
+        }
+        });
+      }, 500);
+      var timer2 = $timeout(function () {
+        $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
+          effect: 'bounceIn',
+          delay: 40,
+          callback: function () {
+            $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
+          }
+        },
+        out: {
+          effect: 'hinge',
+          delay: 40,
+          shuffle: true,
+          sync: false,
+          delayScale: 2
+        }
+        });
+      }, 3100);
 
-  appServices.footerPosition();
+      appServices.footerPosition();
 
-  $scope.$on('$routeChangeStart', function (next, current) {
-    $timeout.cancel(timer1);
-    $timeout.cancel(timer2);
-    $('.contentWrapper__mainText p').textillate('stop');
-    if ($('.contentWrapper__mainText span').length > 115) {
-      $('.contentWrapper__mainText p').textillate('out');
+      $scope.$on('$routeChangeStart', function (next, current) {
+        $timeout.cancel(timer1);
+        $timeout.cancel(timer2);
+        $('.contentWrapper__mainText p').textillate('stop');
+        if ($('.contentWrapper__mainText span').length > 115) {
+          $('.contentWrapper__mainText p').textillate('out');
+        }
+      });
     }
-  });
+  );
 });
 
 myApp.controller('AboutCtrl', function ($scope, $location, appServices) {
