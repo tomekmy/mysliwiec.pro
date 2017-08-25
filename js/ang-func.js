@@ -76,6 +76,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
   //        $locationProvider.html5Mode(true).hashPrefix('*');
 });
 
+// TODO: Take read menu from jQuery to this file
 myApp.controller('NavCtrl', function ($scope, $location) {
   $scope.nav = {};
   $scope.nav.isActive = function (path) {

@@ -11,11 +11,11 @@
   };
 })(jQuery);
 
-function switchLang (lang) {
+function langButton (lang) {
   if (lang === 'pl') {
-    $('.lang-icon div').text('EN');
+    $('.lang-icon div').attr('title', 'Switch language').text('EN').css('left', '4px');
   } else {
-    $('.lang-icon div').text('PL');
+    $('.lang-icon div').attr('title', 'Zmień język').text('PL').css('left', '5px');
   }
 }
 
@@ -34,13 +34,12 @@ $(document).ready(function () {
   });
   $('.content__header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
-  switchLang(window.userLang);
+  langButton(window.userLang);
 });
 
-// Add mail to selector and blinking eye function
-$(window).on('load', function () {
+// $(window).on('load', function () {
 
-});
+// });
 
 $(window).resize(function () {
   var footerPos = 0;
