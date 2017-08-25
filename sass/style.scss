@@ -241,6 +241,23 @@ footer {
   }
 }
 
+.footer__languages {
+  float: right;
+  padding: 26px 20px;
+  a {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px 0 5px;
+    background: #171516;
+    border-radius: 50px;
+    display: inline-block;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-box-shadow: 0 0 1px transparent;
+    box-shadow: 0 0 1px transparent;
+  }
+}
+
 footer img {
   margin: 0 5px 0 5px;
   width: 25px;
@@ -269,6 +286,13 @@ footer img {
   top: 2px;
 }
 
+.lang-icon div {
+  color: #ffffff;
+  font: bold 12px arial;
+  position: absolute;
+  left: 4px;
+  top: 6px;
+}
 
 /* gitHub logo */
 
@@ -675,7 +699,8 @@ footer img {
 }
 
 footer img:hover,
-.footer__icons a:hover {
+.footer__icons a:hover,
+.footer__languages a:hover {
   -webkit-animation-name: hvr-buzz;
   animation-name: hvr-buzz;
   -webkit-animation-duration: 0.15s;

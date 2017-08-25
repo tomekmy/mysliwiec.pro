@@ -8,5 +8,14 @@
   },
   "main" : {
     "mainText" : "<p>Witaj.</p><p>Jestem Web Develeoperem / Front-end Developerem.</p><p>Zajmuję się kodowaniem stron i aplikacji internetowych.</p>"
+  },
+  "contact" : {
+    "description" : "<p>Aktualnie mieszkam w Zielonce blisko Warszawy.</p><p>Jeśli chcesz się ze mną skontaktować użyj proszę przycisków w stopce strony.</p>",
+    "name" : "Twoje imię",
+    "email" : "Adres Email",
+    "subject" : "Temat",
+    "defaultSubject" : "Nic specjalnego",    
+    "message" : "Wiadomość",
+    "submit" : "Wyślij"
   }
 }

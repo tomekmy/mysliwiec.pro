@@ -11,6 +11,14 @@
   };
 })(jQuery);
 
+function switchLang (lang) {
+  if (lang === 'pl') {
+    $('.lang-icon div').text('EN');
+  } else {
+    $('.lang-icon div').text('PL');
+  }
+}
+
 $(document).ready(function () {
   var dataJSON = $.getJSON(window.languageFile);
   dataJSON.done(function (data) {
@@ -26,6 +34,7 @@ $(document).ready(function () {
   });
   $('.content__header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
+  switchLang(window.userLang);
 });
 
 // Add mail to selector and blinking eye function

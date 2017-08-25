@@ -8,5 +8,14 @@
   },
   "main" : {
     "mainText" : "<p>Hello.</p><p>I'm Web Developer / Front-end Developer.</p><p>I'm coding websites and web applications.</p>"
+  },
+  "contact" : {
+    "description" : "<p>Currently I live in Zielonka near Warsaw (Poland).</p><p>If you want to contact with me please use the button links in the footer.</p>",
+    "name" : "Your name",
+    "email" : "Email address",
+    "subject" : "Subject",
+    "defaultSubject" : "Nothing special",
+    "message" : "Message",
+    "submit" : "Submit"
   }
 }
