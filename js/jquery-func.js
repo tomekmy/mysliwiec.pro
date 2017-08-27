@@ -20,18 +20,6 @@ function langButton (lang) {
 }
 
 $(document).ready(function () {
-  var dataJSON = $.getJSON(window.languageFile);
-  dataJSON.done(function (data) {
-    $.each(data.menu, function (key, val) {
-      $('nav ul').append('<li ng-class="{active: nav.isActive(\'/' + key + '\')}"><a href="#/' + key + '">' + val + '</a></li>');
-    });
-    $('nav ul li').hover(function () {
-      $(this).stop(true, false).animate({'left': '20px'}, 500);
-    },
-    function () {
-      $(this).stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
-    });
-  });
   $('.content__header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
   langButton(window.userLang);

@@ -32,7 +32,7 @@
         // Detect user language
         var userLang = navigator.language || navigator.userLanguage;
         console.log('Detected user language is: ' + userLang);        
-        // Set global variable with data path file depends on language
+        // Set global variable with data
         var languageFile;
         if (userLang === 'pl') {
             languageFile = '/text_data/pl.json';
@@ -41,6 +41,10 @@
             languageFile = '/text_data/en.json';
             console.log('Using english language');
         }
+        console.log('Read data from: ' + languageFile);
+        var dataJSON = $.getJSON(languageFile).done(function (data) {
+            return data;
+        });
     </script>
 </head>
 
