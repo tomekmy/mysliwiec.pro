@@ -3,12 +3,18 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 myApp.factory('appServices', function ($timeout, $location) {
   return {
     mainLag: function () {
-      if ($('.contentWrapper__mainText span').length > 115) {
+      var spans = 93;
+      var lagTime = 4800;
+      if (window.userLang === 'pl') {
+        spans = 115;
+        lagTime = 5700;
+      }
+      if ($('.contentWrapper__mainText span').length > spans) {
         $('.contentWrapper__mainText span:last').remove();
         $('body').css('overflow', 'hidden');
         var mainTimer = $timeout(function () {
           $('body').css('overflow', 'visible');
-        }, 5700);
+        }, lagTime);
         console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
         return mainTimer;
       }
@@ -17,6 +23,7 @@ myApp.factory('appServices', function ($timeout, $location) {
       $('nav ul li a').each(function () {
         if (('#' + $location.path()) === $(this).attr('href')) {
           $(this).css('color', '#990000');
+          console.log('Active page: ' + $location.path());
         } else {
           $(this).css('color', '#1b1b1b');
         }
@@ -97,13 +104,6 @@ myApp.controller('NavCtrl', function ($scope, $location, appServices) {
     $scope.$on('$routeChangeStart', function (next, current) {
       appServices.activeLink();
     });
-    // console.log($scope.nav);
-    // $scope.nav.isActive = function (path) {
-    //   if (path === $location.path()) {
-    //     return true;
-    //   }
-    //   return false;
-    // };
   });
 });
 
@@ -161,7 +161,11 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
       $timeout.cancel(timer1);
       $timeout.cancel(timer2);
       $('.contentWrapper__mainText p').textillate('stop');
-      if ($('.contentWrapper__mainText span').length > 115) {
+      var spans = 93;
+      if (window.userLang === 'pl') {
+        spans = 115;
+      }
+      if ($('.contentWrapper__mainText span').length > spans) {
         $('.contentWrapper__mainText p').textillate('out');
       }
     });

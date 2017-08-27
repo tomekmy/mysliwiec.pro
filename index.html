@@ -28,12 +28,21 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.textillate.js"></script>
-    <script>
+    <script type="text/javascript">
         // Detect user language
         var userLang = navigator.language || navigator.userLanguage;
-        console.log('Detected user language is: ' + userLang);        
+        // If user selected language before use it from local storage
+        if (localStorage.userLang) {
+            console.log('Choosen language: ' + localStorage.userLang);
+            userLang = localStorage.userLang;
+        } else {
+            console.log('Detected user language is: ' + userLang);
+        }
         // Set global variable with data
         var languageFile;
+        if (userLang === 'pl-PL') {
+            userLang = 'pl';
+        }
         if (userLang === 'pl') {
             languageFile = '/text_data/pl.json';
             console.log('Using polish language');

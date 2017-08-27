@@ -23,6 +23,14 @@ $(document).ready(function () {
   $('.content__header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
   langButton(window.userLang);
+  $('.lang-icon div').click(function () {
+    if (window.userLang === 'pl') {
+      window.localStorage.userLang = 'en';
+    } else {
+      window.localStorage.userLang = 'pl';
+    }
+    window.location.reload();
+  });
 });
 
 // $(window).on('load', function () {
