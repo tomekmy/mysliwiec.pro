@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 
-myApp.factory('appServices', function ($timeout, $http) {
+myApp.factory('appServices', function ($timeout, $location) {
   return {
     mainLag: function () {
       if ($('.contentWrapper__mainText span').length > 115) {
@@ -12,6 +12,15 @@ myApp.factory('appServices', function ($timeout, $http) {
         console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
         return mainTimer;
       }
+    },
+    activeLink: function () {
+      $('nav ul li a').each(function () {
+        if (('#' + $location.path()) === $(this).attr('href')) {
+          $(this).css('color', '#990000');
+        } else {
+          $(this).css('color', '#1b1b1b');
+        }
+      });
     },
     footerPosition: function () {
       var footerPos = 0;
@@ -72,11 +81,11 @@ myApp.config(function ($routeProvider, $locationProvider) {
   //        $locationProvider.html5Mode(true).hashPrefix('*');
 });
 
-myApp.controller('NavCtrl', function ($scope, $location) {
+myApp.controller('NavCtrl', function ($scope, $location, appServices) {
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
     $.each(data.menu, function (key, val) {
-      $('nav ul').append('<li ng-class="{active: nav.isActive(\'/' + key + '\')}"><a href="#/' + key + '">' + val + '</a></li>');
+      $('nav ul').append('<li><a href="#/' + key + '">' + val + '</a></li>');
       $('nav ul li').hover(function () {
         $(this).stop(true, false).animate({'left': '20px'}, 500);
       },
@@ -84,13 +93,17 @@ myApp.controller('NavCtrl', function ($scope, $location) {
         $(this).stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
       });
     });
-    console.log($scope.nav);
-    $scope.nav.isActive = function (path) {
-      if (path === $location.path()) {
-        return true;
-      }
-      return false;
-    };
+    appServices.activeLink();
+    $scope.$on('$routeChangeStart', function (next, current) {
+      appServices.activeLink();
+    });
+    // console.log($scope.nav);
+    // $scope.nav.isActive = function (path) {
+    //   if (path === $location.path()) {
+    //     return true;
+    //   }
+    //   return false;
+    // };
   });
 });
 

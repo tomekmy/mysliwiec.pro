@@ -2,6 +2,8 @@
 
 // body font size
 $browser-context: 17;
+// active link color
+$active-link-color: #990000;
 // border input color
 $border-input: #dfdfe4;
 // border input active color
@@ -29,16 +31,16 @@ a {
   color: #330000;
   text-decoration: none;
   &:hover {
-    color: #990000;
+    color: $active-link-color;
   }
   &:focus {
-    color: #990000;
+    color: $active-link-color;
     outline: none;
   }
 }
 
 .active a {
-  color: #990000;
+  color: $active-link-color;
   outline: none;
 }
 
@@ -94,7 +96,7 @@ h3 {
     color: #000000;
     text-decoration: none;
     &:hover span {
-      color: #990000;
+      color: $active-link-color;
     }
   }
 }
@@ -135,7 +137,7 @@ noscript,
   position: relative;
   display: block;
   margin-top: 30px;
-  color: #990000;
+  color: $active-link-color;
   font-size: em(14);
 }
 
@@ -159,7 +161,7 @@ nav {
     transition: color 0.3s ease-in-out;
     color: #1b1b1b;
     &:hover {
-      color: #990000;
+      color: $active-link-color;
     }
   }
 }
