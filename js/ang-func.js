@@ -195,5 +195,23 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
     $('.contentWrapper__contactWrapper__subject').attr('placeholder', data.contact.defaultSubject);
     $('.contentWrapper__contactWrapper__message  + label').html(data.contact.message);
     $('.contentWrapper__contactWrapper__submitButton').html(data.contact.submit);
+
+    $('.contentWrapper__contactWrapper__submitButton').click(function () {
+      $('form').submit(function (event) {
+        event.preventDefault();
+        // Get some values from elements on the page:
+        var $form = $(this);
+        var url = $form.attr('action');
+
+        // Send the data using post
+        var posting = $.post(url, { s: term });
+
+        // Put the results in a div
+        posting.done(function (data) {
+          var content = $(data).find('#content');
+          $('#result').empty().append(content);
+        });
+      });
+    });
   });
 });
