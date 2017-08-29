@@ -16,6 +16,8 @@
     "subject" : "Temat",
     "defaultSubject" : "Nic specjalnego",    
     "message" : "Wiadomość",
-    "submit" : "Wyślij"
+    "submit" : "Wyślij",
+    "minimumError" : "Minimum 3 znaki",
+    "emailError" : "Zły adres"
   }
 }

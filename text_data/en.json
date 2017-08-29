@@ -16,6 +16,8 @@
     "subject" : "Subject",
     "defaultSubject" : "Nothing special",
     "message" : "Message",
-    "submit" : "Submit"
+    "submit" : "Submit",
+    "minimumError" : "Minimum 3 chars",
+    "emailError" : "Wrong address"
   }
 }

@@ -29,6 +29,10 @@ myApp.factory('appServices', function ($timeout, $location) {
         }
       });
     },
+    validateEmail: function (email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     footerPosition: function () {
       var footerPos = 0;
       if ($(document).height() > $(window).height()) {
@@ -186,6 +190,7 @@ myApp.controller('BlogCtrl', function ($scope, $location, appServices) {
 
 myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
   appServices.footerPosition();
+  // Put translations data from JSON
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
     $('.contentWrapper__contactWrapper__contactDetails').html(data.contact.description);
@@ -196,22 +201,75 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
     $('.contentWrapper__contactWrapper__message  + label').html(data.contact.message);
     $('.contentWrapper__contactWrapper__submitButton').html(data.contact.submit);
 
-    $('.contentWrapper__contactWrapper__submitButton').click(function () {
-      $('form').submit(function (event) {
-        event.preventDefault();
-        // Get some values from elements on the page:
-        var $form = $(this);
-        var url = $form.attr('action');
+    function formSender () {
+      var errors = 0;
+      var $subject = $('.contentWrapper__contactWrapper__subject');
+      if (!$subject.val()) {
+        $subject.val($subject.attr('placeholder'));
+      }
 
+      // Check form less then 3 chars
+      $('form .row').each(function () {
+        if ($(this).children().first().val().length < 3) {
+          errors++;
+          $(this).children().first().css('border-color', '#990000');
+          $(this).find('label span').remove();
+          $(this).find('label').append('<span> (' + data.contact.minimumError + ')</span>');
+        } else {
+          $(this).children().first().css('border-color', '#dfdfe4');
+          $(this).find('label span').remove();
+        }
+      });
+
+      // Check if email address is valid
+      if (!appServices.validateEmail($('.contentWrapper__contactWrapper__email').val())) {
+        errors++;
+        console.log('Check email');
+        $('.contentWrapper__contactWrapper__email  + label span').remove();
+        $('.contentWrapper__contactWrapper__email  + label').css('border-color', '#990000').append('<span> (' + data.contact.emailError + ')</span>');
+      } else {
+        $('.contentWrapper__contactWrapper__email  + label span').remove();
+        $('.contentWrapper__contactWrapper__email  + label').css('border-color', '#dfdfe4');
+      }
+
+      console.log('Errors: ' + errors);
+
+      // If no errors prepare and send data
+      if (errors === 0) {
+        // Get some values from elements on the page:
+        var url = $('form').attr('action');
+        var formData = {
+          name: $('.contentWrapper__contactWrapper__your_name').val(),
+          email: $('.contentWrapper__contactWrapper__email').val(),
+          subject: $('.contentWrapper__contactWrapper__subject').val(),
+          massage: $('.contentWrapper__contactWrapper__message').val()
+        };
         // Send the data using post
-        var posting = $.post(url, { s: term });
+        var posting = $.post(url, {
+          description: formData.description,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          massage: formData.massage
+        });
 
         // Put the results in a div
         posting.done(function (data) {
           var content = $(data).find('#content');
           $('#result').empty().append(content);
         });
-      });
+      }
+    }
+
+    // Add submit functionality
+    $('.contentWrapper__contactWrapper__submitButton').click(function () {
+      formSender();
+    });
+
+    $('form').keyup(function (event) {
+      if (event.keyCode === 13) {
+        formSender();
+      }
     });
   });
 });
