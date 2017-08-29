@@ -226,10 +226,11 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
         errors++;
         console.log('Check email');
         $('.contentWrapper__contactWrapper__email  + label span').remove();
-        $('.contentWrapper__contactWrapper__email  + label').css('border-color', '#990000').append('<span> (' + data.contact.emailError + ')</span>');
+        $('.contentWrapper__contactWrapper__email').css('border-color', '#990000');
+        $('.contentWrapper__contactWrapper__email  + label').append('<span> (' + data.contact.emailError + ')</span>');
       } else {
         $('.contentWrapper__contactWrapper__email  + label span').remove();
-        $('.contentWrapper__contactWrapper__email  + label').css('border-color', '#dfdfe4');
+        $('.contentWrapper__contactWrapper__email').css('border-color', '#dfdfe4');
       }
 
       console.log('Errors: ' + errors);
