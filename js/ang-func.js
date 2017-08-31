@@ -178,6 +178,15 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
 
 myApp.controller('AboutCtrl', function ($scope, $location, appServices) {
   appServices.footerPosition();
+  window.dataJSON.done(function () {
+    var data = window.dataJSON.responseJSON;
+    $('.about-intro-text').html(data.about.introText);
+    $('.aboutSkills__headerCoding').html(data.about.headerCoding);
+    $('.aboutSkills__headerFrameworks').html(data.about.headerFrameworks);
+    $('.aboutSkills__headerTechnologies').html(data.about.headerTechnologies);
+    $('.aboutSkills__headerCMS').html(data.about.headerCMS);
+    $('.aboutSkills__headerSoftware').html(data.about.headerSoftware);
+  });
 });
 
 myApp.controller('PortfolioCtrl', function ($scope, $location, appServices) {
