@@ -186,6 +186,10 @@ myApp.controller('AboutCtrl', function ($scope, $location, appServices) {
     $('.aboutSkills__headerTechnologies').html(data.about.headerTechnologies);
     $('.aboutSkills__headerCMS').html(data.about.headerCMS);
     $('.aboutSkills__headerSoftware').html(data.about.headerSoftware);
+
+    $('.aboutSkills div div').each(function () {
+      $(this).css('width', $(this).find('span').text());
+    });
   });
 });
 
