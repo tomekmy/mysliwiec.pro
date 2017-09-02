@@ -176,20 +176,30 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
   });
 });
 
-myApp.controller('AboutCtrl', function ($scope, $location, appServices) {
-  appServices.footerPosition();
+myApp.controller('AboutCtrl', function ($scope, $location, $timeout, appServices) {
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
-    $('.about-intro-text').html(data.about.introText);
+    $('.aboutIntro__text').html(data.about.introText);
     $('.aboutSkills__headerCoding').html(data.about.headerCoding);
     $('.aboutSkills__headerFrameworks').html(data.about.headerFrameworks);
     $('.aboutSkills__headerTechnologies').html(data.about.headerTechnologies);
     $('.aboutSkills__headerCMS').html(data.about.headerCMS);
     $('.aboutSkills__headerSoftware').html(data.about.headerSoftware);
+    $('.aboutIntro__site__header').html(data.about.introSiteHeader);
+    $('.aboutIntro__site__text').html(data.about.introSiteText);
 
-    $('.aboutSkills div div').each(function () {
-      $(this).css('width', $(this).find('span').text());
+    window.enterView({
+      selector: '.aboutSkills div div',
+      trigger: function (el) {
+        $(el).css('width', $(el).find('span').text());
+        $timeout(function () {
+          $(el).css('color', 'initial');
+        }, 350);
+        console.log('On screen: ' + el);
+      }
     });
+
+    appServices.footerPosition();
   });
 });
 

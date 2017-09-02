@@ -26,6 +26,8 @@
     "headerFrameworks" : "Znane frameworki i biblioteki",
     "headerTechnologies" : "Używane technologie",
     "headerCMS" : "Znane CMS'y",
-    "headerSoftware" : "Używane oprogramowanie"    
+    "headerSoftware" : "Używane oprogramowanie",
+    "introSiteHeader" : "Stos technologiczny strony",
+    "introSiteText" : "Do strwożenia tej strony wykorzystałem technologie, frameworki, skrypty i biblioteki takie jak: <ul><li>HTML</li><li>Sass - Na stronie nie został użyty żaden plik graficzny</li><li>JavaScript</li><li>Angular JS</li><li>jQuery</li><li>PHP - tylko do wysyłania formularza kontaktowego bo obecny hosting nie obsługuje node.js:(</li><li>JSON - teksty polsko i angielsko języczne</li><li>textillate.js - efekt tekstu na stronie głównej</li><li>lettering.js - wymagane przez textillate.js</li><li>enter-view.js</li><li>Google Fonts - Jura</li><li>Visual Studio Code</li><li>GIT</li><li>GitHub - repozytorium z moją stroną dostępne tu: <a href='https://github.com/tomekmy'>github.com/tomekmy</a></li><li>Koala - głównie do konwertowania SCSS do CSS</li><li>Chrome Developer Tools</li><li>Windows</li><li>VirtualBox</li><li>Linux - openSUSE i Ubuntu (testowanie)</li></ul>" 
   }
 }

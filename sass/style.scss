@@ -67,9 +67,15 @@ h3 {
   line-height: 22px;
 }
 
+h4 {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 50px 0 30px 0;
+}
+
 h5 {
   font-size: em(25);
-  margin: 5px 0 20px 0;
+  margin: 2px 0 20px 0;
 }
 
 
@@ -669,7 +675,7 @@ footer img {
   }
 }
 
-.about-intro-text,
+.aboutIntro,
 .aboutSkills {
   position: relative;
   display: inline-block;
@@ -677,9 +683,9 @@ footer img {
   vertical-align: top;
 }
 
-.about-intro-text {
+.aboutIntro {
   font-size: 1.3em;
-  text-align: justify;
+  text-align: left;
   margin-right: 3%;
   p {
     text-indent: 1em;
@@ -690,7 +696,7 @@ footer img {
 .aboutSkills {
   margin-left: 3%;
   & div {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
   & div div {
     margin: 10px 0 10px 0;
@@ -702,12 +708,22 @@ footer img {
     background: -webkit-linear-gradient(left, #ffffff 0%,#d6d7db 90%,#ffffff 100%);
     background: linear-gradient(to right, #ffffff 0%,#d6d7db 90%,#ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 );
+    transition: 1s linear all;
+    height: 14px;
     width: 0%;
-    // background: #d6d7db;
-    // background: -moz-linear-gradient(left, #d6d7db 0%, #ffffff 100%);
-    // background: -webkit-linear-gradient(left, #d6d7db 0%,#ffffff 100%);
-    // background: linear-gradient(to right, #d6d7db 0%,#ffffff 100%);
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d7db', endColorstr='#ffffff',GradientType=1 );
+    color: transparent;
+  }
+}
+
+.aboutIntro__site__text {
+  ul {
+    margin: 20px;
+    list-style: circle;
+    font-size: 0.9em;
+    line-height: 1.2em;
+  }
+  li {
+    margin: 15px 10px 15px 10px;
   }
 }
 
