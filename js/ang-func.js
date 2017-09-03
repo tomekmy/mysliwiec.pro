@@ -34,11 +34,14 @@ myApp.factory('appServices', function ($timeout, $location) {
       return re.test(email);
     },
     footerPosition: function () {
-      var footerPos = 0;
-      if ($(document).height() > $(window).height()) {
-        footerPos = $(window).height() - $(document).height() - 80;
-      }
-      $('footer').css('bottom', footerPos + 'px');
+      $timeout(function () {
+        var footerPos = 0;
+        $('footer').css('bottom', footerPos + 'px');
+        if ($(document).height() > $(window).height()) {
+          footerPos = $(window).height() - $(document).height() - 80;
+        }
+        $('footer').css('bottom', footerPos + 'px');
+      }, 600);
     }
   };
 });
@@ -207,12 +210,7 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, appServices) {
   appServices.footerPosition();
 });
 
-myApp.controller('BlogCtrl', function ($scope, $location, appServices) {
-  appServices.footerPosition();
-});
-
 myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
-  appServices.footerPosition();
   // Put translations data from JSON
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
@@ -223,6 +221,8 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
     $('.contentWrapper__contactWrapper__subject').attr('placeholder', data.contact.defaultSubject);
     $('.contentWrapper__contactWrapper__message  + label').html(data.contact.message);
     $('.contentWrapper__contactWrapper__submitButton').html(data.contact.submit);
+
+    appServices.footerPosition();
 
     function formSender () {
       var errors = 0;

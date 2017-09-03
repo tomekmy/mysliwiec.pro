@@ -33,6 +33,22 @@ $(document).ready(function () {
     }
     window.location.reload();
   });
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+      $('.scrollup').fadeIn();
+    } else {
+      $('.scrollup').fadeOut();
+    }
+  });
+
+  $('.scrollup').click(function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0
+    }, 600);
+    return false;
+  });
 });
 
 // $(window).on('load', function () {

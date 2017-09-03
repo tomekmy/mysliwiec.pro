@@ -220,6 +220,15 @@ main {
   opacity: 1;
 }
 
+.scrollup {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 20px;
+  display: none;
+  z-index: 999;
+}
+
 
 /* Footer */
 
