@@ -27,38 +27,38 @@
     "headerCMS" : "Znane CMS'y",
     "headerSoftware" : "Używane oprogramowanie",
     "introSiteHeader" : "Stos technologiczny strony",
-    "introSiteText" : "<p>Do strwożenia tej strony wykorzystałem technologie, frameworki, skrypty i biblioteki takie jak:</p><ul><li>HTML</li><li>Sass - Na stronie nie został użyty żaden plik graficzny</li><li>BEM</li><li>JavaScript</li><li>Angular JS</li><li>jQuery</li><li>PHP - tylko do wysyłania formularza kontaktowego bo obecny hosting nie obsługuje node.js:(</li><li>JSON - teksty polsko i angielsko języczne</li><li>textillate.js - efekt tekstu na stronie głównej</li><li>lettering.js - wymagane przez textillate.js</li><li>enter-view.js</li><li>Google Fonts - Jura</li><li>Visual Studio Code</li><li>GIT</li><li>GitHub - repozytorium z moją stroną dostępne tu: <a href='https://github.com/tomekmy'>github.com/tomekmy</a></li><li>Koala - głównie do konwertowania SCSS do CSS</li><li>Chrome Developer Tools</li><li>Windows</li><li>VirtualBox</li><li>Linux - openSUSE i Ubuntu (testowanie)</li></ul>"
+    "introSiteText" : "<p>Do strworzenia tej strony wykorzystałem technologie, frameworki, skrypty i biblioteki takie jak:</p><ul><li>HTML</li><li>Sass - Na stronie nie został użyty żaden plik graficzny (z wyjątkiem portfolio)</li><li>BEM</li><li>JavaScript</li><li>Angular JS</li><li>jQuery</li><li>PHP - tylko do wysyłania formularza kontaktowego bo obecny hosting nie obsługuje node.js:(</li><li>JSON - teksty polsko i angielsko języczne</li><li>textillate.js - efekt tekstu na stronie głównej</li><li>lettering.js - wymagane przez textillate.js</li><li>enter-view.js</li><li>Google Fonts - Jura</li><li>Visual Studio Code</li><li>GIT</li><li>GitHub - repozytorium z moją stroną dostępne tu: <a href='https://github.com/tomekmy'>github.com/tomekmy</a></li><li>Koala - głównie do konwertowania SCSS do CSS</li><li>Chrome Developer Tools</li><li>Windows</li><li>VirtualBox</li><li>Linux - openSUSE i Ubuntu (testowanie)</li></ul>"
   },
   "portfolio" : {
     "header" : "Ostatnie prace",
     "works" : [
       {
         "title" : "TechCalc - Pomocnik Inżyniera",
-        "url" : "http://www.techcalc.pl/",
+        "url" : "www.techcalc.pl",
         "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
         "img" : "img/techcalc-portfolio.jpg"
       },
       {
         "title" : "Centrum Technologiczne Warszawa",
-        "url" : "http://www.centrumtechnologiczne.pl/",
+        "url" : "www.centrumtechnologiczne.pl",
         "description" : "Jesteśmy Centrum Technologicznym międzynarodowej korporacji z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferujemy wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
         "img" : "img/centrumtechnologiczne-portfolio.jpg"
       },
       {
         "title" : "BluePhoto | Ireneusz Rek Fotografia",
-        "url" : "http://www.bluephoto.pl/",
+        "url" : "www.bluephoto.pl",
         "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
         "img" : "img/bluephoto-portfolio.jpg"
       },
       {
         "title" : "Wojciech Łagocki - Fotografia",
-        "url" : "http://www.lagocki.pl/",
+        "url" : "www.lagocki.pl",
         "description" : "Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret. Ulubione miejsca: Warszawa Leżajsk Nidzica",
         "img" : "img/wojtek-portfolio.jpg"
       },
       {
         "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
-        "url" : "http://www.kmpplastics.com.pl/",
+        "url" : "www.kmpplastics.com.pl",
         "description" : "KMP Plastics - oferujemy maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
         "img" : "img/kmp-portfolio.jpg"
       }

@@ -743,30 +743,41 @@ footer img {
   height: auto;
   padding: 20px;
   text-align: left;
-  background: #cccccc;
   margin: 20px auto 60px auto;
+  opacity: 0;
+  transition: 1s linear all;
 }
 
 .portfolio__item__img {
   display: inline-block;
   width: 48%;
   margin-right: 2%;
+  border: solid 1px;
 }
 
 .portfolio__item__wrapper {
   vertical-align: top;
-  width: 48%;
+  width: 47%;
   margin-left: 2%;
   display: inline-block;
 }
 
 .portfolio__item__header {
   font-size: 1.2em;
-  margin: 10px 0 10px 0;
+  margin: 0px 0 10px 0;
+  font-weight: 500;
+}
+
+.portfolio__item__url {
+  display: block;
+  margin: 10px 0 10px 0;  
 }
 
 .portfolio__item__description {
   text-indent: 1em;
+  margin: 10px 0 10px 0;
+  font-size: 1.1em;
+  line-height: 1.1em;  
 }
 
 .hline-left {

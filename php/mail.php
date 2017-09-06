@@ -3,12 +3,8 @@
         
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-	$phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT);
+	$subject = filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
 	$msg = filter_input(INPUT_POST, 'msg', FILTER_SANITIZE_STRING);
-        $file = filter_input(INPUT_POST, 'file', FILTER_SANITIZE_STRING);
-        if($file != '') {
-                $file = date("Y-m-d_H:i:s").'_'.$file;
-        }
         
         $sender = "=?UTF-8?B?".base64_encode($name)."?=";
 	
@@ -16,32 +12,24 @@
 	$headers .= "Content-type: text/html; charset=utf-8'\r\n";
         $headers .= "From:<$email> $sender\r\n";
 
-	$message = 'Imię: '.$name.'<br />E-mail: '.$email.'<br />Telefon: '.$phone.'<br />Wiadomość: '.$msg.'<br />Plik: '.$file;
+	$message = 'Imię: '.$name.'<br />E-mail: '.$email.'<br />Temat: '.$subject.'<br />Wiadomość: '.$msg;
 
 	if($name != '' && $email != '' && $msg != '') {
-            $ok = mail($to, $sender.'. TM Systems - Formularz kontaktowy', $message, $headers);
+            $ok = mail($to, $sender.'. mysliwiec.pro - Formularz kontaktowy', $message, $headers);
         }
 
 	if ($ok) {
-		$info = 'Wiadomość wysłana.';
+		$info = true;
 	}
 	else {
-		$info = 'Błąd. Wiadomość nie wysłana!';
+		$info = false;
 	}
 ?>
 
 <script type="text/javascript">
 	// <![CDATA[
 
-		$('.captcha_info').html('<?php echo $info; ?><br />');
-                $("input[name='imie']").val('Twoje imię*');
-                $("input[name='mail']").val('E-mail*');
-                $("input[name='phone']").val('Telefon');
-                $(".message textarea").val('Wiadomość*');
-                $("input[name='sum']").val('Wynik*');
-                $(".fakefile").val('Prześlij plik. (Pliki graficzne, max 2MB)');
-                $(".upload").val('');
-                var wynik = count();
+                $('.captcha_info').html('<?php echo $info; ?><br />');
 
 	// ]]>
 </script>

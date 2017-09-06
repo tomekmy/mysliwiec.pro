@@ -206,18 +206,27 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, appServices
   });
 });
 
-myApp.controller('PortfolioCtrl', function ($scope, $location, appServices) {
+myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, appServices) {
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
     for (var i = 0; i < data.portfolio.works.length; i++) {
-      $('.portfolio').append('<div class="portfolio__item"><img class="portfolio__item__img" src="' + data.portfolio.works[i].img + '" /><div class="portfolio__item__wrapper"><div class="portfolio__item__header">' +
+      $('.portfolio').append('<div class="portfolio__item"><img class="portfolio__item__img" data-src="' + data.portfolio.works[i].img + '" src="img/spinner-animation.gif" /><div class="portfolio__item__wrapper"><div class="portfolio__item__header">' +
       data.portfolio.works[i].title +
-      '</div><a class="portfolio__item__url" href="' + data.portfolio.works[i].url + '">' +
+      '</div><a class="portfolio__item__url" href="http://' + data.portfolio.works[i].url + '">' +
       data.portfolio.works[i].url +
       '</a><div class="portfolio__item__description">' +
       data.portfolio.works[i].description +
       '</div></div><div class="vline-left"></div><div class="hline-left"></div><div class="vline-right"></div><div class="hline-right"></div></div>');
     }
+
+    window.enterView({
+      selector: '.portfolio__item',
+      trigger: function (el) {
+        $(el).css('opacity', '1');
+        $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
+        console.log('portfolio__item');
+      }
+    });
     appServices.footerPosition();
   });
 });
