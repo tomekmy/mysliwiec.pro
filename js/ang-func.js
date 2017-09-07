@@ -118,63 +118,68 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
     $('.contentWrapper__mainText').html(data.main.mainText);
-    $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
-      effect: 'bounceIn',
-      delay: 40
-    },
-    out: {
-      effect: 'hinge',
-      delay: 70,
-      shuffle: true,
-      sync: false,
-      delayScale: 7
-    }
-    });
-    var timer1 = $timeout(function () {
-      $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
+    console.log('Add text to elements');
+    $('.loading').fadeOut();
+    $('.content').fadeIn(function () {
+      console.log('Show content');
+      $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
         effect: 'bounceIn',
         delay: 40
       },
       out: {
         effect: 'hinge',
-        delay: 40,
+        delay: 70,
         shuffle: true,
         sync: false,
-        delayScale: 2
+        delayScale: 7
       }
       });
-    }, 500);
-    var timer2 = $timeout(function () {
-      $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
-        effect: 'bounceIn',
-        delay: 40,
-        callback: function () {
-          $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
+      var timer1 = $timeout(function () {
+        $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
+          effect: 'bounceIn',
+          delay: 40
+        },
+        out: {
+          effect: 'hinge',
+          delay: 40,
+          shuffle: true,
+          sync: false,
+          delayScale: 2
         }
-      },
-      out: {
-        effect: 'hinge',
-        delay: 40,
-        shuffle: true,
-        sync: false,
-        delayScale: 2
-      }
+        });
+      }, 500);
+      var timer2 = $timeout(function () {
+        $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
+          effect: 'bounceIn',
+          delay: 40,
+          callback: function () {
+            $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
+          }
+        },
+        out: {
+          effect: 'hinge',
+          delay: 40,
+          shuffle: true,
+          sync: false,
+          delayScale: 2
+        }
+        });
+      }, 3100);
+
+      appServices.footerPosition();
+
+      $scope.$on('$routeChangeStart', function (next, current) {
+        $timeout.cancel(timer1);
+        $timeout.cancel(timer2);
+        $('.contentWrapper__mainText p').textillate('stop');
+        var spans = 93;
+        if (window.userLang === 'pl') {
+          spans = 115;
+        }
+        if ($('.contentWrapper__mainText span').length > spans) {
+          $('.contentWrapper__mainText p').textillate('out');
+        }
       });
-    }, 3100);
-
-    appServices.footerPosition();
-
-    $scope.$on('$routeChangeStart', function (next, current) {
-      $timeout.cancel(timer1);
-      $timeout.cancel(timer2);
-      $('.contentWrapper__mainText p').textillate('stop');
-      var spans = 93;
-      if (window.userLang === 'pl') {
-        spans = 115;
-      }
-      if ($('.contentWrapper__mainText span').length > spans) {
-        $('.contentWrapper__mainText p').textillate('out');
-      }
     });
   });
 });
@@ -190,44 +195,56 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, appServices
     $('.aboutSkills__headerSoftware').html(data.about.headerSoftware);
     $('.aboutIntro__site__header').html(data.about.introSiteHeader);
     $('.aboutIntro__site__text').html(data.about.introSiteText);
-
-    window.enterView({
-      selector: '.aboutSkills div div',
-      trigger: function (el) {
-        $(el).css('width', $(el).find('span').text());
-        $timeout(function () {
-          $(el).css('color', 'initial');
-        }, 350);
-        console.log('On screen: ' + el);
-      }
+    console.log('Add text to elements');
+  }).then(function () {
+    $('.loading').fadeOut();
+    $('.content').fadeIn(function () {
+      console.log('Show content');
+      window.enterView({
+        selector: '.aboutSkills div div',
+        trigger: function (el) {
+          $(el).css('width', $(el).find('span').text());
+          $timeout(function () {
+            $(el).css('color', '#1b1b1b');
+          }, 350);
+          console.log('On screen: ' + el);
+        }
+      });
+      appServices.footerPosition();
     });
-
-    appServices.footerPosition();
   });
 });
 
 myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, appServices) {
-  window.dataJSON.done(function () {
-    var data = window.dataJSON.responseJSON;
-    for (var i = 0; i < data.portfolio.works.length; i++) {
-      $('.portfolio').append('<div class="portfolio__item"><img class="portfolio__item__img" data-src="' + data.portfolio.works[i].img + '" src="img/spinner-animation.gif" /><div class="portfolio__item__wrapper"><div class="portfolio__item__header">' +
-      data.portfolio.works[i].title +
-      '</div><a class="portfolio__item__url" href="http://' + data.portfolio.works[i].url + '">' +
-      data.portfolio.works[i].url +
-      '</a><div class="portfolio__item__description">' +
-      data.portfolio.works[i].description +
-      '</div></div><div class="vline-left"></div><div class="hline-left"></div><div class="vline-right"></div><div class="hline-right"></div></div>');
-    }
-
-    window.enterView({
-      selector: '.portfolio__item',
-      trigger: function (el) {
-        $(el).css('opacity', '1');
-        $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
-        console.log('portfolio__item');
+  var img = new window.Image();
+  img.src = 'img/spinner-animation.gif';
+  $(img).load(function () {
+    window.dataJSON.done(function () {
+      var data = window.dataJSON.responseJSON;
+      for (var i = 0; i < data.portfolio.works.length; i++) {
+        $('.portfolio').append('<div class="portfolio__item"><img class="portfolio__item__img" data-src="' + data.portfolio.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img" /><div class="portfolio__item__wrapper"><div class="portfolio__item__header">' +
+        data.portfolio.works[i].title +
+        '</div><a class="portfolio__item__url" href="http://' + data.portfolio.works[i].url + '">' +
+        data.portfolio.works[i].url +
+        '</a><div class="portfolio__item__description">' +
+        data.portfolio.works[i].description +
+        '</div></div><div class="vline-left"></div><div class="hline-left"></div><div class="vline-right"></div><div class="hline-right"></div></div>');
       }
+    }).then(function () {
+      $('.loading').fadeOut();
+      $('.content').fadeIn(function () {
+        console.log('Show content');
+        window.enterView({
+          selector: '.portfolio__item',
+          trigger: function (el) {
+            $(el).css('opacity', '1');
+            $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
+            console.log('On screen: ' + el);
+          }
+        });
+        appServices.footerPosition();
+      });
     });
-    appServices.footerPosition();
   });
 });
 
@@ -242,8 +259,6 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
     $('.contentWrapper__contactWrapper__subject').attr('placeholder', data.contact.defaultSubject);
     $('.contentWrapper__contactWrapper__message  + label').html(data.contact.message);
     $('.contentWrapper__contactWrapper__submitButton').html(data.contact.submit);
-
-    appServices.footerPosition();
 
     function formSender () {
       var errors = 0;
@@ -315,6 +330,12 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
       if (event.keyCode === 13) {
         formSender();
       }
+    });
+  }).then(function () {
+    $('.loading').fadeOut();
+    $('.content').fadeIn(function () {
+      console.log('Show content');
+      appServices.footerPosition();
     });
   });
 });

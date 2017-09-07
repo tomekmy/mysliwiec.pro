@@ -81,6 +81,28 @@ h5 {
 
 /* Content div */
 
+.loading {
+  position: absolute;
+  margin-top: 20%;
+  width: 100%;
+  text-align: center;
+}
+
+.loading__ring {
+  position: relative;
+  & div {
+    position: relative;
+    margin: 0 auto 0 auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 12px solid #000;
+    border-color: #cccccc transparent #cccccc transparent;
+    -webkit-animation: lds-dual-ring 1.3s linear infinite;
+    animation: lds-dual-ring 1.3s linear infinite;
+  }
+}
+
 .content {
   position: relative;
   width: 90%;
@@ -88,6 +110,7 @@ h5 {
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+  display: none;
 }
 
 .content__header {
@@ -594,9 +617,11 @@ footer img {
     float: right;
     right: 7%;
     width: 40%;
+    margin-bottom: 40px;
     input,
     textarea {
       font-family: 'Jura', sans-serif;
+      color: #1b1b1b;
       background-color: transparent;
       border: none;
       border-bottom: 2px solid $border-input;
@@ -627,6 +652,7 @@ footer img {
       border: 2px solid $border-input;
       padding: 15px;
       box-sizing: border-box;
+      overflow: auto;
       text-indent: 0;
       &:focus {
         border: 2px solid $border-input-active;
@@ -770,14 +796,14 @@ footer img {
 
 .portfolio__item__url {
   display: block;
-  margin: 10px 0 10px 0;  
+  margin: 10px 0 10px 0;
 }
 
 .portfolio__item__description {
   text-indent: 1em;
   margin: 10px 0 10px 0;
   font-size: 1.1em;
-  line-height: 1.1em;  
+  line-height: 1.1em;
 }
 
 .hline-left {
@@ -880,6 +906,7 @@ footer img {
   /* IE6-9 */
 }
 
+
 /* For desktop */
 
 
@@ -929,4 +956,26 @@ footer img:hover,
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

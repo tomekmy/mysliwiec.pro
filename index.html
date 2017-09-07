@@ -53,12 +53,18 @@
         }
         console.log('Read data from: ' + languageFile);
         var dataJSON = $.getJSON(languageFile).done(function (data) {
+            console.log('Finish read data');
             return data;
         });
     </script>
 </head>
 
 <body>
+    <div class="loading">       
+        <div class="loading__ring">
+            <div></div>
+        </div>         
+    </div>
     <div class="content">
         <header class="content__header">
             <div class="content__header__logo">

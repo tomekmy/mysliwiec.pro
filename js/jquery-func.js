@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   langButton(window.userLang);
 
-  $('.lang-icon div').click(function () {
+  $('.lang-icon').click(function () {
     if (window.userLang === 'pl') {
       window.localStorage.userLang = 'en';
     } else {
@@ -50,10 +50,6 @@ $(document).ready(function () {
     return false;
   });
 });
-
-// $(window).on('load', function () {
-
-// });
 
 $(window).resize(function () {
   var footerPos = 0;
