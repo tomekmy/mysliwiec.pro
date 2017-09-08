@@ -9,8 +9,8 @@ myApp.factory('appServices', function ($timeout, $location) {
         spans = 115;
         lagTime = 5700;
       }
-      if ($('.contentWrapper__mainText span').length > spans) {
-        $('.contentWrapper__mainText span:last').remove();
+      if ($('.content-wrapper__mainText span').length > spans) {
+        $('.content-wrapper__mainText span:last').remove();
         $('body').css('overflow', 'hidden');
         var mainTimer = $timeout(function () {
           $('body').css('overflow', 'visible');
@@ -20,7 +20,7 @@ myApp.factory('appServices', function ($timeout, $location) {
       }
     },
     activeLink: function () {
-      $('nav ul li a').each(function () {
+      $('.menu__item--link').each(function () {
         if (('#' + $location.path()) === $(this).attr('href')) {
           $(this).css('color', '#990000');
           console.log('Active page: ' + $location.path());
@@ -99,8 +99,8 @@ myApp.controller('NavCtrl', function ($scope, $location, appServices) {
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
     $.each(data.menu, function (key, val) {
-      $('nav ul').append('<li><a href="#/' + key + '">' + val + '</a></li>');
-      $('nav ul li').hover(function () {
+      $('.menu__items').append('<li class="menu__item"><a class="menu__item--link" href="#/' + key + '">' + val + '</a></li>');
+      $('.menu__item').hover(function () {
         $(this).stop(true, false).animate({'left': '20px'}, 500);
       },
       function () {
@@ -117,12 +117,12 @@ myApp.controller('NavCtrl', function ($scope, $location, appServices) {
 myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices) {
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
-    $('.contentWrapper__mainText').html(data.main.mainText);
+    $('.content-wrapper__mainText').html(data.main.mainText);
     console.log('Add text to elements');
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
       console.log('Show content');
-      $('.contentWrapper__mainText p:eq(0)').show().textillate({ in: {
+      $('.content-wrapper__mainText p:eq(0)').show().textillate({ in: {
         effect: 'bounceIn',
         delay: 40
       },
@@ -135,7 +135,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
       }
       });
       var timer1 = $timeout(function () {
-        $('.contentWrapper__mainText p:eq(1)').show().textillate({ in: {
+        $('.content-wrapper__mainText p:eq(1)').show().textillate({ in: {
           effect: 'bounceIn',
           delay: 40
         },
@@ -149,11 +149,11 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
         });
       }, 500);
       var timer2 = $timeout(function () {
-        $('.contentWrapper__mainText p:eq(2)').show().textillate({ in: {
+        $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
           effect: 'bounceIn',
           delay: 40,
           callback: function () {
-            $('.contentWrapper__mainText p:eq(2)').append('<span></span>');
+            $('.content-wrapper__mainText p:eq(2)').append('<span></span>');
           }
         },
         out: {
@@ -171,13 +171,13 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
       $scope.$on('$routeChangeStart', function (next, current) {
         $timeout.cancel(timer1);
         $timeout.cancel(timer2);
-        $('.contentWrapper__mainText p').textillate('stop');
+        $('.content-wrapper__mainText p').textillate('stop');
         var spans = 93;
         if (window.userLang === 'pl') {
           spans = 115;
         }
-        if ($('.contentWrapper__mainText span').length > spans) {
-          $('.contentWrapper__mainText p').textillate('out');
+        if ($('.content-wrapper__mainText span').length > spans) {
+          $('.content-wrapper__mainText p').textillate('out');
         }
       });
     });
@@ -252,23 +252,23 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
   // Put translations data from JSON
   window.dataJSON.done(function () {
     var data = window.dataJSON.responseJSON;
-    $('.contentWrapper__contactWrapper__contactDetails').html(data.contact.description);
-    $('.contentWrapper__contactWrapper__your_name + label').html(data.contact.name);
-    $('.contentWrapper__contactWrapper__email  + label').html(data.contact.email);
-    $('.contentWrapper__contactWrapper__subject  + label').html(data.contact.subject);
-    $('.contentWrapper__contactWrapper__subject').attr('placeholder', data.contact.defaultSubject);
-    $('.contentWrapper__contactWrapper__message  + label').html(data.contact.message);
-    $('.contentWrapper__contactWrapper__submitButton').html(data.contact.submit);
+    $('.contact__details').html(data.contact.description);
+    $('.form__name + label').html(data.contact.name);
+    $('.form__email  + label').html(data.contact.email);
+    $('.form__subject  + label').html(data.contact.subject);
+    $('.form__subject').attr('placeholder', data.contact.defaultSubject);
+    $('.form__message  + label').html(data.contact.message);
+    $('.form__submit').html(data.contact.submit);
 
     function formSender () {
       var errors = 0;
-      var $subject = $('.contentWrapper__contactWrapper__subject');
+      var $subject = $('.form__subject');
       if (!$subject.val()) {
         $subject.val($subject.attr('placeholder'));
       }
 
       // Check form less then 3 chars
-      $('form .row').each(function () {
+      $('.form .row').each(function () {
         if ($(this).children().first().val().length < 3) {
           errors++;
           $(this).children().first().css('border-color', '#990000');
@@ -281,15 +281,15 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
       });
 
       // Check if email address is valid
-      if (!appServices.validateEmail($('.contentWrapper__contactWrapper__email').val())) {
+      if (!appServices.validateEmail($('.form__email').val())) {
         errors++;
         console.log('Check email');
-        $('.contentWrapper__contactWrapper__email  + label span').remove();
-        $('.contentWrapper__contactWrapper__email').css('border-color', '#990000');
-        $('.contentWrapper__contactWrapper__email  + label').append('<span> (' + data.contact.emailError + ')</span>');
+        $('.form__email  + label span').remove();
+        $('.form__email').css('border-color', '#990000');
+        $('.form__email  + label').append('<span> (' + data.contact.emailError + ')</span>');
       } else {
-        $('.contentWrapper__contactWrapper__email  + label span').remove();
-        $('.contentWrapper__contactWrapper__email').css('border-color', '#dfdfe4');
+        $('.form__email  + label span').remove();
+        $('.form__email').css('border-color', '#dfdfe4');
       }
 
       console.log('Errors: ' + errors);
@@ -299,10 +299,10 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
         // Get some values from elements on the page:
         var url = $('form').attr('action');
         var formData = {
-          name: $('.contentWrapper__contactWrapper__your_name').val(),
-          email: $('.contentWrapper__contactWrapper__email').val(),
-          subject: $('.contentWrapper__contactWrapper__subject').val(),
-          massage: $('.contentWrapper__contactWrapper__message').val()
+          name: $('.form__name').val(),
+          email: $('.form__email').val(),
+          subject: $('.form__subject').val(),
+          massage: $('.form__message').val()
         };
         // Send the data using post
         var posting = $.post(url, {
@@ -315,18 +315,17 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
 
         // Put the results in a div
         posting.done(function (data) {
-          var content = $(data).find('#content');
-          $('#result').empty().append(content);
+          $('.contact__result').empty().append();
         });
       }
     }
 
     // Add submit functionality
-    $('.contentWrapper__contactWrapper__submitButton').click(function () {
+    $('.form__submit').click(function () {
       formSender();
     });
 
-    $('form').keyup(function (event) {
+    $('.form').keyup(function (event) {
       if (event.keyCode === 13) {
         formSender();
       }

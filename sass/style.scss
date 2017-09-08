@@ -1,4 +1,4 @@
-// TODO: Make comatible with BEM
+// { Functions and variables
 // body font size
 $browser-context: 17;
 // active link color
@@ -11,6 +11,9 @@ $border-input-active: #a0a0a0;
 @function em($pixels, $context: $browser-context) {
   @return #{$pixels/$context}em;
 }
+
+// } Functions and variables
+// { Base selectors
 
 html,
 body {
@@ -78,8 +81,8 @@ h5 {
   margin: 2px 0 20px 0;
 }
 
-
-/* Content div */
+// } Base selectors
+// { Loading
 
 .loading {
   position: absolute;
@@ -90,7 +93,7 @@ h5 {
 
 .loading__ring {
   position: relative;
-  & div {
+  &--rings {
     position: relative;
     margin: 0 auto 0 auto;
     width: 80px;
@@ -103,6 +106,9 @@ h5 {
   }
 }
 
+// } Loading
+// { Content
+
 .content {
   position: relative;
   width: 90%;
@@ -113,60 +119,54 @@ h5 {
   display: none;
 }
 
-.content__header {
+// { Logo
+
+.header {
   position: relative;
   left: 0px;
   text-align: left;
   width: 185px;
   height: 120px;
-}
-
-.content__header__logo {
-  margin: 10px 0 0 20px;
-  font-size: em(20);
-  width: 200px;
-  float: left;
-  a {
+  &__logo {
+    margin: 10px 0 0 20px;
+    font-size: em(20);
+    width: 200px;
+    float: left;
+  }
+  &__link {
     color: #000000;
     text-decoration: none;
-    &:hover span {
+    &:hover {
+      color: #000000;
+    }
+    &:hover &--distinction {
       color: $active-link-color;
     }
   }
+  &__top-vline {
+    position: absolute;
+    width: 1px;
+    height: 470px;
+    background: #000000;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, #000000), to(#ffffff));
+    background: linear-gradient(to bottom, #000000 65%, #ffffff 100%);
+  }
+  &__top-hline1 {
+    position: absolute;
+    top: 124px;
+    left: -1000px;
+    width: 1250px;
+    height: 1px;
+    background: #000000;
+    background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
+    background: linear-gradient(to right, #000000 85%, #ffffff 100%);
+  }
 }
 
-.content__header__top-vline {
-  position: absolute;
-  width: 1px;
-  height: 470px;
-  background: #000000;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, #000000), to(#ffffff));
-  background: linear-gradient(to bottom, #000000 65%, #ffffff 100%);
-}
+// } Logo
+// { No script and old IE
 
-.content__header__top-hline1 {
-  position: absolute;
-  top: 124px;
-  left: -1000px;
-  width: 1250px;
-  height: 1px;
-  background: #000000;
-  background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
-  background: linear-gradient(to right, #000000 85%, #ffffff 100%);
-}
-
-.content__header__top-hline2 {
-  position: absolute;
-  bottom: -40px;
-  left: -1000px;
-  width: 1200px;
-  height: 1px;
-  background: #000000;
-  background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
-  background: linear-gradient(to right, #000000 85%, #ffffff 100%);
-}
-
-noscript,
+.no-script,
 .oldie {
   position: relative;
   display: block;
@@ -175,18 +175,21 @@ noscript,
   font-size: em(14);
 }
 
-nav {
+// } No script and old IE
+// { Menu
+
+.menu {
   position: relative;
   float: left;
   margin: 50px 0 0 20px;
   font-size: em(23);
   text-align: left;
   z-index: 999;
-  li {
+  &__item {
     position: relative;
     padding: 0 0 10px 0;
   }
-  a {
+  &__item--link {
     text-decoration: none;
     -webkit-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
@@ -195,9 +198,22 @@ nav {
       color: $active-link-color !important;
     }
   }
+  &__top-hline2 {
+    position: absolute;
+    bottom: -40px;
+    left: -1000px;
+    width: 1200px;
+    height: 1px;
+    background: #000000;
+    background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
+    background: linear-gradient(to right, #000000 85%, #ffffff 100%);
+  }
 }
 
-main {
+// } Menu
+// { Main tag
+
+.main {
   position: absolute;
   left: 0;
   width: 100%;
@@ -205,22 +221,11 @@ main {
   margin-top: 30px;
 }
 
-.contentWrapper {
+.content-wrapper {
   position: relative;
   left: 250px;
   width: calc(100% - 250px);
   height: 100%;
-}
-
-.contentWrapper__mainText {
-  margin-left: 20%;
-  text-align: left;
-  font-size: em(30);
-  width: 430px;
-  line-height: 33px;
-  p {
-    display: none;
-  }
 }
 
 .ng-leave {
@@ -243,6 +248,144 @@ main {
   opacity: 1;
 }
 
+// { Main page
+
+.content-wrapper__mainText {
+  margin-left: 20%;
+  text-align: left;
+  font-size: em(30);
+  width: 430px;
+  line-height: 33px;
+  p {
+    display: none;
+  }
+}
+
+// } Main page
+
+// { Contact page
+
+.row {
+  margin: 10px 0 0 0;
+  position: relative;
+  min-height: 80px;
+  text-align: left;
+}
+
+.contact {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  &__details {
+    position: absolute;
+    float: left;
+    left: 7%;
+    font-size: 1.7em;
+    line-height: 1.3;
+    width: 40%;
+  }
+  .form {
+    position: relative;
+    float: right;
+    right: 7%;
+    width: 40%;
+    margin-bottom: 40px;
+    input,
+    textarea {
+      font-family: 'Jura', sans-serif;
+      color: #1b1b1b;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $border-input;
+      border-radius: 0;
+      outline: none;
+      height: 40px;
+      width: 100%;
+      font-size: em(16);
+      margin: 0 0 20px 0;
+      padding: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      -webkit-box-sizing: content-box;
+      box-sizing: content-box;
+      text-indent: 15px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      &:focus {
+        border-bottom: 2px solid $border-input-active;
+      }
+      &:focus+label {
+        color: $border-input-active;
+      }
+    }
+    textarea {
+      height: 150px;
+      margin: 20px 0 20px 0;
+      border: 2px solid $border-input;
+      padding: 15px;
+      box-sizing: border-box;
+      overflow: auto;
+      text-indent: 0;
+      &:focus {
+        border: 2px solid $border-input-active;
+      }
+    }
+    label {
+      position: absolute;
+      left: 0;
+      top: -20px;
+      font-size: em(19);
+      text-indent: 15px;
+      color: $border-input;
+      span {
+        font-size: em(12);
+      }
+    }
+    &__submit {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      overflow: hidden;
+      width: 150px;
+      height: 40px;
+      line-height: 40px;
+      border: 2px solid $border-input;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition-property: all;
+      transition-duration: .6s;
+      transition-timing-function: ease;
+      &:after {
+        background: #ACACAC;
+        content: "";
+        height: 155px;
+        left: -75px;
+        opacity: .2;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: 99;
+      }
+    }
+    &__submit:hover,
+    &__submit:focus {
+      border: 2px solid $border-input-active;
+      &:after {
+        left: 120%;
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    }
+  }
+}
+
+// } Contact page
+
+// } Main tag
+
 .scrollup {
   position: fixed;
   left: 0;
@@ -252,10 +395,9 @@ main {
   z-index: 999;
 }
 
-
-/* Footer */
-
-footer {
+// { Footer
+// A lot of borrowed code so I don't use BEM here
+.footer {
   position: absolute;
   bottom: 0;
   margin-top: 30px;
@@ -329,14 +471,13 @@ footer img {
   top: 2px;
 }
 
-.lang-icon div {
+.footer__lang-icon div {
   color: #ffffff;
   font: bold 12px arial;
   position: absolute;
   left: 4px;
   top: 6px;
 }
-
 
 /* gitHub logo */
 
@@ -505,7 +646,6 @@ footer img {
   }
 }
 
-
 /* Mail Icon */
 
 .email {
@@ -538,7 +678,7 @@ footer img {
   }
 }
 
-.footer-hline {
+.footer__hline {
   position: absolute;
   top: 0px;
   left: -5.55%;
@@ -550,7 +690,7 @@ footer img {
   background: linear-gradient(to right, #000000 80%, #ffffff 100%);
 }
 
-.footer-vline {
+.footer__vline {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -561,7 +701,7 @@ footer img {
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
 }
 
-.footer-hline-right {
+.footer__hline-right {
   position: absolute;
   top: 0px;
   right: -5.55%;
@@ -573,7 +713,7 @@ footer img {
   background: linear-gradient(to left, #000000 80%, #ffffff 100%);
 }
 
-.footer-vline-right {
+.footer__vline-right {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -584,131 +724,10 @@ footer img {
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
 }
 
-
-/* End of Footer */
-
-
-/* End of Content div */
+// { Footer
 
 
-/* Conctact */
 
-.row {
-  margin: 10px 0 0 0;
-  position: relative;
-  min-height: 80px;
-  text-align: left;
-}
-
-.contentWrapper__contactWrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  .contentWrapper__contactWrapper__contactDetails {
-    position: absolute;
-    float: left;
-    left: 7%;
-    font-size: 1.7em;
-    line-height: 1.3;
-    width: 40%;
-  }
-  form {
-    position: relative;
-    float: right;
-    right: 7%;
-    width: 40%;
-    margin-bottom: 40px;
-    input,
-    textarea {
-      font-family: 'Jura', sans-serif;
-      color: #1b1b1b;
-      background-color: transparent;
-      border: none;
-      border-bottom: 2px solid $border-input;
-      border-radius: 0;
-      outline: none;
-      height: 40px;
-      width: 100%;
-      font-size: em(16);
-      margin: 0 0 20px 0;
-      padding: 0;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      -webkit-box-sizing: content-box;
-      box-sizing: content-box;
-      text-indent: 15px;
-      -webkit-transition: all 0.3s;
-      transition: all 0.3s;
-      &:focus {
-        border-bottom: 2px solid $border-input-active;
-      }
-      &:focus+label {
-        color: $border-input-active;
-      }
-    }
-    textarea {
-      height: 150px;
-      margin: 20px 0 20px 0;
-      border: 2px solid $border-input;
-      padding: 15px;
-      box-sizing: border-box;
-      overflow: auto;
-      text-indent: 0;
-      &:focus {
-        border: 2px solid $border-input-active;
-      }
-    }
-    label {
-      position: absolute;
-      left: 0;
-      top: -20px;
-      font-size: em(19);
-      text-indent: 15px;
-      color: $border-input;
-      span {
-        font-size: em(12);
-      }
-    }
-    .contentWrapper__contactWrapper__submitButton {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
-      text-align: center;
-      overflow: hidden;
-      width: 150px;
-      height: 40px;
-      line-height: 40px;
-      border: 2px solid $border-input;
-      font-weight: 600;
-      cursor: pointer;
-      outline: none;
-      transition-property: all;
-      transition-duration: .6s;
-      transition-timing-function: ease;
-      &:after {
-        background: #ACACAC;
-        content: "";
-        height: 155px;
-        left: -75px;
-        opacity: .2;
-        position: absolute;
-        top: -50px;
-        transform: rotate(35deg);
-        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-        width: 50px;
-        z-index: 99;
-      }
-    }
-    .contentWrapper__contactWrapper__submitButton:hover,
-    .contentWrapper__contactWrapper__submitButton:focus {
-      border: 2px solid $border-input-active;
-      &:after {
-        left: 120%;
-        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-      }
-    }
-  }
-}
 
 .aboutIntro,
 .aboutSkills {
@@ -906,6 +925,7 @@ footer img {
   /* IE6-9 */
 }
 
+// } Content
 
 /* For desktop */
 

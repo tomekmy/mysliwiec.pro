@@ -28,7 +28,7 @@
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.textillate.js"></script>
-    <script type="text/javascript" src="js/enter-view.min.js"></script>        
+    <script type="text/javascript" src="js/enter-view.min.js"></script>
     <script type="text/javascript">
         // Detect user language
         var userLang = navigator.language || navigator.userLanguage;
@@ -60,35 +60,37 @@
 </head>
 
 <body>
-    <div class="loading">       
+    <div class="loading">
         <div class="loading__ring">
-            <div></div>
-        </div>         
+            <div class="loading__ring--rings"></div>
+        </div>
     </div>
     <div class="content">
-        <header class="content__header">
-            <div class="content__header__logo">
-                <h1><a href="/" title="Start"><span>T</span>omasz <span>M</span>yśliwiec</a></h1>
+        <header class="header">
+            <div class="header__logo">
+                <h1>
+                    <a class="header__link" href="/" title="Start"><span class="header__link--distinction">T</span>omasz <span class="header__link--distinction">M</span>yśliwiec</a>
+                </h1>
                 <h2>Front-end Developer</h2>
             </div>
-            <div class="content__header__top-vline"></div>
-            <div class="content__header__top-hline1"></div>
+            <div class="header__top-vline"></div>
+            <div class="header__top-hline1"></div>
         </header>
-        <noscript>
+        <noscript class="no-script">
             To view the full content of this site please enable JavaScript!
         </noscript>
         <!--[if lte IE 9]>
             <div class="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
         <![endif]-->
-        <nav ng-controller="NavCtrl">
+        <nav class="menu" ng-controller="NavCtrl">
             <!-- Menu items (li) are generated in jquery-func.js file -->
-            <ul></ul>
-            <div class="content__header__top-hline2"></div>
+            <ul class="menu__items"></ul>
+            <div class="menu__top-hline2"></div>
         </nav>
 
-        <main ng-view class="animate"></main>
+        <main ng-view class="main animate"></main>
         <a class="scrollup" href="#top">Top</a>
-        <footer>
+        <footer class="footer">
             <div class="footer__icons">
                 <a href="https://www.facebook.com/mysliwiec.pro/">
                     <div class="facebook-icon"></div>
@@ -122,14 +124,14 @@
                 </a>
             </div>
             <div class="footer__languages">
-                <a href="#lang" class="lang-icon">
+                <a href="#lang" class="footer__lang-icon">
                     <div></div>
                 </a>
             </div>
-            <div class="footer-hline"></div>
-            <div class="footer-vline"></div>
-            <div class="footer-hline-right"></div>
-            <div class="footer-vline-right"></div>
+            <div class="footer__hline"></div>
+            <div class="footer__vline"></div>
+            <div class="footer__hline-right"></div>
+            <div class="footer__vline-right"></div>
         </footer>
     </div>
     <script type="text/javascript" src="js/ang-func.js"></script>
