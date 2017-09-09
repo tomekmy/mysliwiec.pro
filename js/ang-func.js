@@ -1,11 +1,11 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize', 'angular-google-analytics']);
 
-myApp.factory('appServices', function ($timeout, $location) {
+myApp.factory('appServices', function ($timeout, $location, $window) {
   return {
     mainLag: function () {
       var spans = 93;
       var lagTime = 4800;
-      if (window.userLang === 'pl') {
+      if ($window.userLang === 'pl') {
         spans = 115;
         lagTime = 5700;
       }
@@ -20,14 +20,19 @@ myApp.factory('appServices', function ($timeout, $location) {
       }
     },
     activeLink: function () {
-      $('.menu__item--link').each(function () {
-        if (('#' + $location.path()) === $(this).attr('href')) {
-          $(this).css('color', '#990000');
-          console.log('Active page: ' + $location.path());
-        } else {
-          $(this).css('color', '#1b1b1b');
-        }
-      });
+      if ($location.path() === '/') {
+        $('.menu__item--link').first().css('color', '#990000');
+        console.log('Active page: /main');
+      } else {
+        $('.menu__item--link').each(function () {
+          if (('#' + $location.path()) === $(this).attr('href')) {
+            $(this).css('color', '#990000');
+            console.log('Active page: ' + $location.path());
+          } else {
+            $(this).css('color', '#1b1b1b');
+          }
+        });
+      }
     },
     validateEmail: function (email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -37,8 +42,8 @@ myApp.factory('appServices', function ($timeout, $location) {
       $timeout(function () {
         var footerPos = 0;
         $('footer').css('bottom', footerPos + 'px');
-        if ($(document).height() > $(window).height()) {
-          footerPos = $(window).height() - $(document).height() - 80;
+        if ($(document).height() > $($window).height()) {
+          footerPos = $($window).height() - $(document).height() - 80;
         }
         $('footer').css('bottom', footerPos + 'px');
       }, 600);
@@ -46,9 +51,13 @@ myApp.factory('appServices', function ($timeout, $location) {
   };
 });
 
+myApp.config(['AnalyticsProvider', function (AnalyticsProvider) {
+  AnalyticsProvider.setAccount('UA-5968901-19');
+}]).run(['Analytics', function (Analytics) { }]);
+
 myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/main', {
+    .when('/', {
       templateUrl: 'partials/main.html',
       controller: 'MainCtrl'
     })
@@ -89,15 +98,14 @@ myApp.config(function ($routeProvider, $locationProvider) {
       }
     })
     .otherwise({
-      redirectTo: '/main'
+      redirectTo: '/'
     });
-
-  //        $locationProvider.html5Mode(true).hashPrefix('*');
+  $locationProvider.html5Mode(true);
 });
 
-myApp.controller('NavCtrl', function ($scope, $location, appServices) {
-  window.dataJSON.done(function () {
-    var data = window.dataJSON.responseJSON;
+myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
+  $window.dataJSON.done(function () {
+    var data = $window.dataJSON.responseJSON;
     $.each(data.menu, function (key, val) {
       $('.menu__items').append('<li class="menu__item"><a class="menu__item--link" href="#/' + key + '">' + val + '</a></li>');
       $('.menu__item').hover(function () {
@@ -114,9 +122,9 @@ myApp.controller('NavCtrl', function ($scope, $location, appServices) {
   });
 });
 
-myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices) {
-  window.dataJSON.done(function () {
-    var data = window.dataJSON.responseJSON;
+myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, appServices) {
+  $window.dataJSON.done(function () {
+    var data = $window.dataJSON.responseJSON;
     $('.content-wrapper__mainText').html(data.main.mainText);
     console.log('Add text to elements');
     $('.loading').fadeOut();
@@ -173,7 +181,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
         $timeout.cancel(timer2);
         $('.content-wrapper__mainText p').textillate('stop');
         var spans = 93;
-        if (window.userLang === 'pl') {
+        if ($window.userLang === 'pl') {
           spans = 115;
         }
         if ($('.content-wrapper__mainText span').length > spans) {
@@ -182,26 +190,30 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, appServices)
       });
     });
   });
+
+  // $scope.$on('$viewContentLoaded', function (event) {
+
+  // });
 });
 
-myApp.controller('AboutCtrl', function ($scope, $location, $timeout, appServices) {
-  window.dataJSON.done(function () {
-    var data = window.dataJSON.responseJSON;
-    $('.aboutIntro__text').html(data.about.introText);
-    $('.aboutSkills__headerCoding').html(data.about.headerCoding);
-    $('.aboutSkills__headerFrameworks').html(data.about.headerFrameworks);
-    $('.aboutSkills__headerTechnologies').html(data.about.headerTechnologies);
-    $('.aboutSkills__headerCMS').html(data.about.headerCMS);
-    $('.aboutSkills__headerSoftware').html(data.about.headerSoftware);
-    $('.aboutIntro__site__header').html(data.about.introSiteHeader);
-    $('.aboutIntro__site__text').html(data.about.introSiteText);
+myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, appServices) {
+  $window.dataJSON.done(function () {
+    var data = $window.dataJSON.responseJSON;
+    $('.about-intro__text').html(data.about.introText);
+    $('.about-intro__site-header').html(data.about.introSiteHeader);
+    $('.about-intro__site-text').html(data.about.introSiteText);
+    $('.about-skills__header-coding').html(data.about.headerCoding);
+    $('.about-skills__header-frameworks').html(data.about.headerFrameworks);
+    $('.about-skills__header-technologies').html(data.about.headerTechnologies);
+    $('.about-skills__header-cms').html(data.about.headerCMS);
+    $('.about-skills__header-software').html(data.about.headerSoftware);
     console.log('Add text to elements');
   }).then(function () {
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
       console.log('Show content');
-      window.enterView({
-        selector: '.aboutSkills div div',
+      $window.enterView({
+        selector: '.about-skills div div',
         trigger: function (el) {
           $(el).css('width', $(el).find('span').text());
           $timeout(function () {
@@ -215,27 +227,27 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, appServices
   });
 });
 
-myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, appServices) {
-  var img = new window.Image();
+myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window, appServices) {
+  var img = new $window.Image();
   img.src = 'img/spinner-animation.gif';
   $(img).load(function () {
-    window.dataJSON.done(function () {
-      var data = window.dataJSON.responseJSON;
+    $window.dataJSON.done(function () {
+      var data = $window.dataJSON.responseJSON;
       for (var i = 0; i < data.portfolio.works.length; i++) {
-        $('.portfolio').append('<div class="portfolio__item"><img class="portfolio__item__img" data-src="' + data.portfolio.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img" /><div class="portfolio__item__wrapper"><div class="portfolio__item__header">' +
+        $('.portfolio').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img" /><div class="portfolio-item__wrapper"><div class="portfolio-item__header">' +
         data.portfolio.works[i].title +
-        '</div><a class="portfolio__item__url" href="http://' + data.portfolio.works[i].url + '">' +
+        '</div><a class="portfolio-item__url" href="http://' + data.portfolio.works[i].url + '">' +
         data.portfolio.works[i].url +
-        '</a><div class="portfolio__item__description">' +
+        '</a><div class="portfolio-item__description">' +
         data.portfolio.works[i].description +
-        '</div></div><div class="vline-left"></div><div class="hline-left"></div><div class="vline-right"></div><div class="hline-right"></div></div>');
+        '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
       }
     }).then(function () {
       $('.loading').fadeOut();
       $('.content').fadeIn(function () {
         console.log('Show content');
-        window.enterView({
-          selector: '.portfolio__item',
+        $window.enterView({
+          selector: '.portfolio-item',
           trigger: function (el) {
             $(el).css('opacity', '1');
             $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
@@ -248,10 +260,10 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, appServ
   });
 });
 
-myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
+myApp.controller('ContactCtrl', function ($scope, $location, $window, appServices) {
   // Put translations data from JSON
-  window.dataJSON.done(function () {
-    var data = window.dataJSON.responseJSON;
+  $window.dataJSON.done(function () {
+    var data = $window.dataJSON.responseJSON;
     $('.contact__details').html(data.contact.description);
     $('.form__name + label').html(data.contact.name);
     $('.form__email  + label').html(data.contact.email);
@@ -268,7 +280,7 @@ myApp.controller('ContactCtrl', function ($scope, $location, appServices) {
       }
 
       // Check form less then 3 chars
-      $('.form .row').each(function () {
+      $('.form__row').each(function () {
         if ($(this).children().first().val().length < 3) {
           errors++;
           $(this).children().first().css('border-color', '#990000');
