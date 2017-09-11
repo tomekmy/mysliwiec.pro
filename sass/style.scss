@@ -12,6 +12,24 @@ $border-input-active: #a0a0a0;
   @return #{$pixels/$context}em;
 }
 
+$phone : '(min-width: 480px)';
+$tablet-landscape: '(min-width: 951px)';
+$tablet-portrait: '(min-width: 769px)';
+$large-desktop: '(min-width: 1025px)';
+$non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
+$retina: '(min--moz-device-pixel-ratio: 1.5), 
+                    (-o-min-device-pixel-ratio: 3/2), 
+                    (-webkit-min-device-pixel-ratio: 1.5), 
+                    (min-device-pixel-ratio: 1.5), 
+                    (min-resolution: 144dpi), 
+                    (min-resolution: 1.5dppx)';
+
+@mixin respond-to($media) {
+    @media only screen and #{$media} {
+        @content;
+    }
+}
+
 // } Functions and variables
 // { Base selectors
 html,
@@ -24,7 +42,6 @@ body {
   font-size: em(17);
   width: 100%;
   height: 100%;
-  min-width: 320px;
   min-height: 474px;
 }
 
@@ -108,21 +125,27 @@ h5 {
 // { Content
 .content {
   position: relative;
-  width: 90%;
-  min-width: 310px;
+  width: 95%;
+  // min-width: 310px;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
   display: none;
+  @include respond-to($large-desktop) {
+    width: 90%;
+  }
 }
 
 // { Logo
 .header {
   position: relative;
+  float: left;
   left: 0px;
   text-align: left;
-  width: 185px;
   height: 120px;
+  @include respond-to($tablet-portrait) {
+    float: initial;
+  }
   &__logo {
     margin: 10px 0 0 20px;
     font-size: em(20);
@@ -174,8 +197,6 @@ h5 {
 // { Menu
 .menu {
   position: relative;
-  float: left;
-  margin: 50px 0 0 20px;
   font-size: em(23);
   text-align: left;
   z-index: 999;
@@ -194,6 +215,7 @@ h5 {
   }
   &__top-hline2 {
     position: absolute;
+    display: none;
     bottom: -40px;
     left: -1000px;
     width: 1200px;
@@ -201,6 +223,13 @@ h5 {
     background: #000000;
     background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
     background: linear-gradient(to right, #000000 85%, #ffffff 100%);
+    @include respond-to($tablet-portrait) {
+      display: block;
+    }
+  }
+  @include respond-to($tablet-portrait) {
+    float: left;
+    margin: 50px 0 0 20px;
   }
 }
 
@@ -216,9 +245,14 @@ h5 {
 
 .content-wrapper {
   position: relative;
-  left: 250px;
-  width: calc(100% - 250px);
+  left: 0px;
+  width: 98%;
   height: 100%;
+  padding: 0 2%;
+  @include respond-to($tablet-portrait) {
+    left: 250px;
+    width: calc(98% - 250px);
+  }
 }
 
 .ng-leave {
@@ -243,13 +277,22 @@ h5 {
 
 // { Main page
 .content-wrapper__mainText {
-  margin-left: 20%;
+  margin: 0 auto;
+  padding: 0 3%;
   text-align: left;
   font-size: em(30);
-  width: 430px;
+  max-width: 430px;
   line-height: 33px;
   p {
     display: none;
+  }
+  @include respond-to($tablet-portrait) {
+    margin: 0 5% 0 5%;
+    padding: 0;
+  }
+  @include respond-to($tablet-landscape) {
+    margin: 0 18.5% 0 18.5%;
+    padding: 0;
   }
 }
 
@@ -259,22 +302,31 @@ h5 {
 .about-skills {
   position: relative;
   display: inline-block;
-  width: 42%;
+  width: 100%;
   vertical-align: top;
+  @include respond-to($large-desktop) {
+    width: 42%;
+  }
+  @include respond-to($tablet-portrait) {
+    width: 48%;
+  }
 }
 
 .about-intro {
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: left;
-  margin-right: 3%;
+  margin-right: 1%;
   p {
     text-indent: 1em;
     line-height: 1.3em;
   }
+  @include respond-to($large-desktop) {
+    font-size: 1.3em;
+  }
 }
 
 .about-skills {
-  margin-left: 3%;
+  margin-left: 1%;
   &__bars {
     margin-bottom: 40px;
   }
@@ -292,6 +344,12 @@ h5 {
     height: 14px;
     width: 0%;
     color: transparent;
+    @include respond-to($tablet-portrait) {
+      font-size: 0.8em;
+    }
+    @include respond-to($large-desktop) {
+      font-size: 0.9em;
+    }
   }
 }
 
@@ -321,20 +379,31 @@ h5 {
   transition: 1s linear all;
   &__img {
     display: inline-block;
-    width: 48%;
-    margin-right: 2%;
+    width: 100%;
+    margin-right: 0%;
     border: solid 1px;
+    @include respond-to($large-desktop) {
+      margin-right: 2%;
+      width: 48%;
+    }
   }
   &__wrapper {
     vertical-align: top;
-    width: 47%;
-    margin-left: 2%;
+    width: 100%;
+    margin-left: 0%;
     display: inline-block;
+    @include respond-to($large-desktop) {
+      margin-left: 2%;
+      width: 47%;
+    }
   }
   &__header {
     font-size: 1.2em;
-    margin: 0px 0 10px 0;
+    margin: 15px 0 10px 0;
     font-weight: 500;
+    @include respond-to($large-desktop) {
+      margin: 0px 0 10px 0;
+    }
   }
   &__url {
     display: block;
@@ -884,13 +953,16 @@ footer img {
 .footer__hline-right {
   position: absolute;
   top: 0px;
-  right: -5.55%;
+  right: -2.692%;
   width: 15%;
   min-width: 200px;
   height: 1px;
   background: #000000;
   background: -webkit-gradient(linear, right top, left top, color-stop(80%, #000000), to(#ffffff));
   background: linear-gradient(to left, #000000 80%, #ffffff 100%);
+  @include respond-to($large-desktop) {
+    right: -5.55%;
+  }
 }
 
 .footer__vline-right {
