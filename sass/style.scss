@@ -12,7 +12,7 @@ $border-input-active: #a0a0a0;
   @return #{$pixels/$context}em;
 }
 
-$phone : '(min-width: 480px)';
+$phone : '(min-width: 321px)';
 $tablet-landscape: '(min-width: 951px)';
 $tablet-portrait: '(min-width: 769px)';
 $large-desktop: '(min-width: 1025px)';
@@ -165,10 +165,13 @@ h5 {
   &__top-vline {
     position: absolute;
     width: 1px;
-    height: 470px;
+    height: 300px;
     background: #000000;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, #000000), to(#ffffff));
     background: linear-gradient(to bottom, #000000 65%, #ffffff 100%);
+    @include respond-to($tablet-portrait) {
+      height: 470px;
+    }
   }
   &__top-hline1 {
     position: absolute;
@@ -200,6 +203,53 @@ h5 {
   font-size: em(23);
   text-align: left;
   z-index: 999;
+  min-height: 120px;
+  &__icon {
+    position: relative;
+    float: right;
+    margin-top: 6px;
+    cursor: pointer;
+    z-index: 9999;
+    &--bar1, &--bar2, &--bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: black;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+    /* Rotate first bar */
+    &--change &--bar1 {
+      -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+      transform: rotate(-45deg) translate(-9px, 6px) ;
+    }
+
+    /* Fade out the second bar */
+    &--change &--bar2 {
+      opacity: 0;
+    }
+
+    /* Rotate last bar */
+    &--change &--bar3 {
+      -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+      transform: rotate(45deg) translate(-8px, -8px) ;
+    }
+    @include respond-to($tablet-portrait) {
+      display: none;
+    }
+  }
+  &__items {
+    display: none;
+    position: absolute;
+    right: 15px;
+    float: right;
+    margin-top: 10px;
+    @include respond-to($tablet-portrait) {
+      position: relative;
+      right: 0;     
+      margin-top: 0;
+      display: block !important;
+    }
+  }
   &__item {
     position: relative;
     padding: 0 0 10px 0;
@@ -955,7 +1005,7 @@ footer img {
   top: 0px;
   right: -2.692%;
   width: 15%;
-  min-width: 200px;
+  min-width: 100px;
   height: 1px;
   background: #000000;
   background: -webkit-gradient(linear, right top, left top, color-stop(80%, #000000), to(#ffffff));

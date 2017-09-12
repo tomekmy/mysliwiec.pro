@@ -108,11 +108,11 @@ myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
     var data = $window.dataJSON.responseJSON;
     $.each(data.menu, function (key, val) {
       $('.menu__items').append('<li class="menu__item"><a class="menu__item--link" href="#/' + key + '">' + val + '</a></li>');
-      $('.menu__item').hover(function () {
-        $(this).stop(true, false).animate({'left': '20px'}, 500);
+      $('.menu__item--link').hover(function () {
+        $(this).parent().stop(true, false).animate({'left': '20px'}, 500);
       },
       function () {
-        $(this).stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
+        $(this).parent().stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
       });
     });
     appServices.activeLink();
@@ -175,6 +175,10 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       }, 3100);
 
       appServices.footerPosition();
+      // if ($('.menu__icon').hasClass('menu__icon--change')) {
+      //   $('.menu__icon').removeClass('menu__icon--change');
+      //   $('.menu__items').fadeOut(400);
+      // }
 
       $scope.$on('$routeChangeStart', function (next, current) {
         $timeout.cancel(timer1);
@@ -223,6 +227,10 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
         }
       });
       appServices.footerPosition();
+      // if ($('.menu__icon').hasClass('menu__icon--change')) {
+      //   $('.menu__icon').removeClass('menu__icon--change');
+      //   $('.menu__items').fadeOut(400);
+      // }
     });
   });
 });
@@ -255,6 +263,10 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window
           }
         });
         appServices.footerPosition();
+        // if ($('.menu__icon').hasClass('menu__icon--change')) {
+        //   $('.menu__icon').removeClass('menu__icon--change');
+        //   $('.menu__items').fadeOut(400);
+        // }
       });
     });
   });
@@ -347,6 +359,10 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
     $('.content').fadeIn(function () {
       console.log('Show content');
       appServices.footerPosition();
+      // if ($('.menu__icon').hasClass('menu__icon--change')) {
+      //   $('.menu__icon').removeClass('menu__icon--change');
+      //   $('.menu__items').fadeOut(400);
+      // }
     });
   });
 });

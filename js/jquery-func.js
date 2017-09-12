@@ -49,6 +49,18 @@ $(document).ready(function () {
     }, 600);
     return false;
   });
+
+  $('.menu__icon').click(function () {
+    $(this).toggleClass('menu__icon--change');
+    $('.menu__items').toggle(400);
+  });
+
+  $('body').click(function () {
+    if ($('.menu__icon').hasClass('menu__icon--change') && !$('.menu__items').is(':animated')) {
+      $('.menu__icon').removeClass('menu__icon--change');
+      $('.menu__items').fadeOut(400);
+    }
+  });
 });
 
 $(window).resize(function () {
