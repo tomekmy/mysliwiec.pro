@@ -41,11 +41,11 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
     footerPosition: function () {
       $timeout(function () {
         var footerPos = 0;
-        $('footer').css('bottom', footerPos + 'px');
+        $('.footer').css('bottom', footerPos + 'px');
         if ($(document).height() > $($window).height()) {
           footerPos = $($window).height() - $(document).height() - 80;
         }
-        $('footer').css('bottom', footerPos + 'px');
+        $('.footer').css('bottom', footerPos + 'px');
       }, 600);
     }
   };

@@ -55,7 +55,7 @@ $(document).ready(function () {
     $('.menu__items').toggle(400);
   });
 
-  $('body').click(function () {
+  $(window).on('click scroll', function () {
     if ($('.menu__icon').hasClass('menu__icon--change') && !$('.menu__items').is(':animated')) {
       $('.menu__icon').removeClass('menu__icon--change');
       $('.menu__items').fadeOut(400);
@@ -65,9 +65,9 @@ $(document).ready(function () {
 
 $(window).resize(function () {
   var footerPos = 0;
-  $('footer').css('bottom', footerPos + 'px');
+  $('.footer').css('bottom', footerPos + 'px');
   if ($(document).height() > $(window).height()) {
     footerPos = $(window).height() - $(document).height() - 80;
   }
-  $('footer').css('bottom', footerPos + 'px');
+  $('.footer').css('bottom', footerPos + 'px');
 });

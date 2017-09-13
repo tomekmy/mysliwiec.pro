@@ -29,7 +29,7 @@
 <script type="text/javascript">
 	// <![CDATA[
 
-                $('.captcha_info').html('<?php echo $info; ?><br />');
+                $('.form__submit').text('<?php echo $info; ?>');
 
 	// ]]>
 </script>
