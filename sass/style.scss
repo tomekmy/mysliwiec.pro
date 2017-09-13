@@ -12,6 +12,7 @@ $border-input-active: #a0a0a0;
   @return #{$pixels/$context}em;
 }
 
+$small-phone : '(min-width: 320px)';
 $phone : '(min-width: 321px)';
 $tablet-landscape: '(min-width: 951px)';
 $tablet-portrait: '(min-width: 769px)';
@@ -42,7 +43,6 @@ body {
   font-size: em(17);
   width: 100%;
   height: 100%;
-  // min-height: 474px;
 }
 
 a {
@@ -143,8 +143,9 @@ h5 {
   left: 0px;
   text-align: left;
   height: 120px;
+  z-index: 9999;
   @include respond-to($tablet-portrait) {
-    float: initial;
+    float: none;
   }
   &__logo {
     margin: 10px 0 0 20px;
@@ -327,24 +328,27 @@ h5 {
 
 // { Main page
 .content-wrapper__mainText {
-  margin: 0 auto 40px auto;
-  padding: 0 3%;
+  margin: 0 auto 0 auto;
+  padding: 0 3% 80px 3%;
   text-align: left;
   font-size: em(30);
-  max-width: 430px;
   line-height: 33px;
-  min-height: 185px;
+  max-width: 430px;
   p {
     display: none;
   }
   @include respond-to($tablet-portrait) {
-    margin: 0 5% 40px 5%;
+    margin: 0 5% 0 5%;
     padding: 0;
   }
   @include respond-to($tablet-landscape) {
-    margin: 0 18.5% 40px 18.5%;
+    margin: 0 18.5% 0 18.5%;
     padding: 0;
   }
+  // @include respond-to($small-phone) {
+  //   font-size: em(30);
+  //   line-height: 33px;
+  // }
 }
 
 // } Main page
@@ -355,6 +359,7 @@ h5 {
   display: inline-block;
   width: 100%;
   vertical-align: top;
+  padding-bottom: 40px;
   @include respond-to($large-desktop) {
     width: 42%;
   }
@@ -367,7 +372,6 @@ h5 {
   font-size: 1.2em;
   text-align: left;
   margin-right: 1%;
-  margin-bottom: 20px;
   p {
     text-indent: 1em;
     line-height: 1.3em;
@@ -419,6 +423,9 @@ h5 {
 
 // } About page
 // { Portfolio page
+.portfolio {
+  padding-bottom: 40px;
+}
 .portfolio-item {
   position: relative;
   box-sizing: border-box;
@@ -578,7 +585,7 @@ h5 {
     vertical-align: top;
     font-size: 1.7em;
     line-height: 1.3em;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
     @include respond-to($tablet-portrait) {
       width: 42%;
       margin-right: 2%;
@@ -587,6 +594,7 @@ h5 {
   .form {
     font-size: 1em;
     line-height: 1em;
+    padding-bottom: 80px;
     @include respond-to($tablet-portrait) {
       margin-right: 0;
       margin-left: 2%;

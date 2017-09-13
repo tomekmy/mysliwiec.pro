@@ -43,7 +43,7 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
         var footerPos = 0;
         $('.footer').css('bottom', footerPos + 'px');
         if ($(document).height() > $($window).height()) {
-          footerPos = $($window).height() - $(document).height() - 80;
+          footerPos = $($window).height() - $(document).height() - 40;
         }
         $('.footer').css('bottom', footerPos + 'px');
       }, 600);
@@ -155,6 +155,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
           delayScale: 2
         }
         });
+        appServices.footerPosition();
       }, 500);
       var timer2 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
@@ -172,6 +173,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
           delayScale: 2
         }
         });
+        appServices.footerPosition();
       }, 3100);
 
       appServices.footerPosition();

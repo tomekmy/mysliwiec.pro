@@ -67,7 +67,12 @@ $(window).resize(function () {
   var footerPos = 0;
   $('.footer').css('bottom', footerPos + 'px');
   if ($(document).height() > $(window).height()) {
-    footerPos = $(window).height() - $(document).height() - 80;
+    footerPos = $(window).height() - $(document).height() - 40;
+    console.log('document > window');
   }
+  // if ($(document).height() === $(window).height()) {
+  //   footerPos = 0;
+  //   console.log('window === document');
+  // }
   $('.footer').css('bottom', footerPos + 'px');
 });
