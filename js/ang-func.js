@@ -177,10 +177,6 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       }, 3100);
 
       appServices.footerPosition();
-      // if ($('.menu__icon').hasClass('menu__icon--change')) {
-      //   $('.menu__icon').removeClass('menu__icon--change');
-      //   $('.menu__items').fadeOut(400);
-      // }
 
       $scope.$on('$routeChangeStart', function (next, current) {
         $timeout.cancel(timer1);
@@ -229,10 +225,6 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
         }
       });
       appServices.footerPosition();
-      // if ($('.menu__icon').hasClass('menu__icon--change')) {
-      //   $('.menu__icon').removeClass('menu__icon--change');
-      //   $('.menu__items').fadeOut(400);
-      // }
     });
   });
 });
@@ -265,10 +257,6 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window
           }
         });
         appServices.footerPosition();
-        // if ($('.menu__icon').hasClass('menu__icon--change')) {
-        //   $('.menu__icon').removeClass('menu__icon--change');
-        //   $('.menu__items').fadeOut(400);
-        // }
       });
     });
   });
@@ -322,30 +310,36 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
 
       // If no errors prepare and send data
       if (errors === 0) {
-        // Get some values from elements on the page:
-        var url = $('form').attr('action');
-        var formData = {
-          name: $('.form__name').val(),
-          email: $('.form__email').val(),
-          subject: $('.form__subject').val(),
-          massage: $('.form__message').val()
-        };
-        // Send the data using post
-        var posting = $.post(url, {
-          description: formData.description,
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          massage: formData.massage
-        });
-
-        // Put the results in a div
-        posting.done(function (data) {
-          $('.contact__result').empty().append();
-        });
+        $window.grecaptcha.execute();
       }
     }
 
+    function sendData () {
+      // Get some values from elements on the page:
+      var url = $('form').attr('action');
+      var formData = {
+        name: $('.form__name').val(),
+        email: $('.form__email').val(),
+        subject: $('.form__subject').val(),
+        massage: $('.form__message').val()
+      };
+      // Send the data using post
+      var posting = $.post(url, {
+        description: formData.description,
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        massage: formData.massage
+      });
+
+      // Put the results in a div
+      posting.done(function (data) {
+        $('.form__submit').text(data);
+        // $window.grecaptcha.reset();
+      });
+    }
+
+    window.sendData = sendData;
     // Add submit functionality
     $('.form__submit').click(function () {
       formSender();
@@ -361,10 +355,7 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
     $('.content').fadeIn(function () {
       console.log('Show content');
       appServices.footerPosition();
-      // if ($('.menu__icon').hasClass('menu__icon--change')) {
-      //   $('.menu__icon').removeClass('menu__icon--change');
-      //   $('.menu__items').fadeOut(400);
-      // }
+      $.getScript('https://www.google.com/recaptcha/api.js');
     });
   });
 });

@@ -12,23 +12,22 @@ $border-input-active: #a0a0a0;
   @return #{$pixels/$context}em;
 }
 
-$small-phone : '(min-width: 320px)';
-$phone : '(min-width: 321px)';
+$small-phone: '(min-width: 320px)';
+$phone: '(min-width: 321px)';
 $tablet-landscape: '(min-width: 951px)';
 $tablet-portrait: '(min-width: 769px)';
 $large-desktop: '(min-width: 1025px)';
 $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 $retina: '(min--moz-device-pixel-ratio: 1.5), 
-                    (-o-min-device-pixel-ratio: 3/2), 
-                    (-webkit-min-device-pixel-ratio: 1.5), 
-                    (min-device-pixel-ratio: 1.5), 
-                    (min-resolution: 144dpi), 
-                    (min-resolution: 1.5dppx)';
-
-@mixin respond-to($media) {
-    @media only screen and #{$media} {
-        @content;
-    }
+ (-o-min-device-pixel-ratio: 3/2),
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+(min-resolution: 1.5dppx)';
+ @mixin respond-to($media) {
+  @media only screen and #{$media} {
+    @content;
+  }
 }
 
 // } Functions and variables
@@ -125,8 +124,7 @@ h5 {
 // { Content
 .content {
   position: relative;
-  width: 95%;
-  // min-width: 310px;
+  width: 95%; // min-width: 310px;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -211,7 +209,9 @@ h5 {
     margin-top: 6px;
     cursor: pointer;
     z-index: 9999;
-    &--bar1, &--bar2, &--bar3 {
+    &--bar1,
+    &--bar2,
+    &--bar3 {
       width: 35px;
       height: 5px;
       background-color: black;
@@ -220,19 +220,17 @@ h5 {
     }
     /* Rotate first bar */
     &--change &--bar1 {
-      -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-      transform: rotate(-45deg) translate(-9px, 6px) ;
+      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+      transform: rotate(-45deg) translate(-9px, 6px);
     }
-
     /* Fade out the second bar */
     &--change &--bar2 {
       opacity: 0;
     }
-
     /* Rotate last bar */
     &--change &--bar3 {
-      -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-      transform: rotate(45deg) translate(-8px, -8px) ;
+      -webkit-transform: rotate(45deg) translate(-8px, -8px);
+      transform: rotate(45deg) translate(-8px, -8px);
     }
     @include respond-to($tablet-portrait) {
       display: none;
@@ -246,7 +244,7 @@ h5 {
     margin-top: 10px;
     @include respond-to($tablet-portrait) {
       position: relative;
-      right: 0;     
+      right: 0;
       margin-top: 0;
       display: block !important;
     }
@@ -344,8 +342,7 @@ h5 {
   @include respond-to($tablet-landscape) {
     margin: 0 18.5% 0 18.5%;
     padding: 0;
-  }
-  // @include respond-to($small-phone) {
+  } // @include respond-to($small-phone) {
   //   font-size: em(30);
   //   line-height: 33px;
   // }
@@ -426,6 +423,7 @@ h5 {
 .portfolio {
   padding-bottom: 40px;
 }
+
 .portfolio-item {
   position: relative;
   box-sizing: border-box;
@@ -578,7 +576,8 @@ h5 {
   position: relative;
   width: 100%;
   height: 100%;
-  &__details, .form {
+  &__details,
+  .form {
     position: relative;
     display: inline-block;
     width: 95%;

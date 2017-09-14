@@ -70,9 +70,5 @@ $(window).resize(function () {
     footerPos = $(window).height() - $(document).height() - 40;
     console.log('document > window');
   }
-  // if ($(document).height() === $(window).height()) {
-  //   footerPos = 0;
-  //   console.log('window === document');
-  // }
   $('.footer').css('bottom', footerPos + 'px');
 });
