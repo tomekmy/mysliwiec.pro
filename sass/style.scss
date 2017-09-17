@@ -17,9 +17,6 @@ $phone: '(min-width: 321px)';
 $tablet-landscape: '(min-width: 951px)';
 $tablet-portrait: '(min-width: 769px)';
 $large-desktop: '(min-width: 1025px)';
-$fullhd: '(min-width: 1920px)';
-$wqhd: '(min-width: 2560px)';
-$ultrahd: '(min-width: 3840px)';
 $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 $retina: '(min--moz-device-pixel-ratio: 1.5), 
  (-o-min-device-pixel-ratio: 3/2),
@@ -44,15 +41,6 @@ body {
   font-size: em($browser-context);
   width: 100%;
   height: 100%;
-  @include respond-to($fullhd) {
-    font-size: em($browser-context*1.3);
-  }
-  @include respond-to($wqhd) {
-    font-size: em($browser-context*1.6);
-  }
-  @include respond-to($ultrahd) {
-    font-size: em($browser-context*2);
-  }
 }
 
 a {
@@ -156,29 +144,11 @@ h5 {
   @include respond-to($tablet-portrait) {
     float: none;
   }
-  @include respond-to($fullhd) {
-    height: 200px;
-  }
-  @include respond-to($wqhd) {
-
-  }
-  @include respond-to($ultrahd) {
-    
-  }
   &__logo {
     margin: 10px 0 0 20px;
     font-size: em(20);
     width: 200px;
     float: left;
-    @include respond-to($fullhd) {
-      width: 350px;
-    }
-    @include respond-to($wqhd) {
-
-    }
-    @include respond-to($ultrahd) {
-      
-    }
   }
   &__link {
     color: #000000;
@@ -200,15 +170,6 @@ h5 {
     @include respond-to($tablet-portrait) {
       height: 470px;
     }
-    @include respond-to($fullhd) {
-      height: 670px;
-    }
-    @include respond-to($wqhd) {
-  
-    }
-    @include respond-to($ultrahd) {
-      
-    }
   }
   &__top-hline1 {
     position: absolute;
@@ -219,16 +180,6 @@ h5 {
     background: #000000;
     background: -webkit-gradient(linear, left top, right top, color-stop(85%, #000000), to(#ffffff));
     background: linear-gradient(to right, #000000 85%, #ffffff 100%);
-    @include respond-to($fullhd) {
-      left: -850px;
-      top: 200px;
-    }
-    @include respond-to($wqhd) {
-
-    }
-    @include respond-to($ultrahd) {
-      
-    }
   }
 }
 
@@ -390,16 +341,6 @@ h5 {
   @include respond-to($tablet-landscape) {
     margin: 0 18.5% 0 18.5%;
     padding: 0;
-  }
-  @include respond-to($fullhd) {
-    max-width: 660px;
-    line-height: 33px;
-  }
-  @include respond-to($wqhd) {
-    
-  }
-  @include respond-to($ultrahd) {
-    
   }
 }
 
