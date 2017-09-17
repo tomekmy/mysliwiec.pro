@@ -204,6 +204,8 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
     $('.about-intro__text').html(data.about.introText);
     $('.about-intro__site-header').html(data.about.introSiteHeader);
     $('.about-intro__site-text').html(data.about.introSiteText);
+    $('.about-intro__certificates-header').html(data.about.introCertificatesHeader);
+    $('.about-intro__certificates-text').html(data.about.introCertificatesText);
     $('.about-skills__header-coding').html(data.about.headerCoding);
     $('.about-skills__header-frameworks').html(data.about.headerFrameworks);
     $('.about-skills__header-technologies').html(data.about.headerTechnologies);
