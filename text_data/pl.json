@@ -32,38 +32,63 @@
     "introCertificatesText" : "<ul><li><a href='https://www.udemy.com/certificate/UC-Q0YJQIKU/'>JavaScript: Understanding the Weird Parts</a></li><li><a href='https://www.udemy.com/certificate/UC-Y44IJ397/'>Essentials in JavaScript ES6 - A Fun and Clear Introduction</a></li><li><a href='https://www.udemy.com/certificate/UC-05ARETD8/'>Quickstart AngularJS</a></li><li><a href='https://www.udemy.com/certificate/UC-44RMZD7S/'>Git Started with GitHub</a></li></ul>"
   },
   "portfolio" : {
-    "header" : "Ostatnie prace",
-    "works" : [
-      {
-        "title" : "TechCalc - Pomocnik Inżyniera",
-        "url" : "www.techcalc.pl",
-        "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
-        "img" : "img/techcalc-portfolio.jpg"
-      },
-      {
-        "title" : "Centrum Technologiczne Warszawa",
-        "url" : "www.centrumtechnologiczne.pl",
-        "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
-        "img" : "img/centrumtechnologiczne-portfolio.jpg"
-      },
-      {
-        "title" : "BluePhoto | Ireneusz Rek Fotografia",
-        "url" : "www.bluephoto.pl",
-        "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
-        "img" : "img/bluephoto-portfolio.jpg"
-      },
-      {
-        "title" : "Wojciech Łagocki - Fotografia",
-        "url" : "www.lagocki.pl",
-        "description" : "Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret. Ulubione miejsca: Warszawa Leżajsk Nidzica",
-        "img" : "img/wojtek-portfolio.jpg"
-      },
-      {
-        "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
-        "url" : "www.kmpplastics.com.pl",
-        "description" : "KMP Plastics - oferuje maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
-        "img" : "img/kmp-portfolio.jpg"
-      }
-    ]
+    "online" : {
+      "header" : "Prace online",
+      "works" : [
+        {
+          "title" : "TechCalc - Pomocnik Inżyniera",
+          "url" : "www.techcalc.pl",
+          "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
+          "img" : "img/techcalc-portfolio.jpg"
+        },
+        {
+          "title" : "Centrum Technologiczne Warszawa",
+          "url" : "www.centrumtechnologiczne.pl",
+          "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
+          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+        },
+        {
+          "title" : "BluePhoto | Ireneusz Rek Fotografia",
+          "url" : "www.bluephoto.pl",
+          "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
+          "img" : "img/bluephoto-portfolio.jpg"
+        },
+        {
+          "title" : "Wojciech Łagocki - Fotografia",
+          "url" : "www.lagocki.pl",
+          "description" : "Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret. Ulubione miejsca: Warszawa Leżajsk Nidzica",
+          "img" : "img/wojtek-portfolio.jpg"
+        },
+        {
+          "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
+          "url" : "www.kmpplastics.com.pl",
+          "description" : "KMP Plastics - oferuje maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
+          "img" : "img/kmp-portfolio.jpg"
+        }
+      ]
+    },
+    "offline" : {
+      "header" : "Prace offline",
+      "works" : [
+        {
+          "title" : "TechCalc - Pomocnik Inżyniera",
+          "url" : "www.techcalc.pl",
+          "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
+          "img" : "img/techcalc-portfolio.jpg"
+        },
+        {
+          "title" : "Centrum Technologiczne Warszawa",
+          "url" : "www.centrumtechnologiczne.pl",
+          "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
+          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+        },
+        {
+          "title" : "BluePhoto | Ireneusz Rek Fotografia",
+          "url" : "www.bluephoto.pl",
+          "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
+          "img" : "img/bluephoto-portfolio.jpg"
+        }
+      ]
+    }
   }
 }
