@@ -68,7 +68,6 @@ $(window).resize(function () {
   $('.footer').css('bottom', footerPos + 'px');
   if ($(document).height() > $(window).height()) {
     footerPos = $(window).height() - $(document).height() - 40;
-    console.log('document > window');
   }
   $('.footer').css('bottom', footerPos + 'px');
 });
