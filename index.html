@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomasz Myśliwiec - Front-end Developer | Web Developer</title>
     <meta name="description" content="Nazywam się Tomasz Myśliwiec i jestem Front-end / Web Developerem. Zajmuję kodowaniem stron i aplikacji internetowych oraz kodowaniem newsletterów.">
-    <meta property="og:image" content="http://mysliwiec.pro/img/social.png" />
+    <meta property="og:image" content="http://mysliwiec.pro/img/social.png">
     <base href="/">
-    <link rel="stylesheet" href="css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?version=180917">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Jura:400,300,500,600&subset=latin,latin-ext">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,6 +51,7 @@
             console.log('Using english language');
         }
         console.log('Read data from: ' + languageFile);
+        $.ajaxSetup({ cache: false });
         var dataJSON = $.getJSON(languageFile).done(function (data) {
             console.log('Finish read data');
             return data;

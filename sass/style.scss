@@ -79,9 +79,10 @@ h1 {
 }
 
 h3 {
-  font-size: em(18);
+  font-size: em(28);
   text-align: center;
   line-height: 1;
+  margin-bottom: 1.2em
 }
 
 h4 {
@@ -370,7 +371,7 @@ h5 {
   }
   p {
     text-indent: em($browser-context);
-    line-height: 1;
+    line-height: 1.2;
   }
   @include respond-to($large-desktop) {
     font-size: em(22);
@@ -471,7 +472,7 @@ h5 {
     text-indent: em($browser-context);
     margin: 10px 0 10px 0;
     font-size: em(18.7);
-    line-height: 1;
+    line-height: 1.1;
   }
   &__hline-left {
     position: absolute;

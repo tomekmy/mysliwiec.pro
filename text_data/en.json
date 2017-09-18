@@ -68,25 +68,22 @@
       ]
     },
     "offline" : {
-      "header" : "Prace offline",
+      "header" : "Offline works",
       "works" : [
         {
-          "title" : "TechCalc - Pomocnik Inżyniera",
-          "url" : "www.techcalc.pl",
-          "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
-          "img" : "img/techcalc-portfolio.jpg"
+          "title" : "Maciej Majchrzak - Director of photography",
+          "description" : "In 2006 Maciej Majchrzak graduated from Polish National Film School in Łódź with a degree in cinematography. He is the Director of Photography in recent films: \"Wkręceni\" (2014) directed by Piotr Wereśniak and \"Kochanie, Chyba Cię Zabiłem\" (\"Honey, I’ve Killed You\" 2014) directed by Jakub Nieścierow. On the page background is a movie by Maciej. The movie was embedded using HTML5 video. The site was integrated with YouTube.",
+          "img" : "img/maciejmajchrzak-portfolio.jpg"
         },
         {
-          "title" : "Centrum Technologiczne Warszawa",
-          "url" : "www.centrumtechnologiczne.pl",
-          "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
-          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+          "title" : "Skrawek Nieba - Holiday cottages. Dąbki",
+          "description" : "The cottage situated on the Polish sea in Dąbki near Darłowo. Graphic design and Flash animation: Maciej Burkowski.",
+          "img" : "img/skraweknieba-portfolio.jpg"
         },
         {
-          "title" : "BluePhoto | Ireneusz Rek Fotografia",
-          "url" : "www.bluephoto.pl",
-          "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
-          "img" : "img/bluephoto-portfolio.jpg"
+          "title" : "Health and Safety Trainings and Services. First Aid Courses",
+          "description" : "Janusz Gawrych site, the owner of GJTECH. GJTECH is a training and consulting company specialized in Safety and Health, as well as supplying safety, health and first aid articles. The site has a simple CMS authoring system.",
+          "img" : "img/bhp-portfolio.jpg"
         }
       ]
     }

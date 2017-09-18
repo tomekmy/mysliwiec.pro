@@ -38,31 +38,31 @@
         {
           "title" : "TechCalc - Pomocnik Inżyniera",
           "url" : "www.techcalc.pl",
-          "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
+          "description" : "<p>Aplikacja internetowa dla inżynierów, technologów, konstruktorów, zawierająca dużo przydatnych dla nich narzędzi i materiałów.</p><p>Obecną wersję strony oparłem o CMS Wordpress a wszystkie przeliczniki i narzędzia napisałem w JavaScript z jQuery.</p>",
           "img" : "img/techcalc-portfolio.jpg"
         },
         {
           "title" : "Centrum Technologiczne Warszawa",
           "url" : "www.centrumtechnologiczne.pl",
-          "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
+          "description" : "<p>Centrum Technologiczne jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych.</p><p>Strona oparta na CMS Joomla. Większość zdjęć na stronie wykonał jeden z moich klientów – <a href='http://www.lagocki.pl/'>Wojciech Łagocki</a>.</p>",
           "img" : "img/centrumtechnologiczne-portfolio.jpg"
         },
         {
           "title" : "BluePhoto | Ireneusz Rek Fotografia",
           "url" : "www.bluephoto.pl",
-          "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
+          "description" : "<p>Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.</p><p>Na stronie wykorzystałem CMS Wordpress.</p>",
           "img" : "img/bluephoto-portfolio.jpg"
         },
         {
           "title" : "Wojciech Łagocki - Fotografia",
           "url" : "www.lagocki.pl",
-          "description" : "Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret. Ulubione miejsca: Warszawa Leżajsk Nidzica",
+          "description" : "<p>Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret.</p><p>Strona napisana przy użyciu JavaScript, jQuery, PHP w technologii SPA.</p>",
           "img" : "img/wojtek-portfolio.jpg"
         },
         {
           "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
           "url" : "www.kmpplastics.com.pl",
-          "description" : "KMP Plastics - oferuje maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
+          "description" : "<p>KMP Plastics - oferuje maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.</p><p>Jeden z moich starszych projektów oparty o CMS Joomla</p>",
           "img" : "img/kmp-portfolio.jpg"
         }
       ]
@@ -71,22 +71,19 @@
       "header" : "Prace offline",
       "works" : [
         {
-          "title" : "TechCalc - Pomocnik Inżyniera",
-          "url" : "www.techcalc.pl",
-          "description" : "Aplikacja internetowa dla inżynierów, technologów, konstruktorów. Dzięki TechCalc sprawdzisz otwory pod gwinty, tolerancje pasowań otworów i wałków, obliczysz masę materiałów, obliczysz parametry obróbki. Z funkcji trygonometrycznych wyliczysz parametry trójkąta. TechCalc Pomocnik Inżyniera posiada również wiele innych przydatnych funkcji, które warto sprawdzić.",
-          "img" : "img/techcalc-portfolio.jpg"
+          "title" : "Maciej Majchrzak - Director of photography",
+          "description" : "<p>Strona Macieja Majchrzaka - operatora kamery filmowej.</p><p>Stronę napisałem z wykorzystaniem HTML5, JavaScript, PHP, MySQL. Na tle strony umieściłem film autorstwa Macieja. Film osadzono przy użyciu HTML5 video. Stronę zintegrowano z serwisem YouTube za pomocą prostego CMS.</p>",
+          "img" : "img/maciejmajchrzak-portfolio.jpg"
         },
         {
-          "title" : "Centrum Technologiczne Warszawa",
-          "url" : "www.centrumtechnologiczne.pl",
-          "description" : "Centrum Technologicznym jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych. Oferują wiele usług z branży obróbkowej, spawania laserowego i projektowania.",
-          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+          "title" : "Skrawek Nieba - Domki letniskowe. Dąbki",
+          "description" : "<p>Strona domków letniskowych usytuowanych nad Polskim morzem w Dąbkach obok Darłowa.</p><p>Strona oparta o CMS Joomla. Projekt graficzny oraz animacja Flash: Maciej Burkowski.</p>",
+          "img" : "img/skraweknieba-portfolio.jpg"
         },
         {
-          "title" : "BluePhoto | Ireneusz Rek Fotografia",
-          "url" : "www.bluephoto.pl",
-          "description" : "Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.",
-          "img" : "img/bluephoto-portfolio.jpg"
+          "title" : "Usługi i Szkolenia BHP. Kursy Pierwszej Pomocy",
+          "description" : "<p>Strona Janusza Gawrycha właściciela firmy GJTECH. GJTECH jest firmą szkoleniowo - doradczą specjalizującą się w dziedzinie Bezpieczeństwa i Higieny Pracy oraz zaopatrywania w artykuły BHP, PPOŻ i Pierwszej Pomocy.</p><p>Stronę napisałem z wykorzystaniem JavaScript, PHP, MySQL. Strona posiada prosty system CMS.</p>",
+          "img" : "img/bhp-portfolio.jpg"
         }
       ]
     }
