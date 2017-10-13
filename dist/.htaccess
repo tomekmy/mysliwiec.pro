@@ -1,13 +1,15 @@
+RewriteCond %{HTTPS} off
 DirectoryIndex index.html
 ErrorDocument 404 /error404.html
-ErrorDocument 403 http://mysliwiec.pro/
+ErrorDocument 403 https://mysliwiec.pro/
 IndexIgnore *
 Options -Indexes
 Options +FollowSymlinks
 RewriteEngine on
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # Don't rewrite files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
