@@ -1,4 +1,6 @@
 {
+  "sendOk" : "Ok! Dzięki.",
+  "sendError" : "Ups... Błąd!",
   "menu" : {
     "main" : "START",
     "about" : "O MNIE",

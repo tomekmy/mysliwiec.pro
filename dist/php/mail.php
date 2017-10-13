@@ -6,6 +6,8 @@
 	$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 	$subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
 	$massage = filter_input(INPUT_POST, 'massage', FILTER_SANITIZE_STRING);
+	$sendOk = filter_input(INPUT_POST, 'sendOk', FILTER_SANITIZE_STRING);
+	$sendError = filter_input(INPUT_POST, 'sendError', FILTER_SANITIZE_STRING);	
 	
 	// Email encoding and headers
         $sender = "=?UTF-8?B?".base64_encode($name)."?=";
@@ -23,10 +25,10 @@
 
 	// Output message if successful or not
 	if ($ok) {
-		$info = 'OK! Thanks.';
+		$info = $sendOk;
 	}
 	else {
-		$info = 'Ups... Error!';
+		$info = $sendError;
 	}
 	echo $info;
 ?>

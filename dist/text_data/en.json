@@ -1,4 +1,6 @@
 {
+  "sendOk" : "Ok! Thanks.",
+  "sendError" : "Ups... Error!",
   "menu" : {
     "main" : "START",
     "about" : "ABOUT",

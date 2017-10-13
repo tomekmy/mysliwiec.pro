@@ -20,8 +20,8 @@ const noBootstrap = new MergeIntoSingleFilePlugin({
     ]
   },
   transform: {
-    'jquery-func.mini.js': code => require("uglify-es").minify(code).code,
-    'ang-func.mini.js': code => require("uglify-es").minify(code, {mangle: false}).code
+    'jquery-func.mini.js': code => require('uglify-es').minify(code).code,
+    'ang-func.mini.js': code => require('uglify-es').minify(code, {mangle: false}).code
   }
 });
 
@@ -43,7 +43,7 @@ const miniImg = new ImageminPlugin({
 
 module.exports = {
   watch: true,
-  entry: ['./src/js/main.js', './src/sass/style.scss'],
+  entry: ['./src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist/js')
@@ -55,10 +55,14 @@ module.exports = {
         use: [{
           loader: 'css-loader',
           options: {
-            minimize: true || {/* CSSNano Options */},
+            minimize: true,
             url: false
           }
-        }, {
+        },
+        {
+          loader: 'postcss-loader'
+        },
+        {
           loader: 'sass-loader',
           options: { url: false }
         }],
@@ -68,22 +72,7 @@ module.exports = {
     {
       test: /\.jpe?g$|\.gif$|\.png$/i,
       loader: 'file-loader'
-    },
-    {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        { loader: 'css-loader', options: { importLoaders: 1 } },
-        'postcss-loader'
-      ]
     }]
-  },
-  resolve: {
-    extensions: ['.json', '.js', '.jsx', '.css']
-  },
-  devtool: 'source-map',
-  devServer: {
-    publicPath: path.join('/dist/')
   },
   plugins: [
     extractSass,

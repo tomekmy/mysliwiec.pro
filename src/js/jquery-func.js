@@ -9,17 +9,39 @@
       $(this).prepend(string);
     });
   };
+
+  $.cookieInfo = function (options) {
+    options = $.extend({
+      cookieInfo: 'cookie-info',
+      info: 'Używam technologii cookies tylko dla celów statystycznych.',
+      close: 'Rozumiem'
+    }, options || {});
+
+    if (!localStorage.cookieInfo) {
+      $('body').append('<div class="' + options.cookieInfo + '"><span>' + options.info + '</span> <a class="' + options.cookieInfo + '__button" href="#">' + options.close + '</a></div>');
+      $('.' + options.cookieInfo + '__button').on('click', function (e) {
+        e.preventDefault();
+        localStorage.cookieInfo = true;
+        $(this).parent().remove();
+      });
+    }
+  };
 })(jQuery);
 
 function langButton (lang) {
   if (lang === 'pl') {
-    $('.footer__lang-icon div').attr('title', 'Switch language').text('EN').css('left', '4px');
+    $('.footer__lang-icon div').attr('title', 'Switch language').text('EN').css('left', '0.33em');
   } else {
-    $('.footer__lang-icon div').attr('title', 'Zmień język').text('PL').css('left', '5px');
+    $('.footer__lang-icon div').attr('title', 'Zmień język').text('PL').css('left', '0.41em');
   }
 }
 
 $(document).ready(function () {
+  if (window.userLang === 'pl') {
+    $.cookieInfo();
+  } else {
+    $.cookieInfo({info: 'I use cookes technology for statistical purposes only.', close: 'OK'});
+  }
   $('.header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
 

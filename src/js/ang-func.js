@@ -332,12 +332,14 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
         name: formData.name,
         email: formData.email,
         subject: formData.subject,
-        massage: formData.massage
+        massage: formData.massage,
+        sendOk: data.sendOk,
+        sendError: data.sendError
       });
 
       // Put the results in a div
-      posting.done(function (data) {
-        $('.form__submit').text(data);
+      posting.done(function (answer) {
+        $('.form__submit').text(answer);
         // $window.grecaptcha.reset();
       });
     }

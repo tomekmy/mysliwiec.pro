@@ -18,34 +18,16 @@ $border-input-active: #a0a0a0;
 }
 
 // Breakpoints
-$bp-small: 48em; // 768px
-$bp-medium: 64em; // 1024px
-$bp-large: 85.375em; // 1366px
-$bp-xlarge: 120em; // 1920px
-$bp-xxlarge: 160em; // 2560px
-
-// Media Queries
-$mq-small: "(min-width: #{$bp-small})";
-$mq-medium: "(min-width: #{$bp-medium})";
-$mq-large: "(min-width: #{$bp-large})";
-$mq-xlarge: "(min-width: #{$bp-xlarge})";
-$mq-xxlarge: "(min-width: #{$bp-xxlarge})";
-
-$small-phone: '(min-width: 320px)';
-$phone: '(min-width: 321px)';
-$tablet-portrait: '(min-width: 48em)';
-$tablet-landscape: '(min-width: 951px)';
-$large-desktop: '(min-width: 64em)';
-$display-fullhd: '(min-width: 120em)';
-$display-wqhd: '(min-width: 160em)';
-$display-4k: '(min-width: 3800px)';
+$small-phone: '(min-width: 22.5em)'; // 360px
+$tablet-portrait: '(min-width: 48em)'; // 768px
+$tablet-landscape: '(min-width: 59.438em)'; // 951px
+$large-desktop: '(min-width: 64em)'; // 1024px
+$display-fullhd: '(min-width: 120em)'; // 1920px
+$display-wqhd: '(min-width: 160em)'; // 2560px
+$display-4k: '(min-width: 237.5em)'; // 3800px
 $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
-$retina: '(min--moz-device-pixel-ratio: 1.5), 
- (-o-min-device-pixel-ratio: 3/2),
-(-webkit-min-device-pixel-ratio: 1.5),
-(min-device-pixel-ratio: 1.5),
-(min-resolution: 144dpi),
-(min-resolution: 1.5dppx)';
+
+// Media queries
 @mixin respond-to($media) {
   @media only screen and #{$media} {
     @content;
@@ -61,6 +43,7 @@ body {
   background: #ffffff;
   text-align: center;
   width: 100%;
+  min-width: 290px;
   height: 100%;
   @include respond-to($display-fullhd) {
     font-size: $base-font-size*1.2;
@@ -190,7 +173,7 @@ h5 {
   }
   &__top-vline {
     position: absolute;
-    width: 1px;
+    width: 0.063rem;
     height: 11.5em;
     background: #000000;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, #000000), to(#ffffff));
@@ -205,7 +188,7 @@ h5 {
     left: -5.55%;
     width: 18em;
     min-width: 300px;
-    height: 1px;
+    height: 0.063rem;
     background: #000000;
     background: -webkit-gradient(linear, left top, right top, color-stop(55%, #000), to(#fff));
     background: linear-gradient(to right, #000 55%, #fff 100%);
@@ -230,7 +213,7 @@ h5 {
 // { Menu
 .menu {
   position: relative;
-  font-size: em(21);
+  font-size: em(22);
   text-align: left;
   z-index: 999;
   &__icon {
@@ -269,20 +252,34 @@ h5 {
   }
   &__items {
     display: none;
-    position: absolute;
-    right: 15px;
-    float: right;
-    top: -5.7em;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    padding: 0.5em;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.85) 0%,rgba(255,255,255,0.85) 80%,rgba(255,255,255,0) 100%);
+    @include respond-to($small-phone) {
+      position: absolute;
+      text-align: left;
+      top: -5.7em;
+      right: 4px;
+      width: auto;
+      padding: 0;
+    }
     @include respond-to($tablet-portrait) {
       position: relative;
+      text-align: left;
       right: 0;
       top: 0;
       display: block !important;
+      background: transparent;
+      padding: 0;
     }
   }
   &__item {
     position: relative;
-    padding-bottom: rem(10);
+    margin-bottom: 0.5em;
   }
   &__item--link {
     text-decoration: none;
@@ -300,12 +297,26 @@ h5 {
     left: -5.55vw;
     width: 13em;
     min-width: 250px;
-    height: 1px;
+    height: 0.063rem;
     background: #000000;
     background: -webkit-gradient(linear, left top, right top, color-stop(55%, #000000), to(#ffffff));
     background: linear-gradient(to right, #000000 55%, #ffffff 100%);
     @include respond-to($tablet-portrait) {
       display: block;
+    }
+  }
+  &__left-line {
+    position: absolute;
+    display: block;
+    top: -0.5em;
+    left: -0.4em;
+    width: 0.063rem;
+    height: 7.2em;
+    background: #000000;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, #000000), to(#ffffff));
+    background: linear-gradient(to bottom, #000000 75%, #ffffff 100%);
+    @include respond-to($tablet-portrait) {
+      display: none;
     }
   }
   @include respond-to($tablet-portrait) {
@@ -320,7 +331,7 @@ h5 {
   position: absolute;
   left: 0;
   width: 100%;
-  height: calc(100% - 260px);
+  height: calc(100% - 16.2em);
   margin-top: 5%;
   @include respond-to($tablet-portrait) {
     margin-top: 1%;
@@ -334,8 +345,8 @@ h5 {
   height: 100%;
   padding: 0 2%;
   @include respond-to($tablet-portrait) {
-    left: 210px;
-    width: calc(96% - 210px);
+    left: 15em;
+    width: calc(96% - 15em);
   }
 }
 
@@ -369,10 +380,6 @@ h5 {
   max-width: 15em;
   p {
     display: none;
-  }
-  @include respond-to($tablet-portrait) {
-    margin-left: 5%;
-    padding: 0;
   }
   @include respond-to($tablet-landscape) {
     margin-left: 18.5%;
@@ -465,7 +472,7 @@ h5 {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 80%;
+  width: 90%;
   height: auto;
   padding: rem(20);
   text-align: left;
@@ -517,7 +524,7 @@ h5 {
     left: -30px;
     float: left;
     width: 200px;
-    height: 1px;
+    height: 0.063rem;
     background: #ffffff;
     /* Old browsers */
     /* FF3.6+ */
@@ -536,7 +543,7 @@ h5 {
     top: -25px;
     left: 0px;
     float: left;
-    width: 1px;
+    width: 0.063rem;
     height: 200px;
     background: #ffffff;
     /* Old browsers */
@@ -557,7 +564,7 @@ h5 {
     right: -30px;
     float: right;
     width: 200px;
-    height: 1px;
+    height: 0.063rem;
     background: #ffffff;
     /* Old browsers */
     /* FF3.6+ */
@@ -576,7 +583,7 @@ h5 {
     bottom: -25px;
     right: 0px;
     float: right;
-    width: 1px;
+    width: 0.063rem;
     height: 200px;
     background: #ffffff;
     /* Old browsers */
@@ -607,22 +614,22 @@ h5 {
     vertical-align: top;
     font-size: em(28);
     line-height: 1.25;
-    padding-bottom: rem(40);
+    padding-bottom: em(40);
     @include respond-to($tablet-portrait) {
-      width: 42%;
-      margin-right: 2%;
+      width: 44%;
+      margin-right: 3%;
     }
   }
   .form {
     font-size: em($browser-context);
     line-height: 1;
-    padding-bottom: rem(80);
+    padding-bottom: em(80);
     @include respond-to($tablet-portrait) {
       margin-right: 0;
-      margin-left: 2%;
+      margin-left: 3%;
     }
     &__row {
-      margin-top: rem(10);
+      margin-top: em(10);
       position: relative;
       min-height: 80px;
       text-align: left;
@@ -636,10 +643,10 @@ h5 {
       border-bottom: 2px solid $border-input;
       border-radius: 0;
       outline: none;
-      height: 2.5rem;
+      height: 2.5em;
       width: 100%;
       font-size: em(16);
-      margin-bottom: rem(20);
+      margin-bottom: em(20);
       padding: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
@@ -656,10 +663,10 @@ h5 {
       }
     }
     textarea {
-      height: 9.375rem;
-      margin: rem(20) 0;
+      height: 9.375em;
+      margin: em(20) 0;
       border: 2px solid $border-input;
-      padding: rem(15);
+      padding: em(15);
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
       overflow: auto;
@@ -671,7 +678,7 @@ h5 {
     label {
       position: absolute;
       left: 0;
-      top: -1.25rem;
+      top: -1em;
       font-size: em(19);
       text-indent: 15px;
       color: $border-input;
@@ -685,8 +692,8 @@ h5 {
       vertical-align: middle;
       text-align: center;
       overflow: hidden;
-      width: rem(150);
-      height: rem(40);
+      width: em(150);
+      height: em(40);
       line-height: 2.45;
       border: 2px solid $border-input;
       font-weight: 600;
@@ -746,10 +753,9 @@ h5 {
 .footer {
   position: absolute;
   bottom: 0;
-  margin-top: rem(30);
+  margin-top: em(30);
   width: 100%;
-  height: 80px;
-  font-size: em(16);
+  height: em(80);
   text-align: left;
   display: table;
 }
@@ -759,11 +765,11 @@ h5 {
   display: table-cell;
   vertical-align: middle;
   a {
-    width: 25px;
-    height: 25px;
-    margin: 0 rem(5);
+    width: em(25);
+    height: em(25);
+    margin: 0 em(5);
     background: #171516;
-    border-radius: 50px;
+    border-radius: em(50);
     display: inline-block;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -774,13 +780,13 @@ h5 {
 
 .footer__languages {
   float: right;
-  padding: rem(26) rem(20);
+  padding: em(26) em(20);
   a {
-    width: 25px;
-    height: 25px;
-    margin: 0 rem(5);
+    width: em(25);
+    height: em(25);
+    margin: 0 em(5);
     background: #171516;
-    border-radius: 50px;
+    border-radius: em(50);
     display: inline-block;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -790,9 +796,9 @@ h5 {
 }
 
 footer img {
-  margin: 0 rem(5);
-  width: 25px;
-  height: 25px;
+  margin: 0 em(5);
+  width: em(25);
+  height: em(25);
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-box-shadow: 0 0 1px transparent;
@@ -802,42 +808,41 @@ footer img {
 .facebook-icon:after {
   content: "f";
   color: #ffffff;
-  font: bold 22px arial;
+  font: bold em(22) arial;
   position: absolute;
-  left: 9px;
-  top: 1px;
+  left: em(6.2);
+  top: em(1);
 }
 
 .linkedin-icon:after {
   content: "in";
   color: #ffffff;
-  font: bold 19px arial;
+  font: bold em(19) arial;
   position: absolute;
-  left: 5px;
-  top: 2px;
+  left: em(4);
+  top: em(2);
 }
 
 .footer__lang-icon div {
   color: #ffffff;
-  font: bold 12px arial;
+  font: bold em(12) arial;
   position: absolute;
-  left: 4px;
-  top: 6px;
+  left: em(4);
+  top: em(8);
 }
 
 
 /* gitHub logo */
 
 .logo-github-small {
-  display: inline-block;
   background-color: #171516;
-  width: 25px;
-  height: 25px;
+  width: em(25);
+  height: em(25);
   position: relative;
   left: 0;
   top: 0;
   overflow: hidden;
-  border-radius: 12.5px;
+  border-radius: em(12.5);
   -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -853,143 +858,143 @@ footer img {
     }
   }
   .head {
-    width: 15.66666667px;
-    height: 11.66666667px;
-    left: 4.66666667px;
-    top: 6.25px;
+    width: em(15.66666667);
+    height: em(11.66666667);
+    left: em(4.66666667);
+    top: em(6.25);
   }
   .chin-left {
-    width: 10.41666667px;
-    height: 11.33333333px;
-    left: 4.5px;
-    top: 6.83333333px;
+    width: em(10.41666667);
+    height: em(11.33333333);
+    left: em(4.5);
+    top: em(6.83333333);
   }
   .chin-right {
-    width: 10.41666667px;
-    height: 11.33333333px;
-    left: 10.08333333px;
-    top: 6.83333333px;
+    width: em(10.41666667);
+    height: em(11.33333333);
+    left: em(10.08333333);
+    top: em(6.83333333);
   }
   .ear-one-left {
-    width: 5.83333333px;
-    height: 7.5px;
-    left: 5.58333333px;
-    top: 3.5px;
+    width: em(5.83333333);
+    height: em(7.5);
+    left: em(5.58333333);
+    top: em(3.5);
   }
   .ear-one-right {
-    width: 3.83333333px;
-    height: 1px;
-    left: 5.75px;
-    top: 5.75px;
+    width: em(3.83333333);
+    height: em(1);
+    left: em(5.75);
+    top: em(5.75);
     -webkit-transform: rotate(23deg);
     transform: rotate(23deg);
   }
   .ear-one-none {
-    width: 8.5px;
-    height: 3.75px;
-    left: 5.83333333px;
-    top: 3.08333333px;
+    width: em(8.5);
+    height: em(3.75);
+    left: em(5.83333333);
+    top: em(3.08333333);
   }
   .ear-two-left {
-    width: 3.83333333px;
-    height: 1px;
-    left: 15.41666667px;
-    top: 5.75px;
+    width: em(3.83333333);
+    height: em(1);
+    left: em(15.41666667);
+    top: em(5.75);
     -webkit-transform: rotate(-23deg);
     transform: rotate(-23deg);
   }
   .ear-two-right {
-    width: 5.83333333px;
-    height: 7.5px;
-    left: 13.58333333px;
-    top: 3.5px;
+    width: em(5.83333333);
+    height: em(7.5);
+    left: em(13.58333333);
+    top: em(3.5);
   }
   .ear-two-none {
-    width: 8.5px;
-    height: 3.75px;
-    left: 10.66666667px;
-    top: 3.08333333px;
+    width: em(8.5);
+    height: em(3.75);
+    left: em(10.66666667);
+    top: em(3.08333333);
   }
   .body-left {
     border-radius: 100% 100% 0 0;
-    width: 4.66666667px;
-    height: 7.33333333px;
-    left: 9.33333333px;
-    top: 17.41666667px;
+    width: em(4.66666667);
+    height: em(7.33333333);
+    left: em(9.33333333);
+    top: em(17.41666667);
   }
   .body-left-none {
-    width: 0.66666667px;
-    height: 3.33333333px;
-    left: 8.66666667px;
-    top: 21.16666667px;
-    border-radius: 0.33333333px 0 0.33333333px 0;
+    width: em(0.66666667);
+    height: em(3.33333333);
+    left: em(8.66666667);
+    top: em(21.16666667);
+    border-radius: em(0.33333333) 0 em(0.33333333) 0;
   }
   .body-right {
     border-radius: 100% 100% 0 0;
-    width: 4.66666667px;
-    height: 7.33333333px;
-    left: 11px;
-    top: 17.41666667px;
+    width: em(4.66666667);
+    height: em(7.33333333);
+    left: em(11);
+    top: em(17.41666667);
   }
   .body-right-none {
-    width: 0.66666667px;
-    height: 3.33333333px;
-    left: 15.66666667px;
-    top: 21.16666667px;
-    border-radius: 0 0.33333333px 0 0.33333333px;
+    width: em(0.66666667);
+    height: em(3.33333333);
+    left: em(15.66666667);
+    top: em(21.16666667);
+    border-radius: 0 em(0.33333333) 0 em(0.33333333);
   }
   .body-bottom {
-    width: 7.33333333px;
-    height: 1.5px;
-    left: 8.83333333px;
-    top: 23.75px;
+    width: em(7.33333333);
+    height: em(1.5);
+    left: em(8.83333333);
+    top: em(23.75);
   }
   .tail-end {
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
-    width: 1.33333333px;
-    height: 2.91666667px;
-    left: 4.41666667px;
-    top: 17.58333333px;
+    width: em(1.33333333);
+    height: em(2.91666667);
+    left: em(4.41666667);
+    top: em(17.58333333);
   }
   .tail-body {
-    width: 6.5px;
-    height: 4px;
-    left: 5.25px;
-    top: 17.75px;
+    width: em(6.5);
+    height: em(4);
+    left: em(5.25);
+    top: em(17.75);
   }
   .tail-body-spots {
-    border: 0.41666667px #171516 dotted;
+    border: em(0.41666667) #171516 dotted;
     background: transparent;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 0 0 12.08333333px 10.83333333px;
-    width: 8.33333333px;
-    height: 4.91666667px;
-    left: 4.33333333px;
-    top: 15.83333333px;
+    border-radius: 0 0 em(12.08333333) em(10.83333333);
+    width: em(8.33333333);
+    height: em(4.91666667);
+    left: em(4.33333333);
+    top: em(15.83333333);
   }
   .tail-end-none {
     -webkit-transform: rotate(-24deg);
     transform: rotate(-24deg);
-    width: 1.41666667px;
-    height: 4px;
-    left: 3.83333333px;
-    top: 18.16666667px;
+    width: em(1.41666667);
+    height: em(4);
+    left: em(3.83333333);
+    top: em(18.16666667);
   }
   .tail-body-none {
-    width: 5.58333333px;
-    height: 4px;
-    left: 5.58333333px;
-    top: 16.16666667px;
+    width: em(5.58333333);
+    height: em(4);
+    left: em(5.58333333);
+    top: em(16.16666667);
   }
   .tail-tip {
     -webkit-transform: rotate(12deg);
     transform: rotate(12deg);
-    width: 1.66666667px;
-    height: 0.75px;
-    left: 3.41666667px;
-    top: 17.66666667px;
+    width: em(1.66666667);
+    height: em(0.75);
+    left: em(3.41666667);
+    top: em(17.66666667);
   }
 }
 
@@ -999,28 +1004,28 @@ footer img {
 .email {
   position: absolute;
   display: inline-block;
-  top: 6px;
-  left: 4px;
-  width: 15px;
-  height: 11px;
+  top: em(6);
+  left: em(4);
+  width: em(15);
+  height: em(11);
   background-color: #171516;
-  border: 1px solid #ffffff;
+  border: rem(1) solid #ffffff;
   &:after,
   &:before {
     position: absolute;
     border-top: none;
-    border: 1px solid #ffffff;
-    top: 3px;
-    width: 8px;
+    border: rem(1) solid #ffffff;
+    top: em(3);
+    width: em(8);
     content: '';
   }
   &:after {
-    left: -1px;
+    left: rem(-1);
     -webkit-transform: rotate(25deg);
     transform: rotate(25deg);
   }
   &:before {
-    right: -1px;
+    right: rem(-1);
     -webkit-transform: rotate(-25deg);
     transform: rotate(-25deg);
   }
@@ -1032,7 +1037,7 @@ footer img {
   left: -5.55%;
   width: 27%;
   min-width: 260px;
-  height: 1px;
+  height: 0.063rem;
   background: #000000;
   background: -webkit-gradient(linear, left top, right top, color-stop(80%, #000000), to(#ffffff));
   background: linear-gradient(to right, #000000 80%, #ffffff 100%);
@@ -1040,10 +1045,10 @@ footer img {
 
 .footer__vline {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 1px;
-  height: 266px;
+  bottom: 0;
+  left: 0;
+  width: 0.063rem;
+  height: rem(266);
   background: #ffffff;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(55%, #000000), to(#000000));
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
@@ -1055,7 +1060,7 @@ footer img {
   right: -2.692%;
   width: 15%;
   min-width: 100px;
-  height: 1px;
+  height: 0.063rem;
   background: #000000;
   background: -webkit-gradient(linear, right top, left top, color-stop(80%, #000000), to(#ffffff));
   background: linear-gradient(to left, #000000 80%, #ffffff 100%);
@@ -1068,29 +1073,42 @@ footer img {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  width: 1px;
-  height: 200px;
+  width: 0.063rem;
+  height: rem(200);
   background: #ffffff;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(55%, #000000), to(#000000));
   background: linear-gradient(to bottom, #ffffff 0%, #000000 55%, #000000 100%);
 }
 
-// { Footer
+// } Footer
+// { Cookie info
+  .cookie-info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: .3em;
+    background-color: rgba(243, 234, 243, 0.7);
+    animation: slideUp 2.2s ease-out;
+    &__button {
+      display: inline-block;
+      min-width: 4em;
+      background: #c7c7c7;
+      border-radius: .3em;
+      margin: 0.3em;
+      padding: 0.45em 0.6em;
+      transition: all 0.3s;
+     }
+     & :hover {
+      background: #d6d6d6;
+     }
+  }
+
+  @keyframes slideUp {
+    from {bottom: -5em;} 
+    to {bottom: 0;} 
+  }
+// } Cookie info
 // } Content
-
-/* For desktop */
-
-
-/*@media (min-width: 530px) {
-    html, body {
-        min-width: 530px;
-    }
-    
-    #content {
-        min-width: 500px;
-    }
-}*/
-
 
 /* Buzz hover effect */
 
