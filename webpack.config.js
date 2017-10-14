@@ -3,6 +3,7 @@ const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: '../css/style.mini.css',
@@ -39,6 +40,24 @@ const miniImg = new ImageminPlugin({
   pngquant: {
     quality: '65-90'
   }
+});
+
+const friendlyErrors = new FriendlyErrorsWebpackPlugin({
+  compilationSuccessInfo: {
+    messages: ['You application is ready!'],
+    notes: ['No additionnal notes.']
+  },
+  onErrors: function (severity, errors) {
+    // You can listen to errors transformed and prioritized by the plugin 
+    // severity can be 'error' or 'warning' 
+  },
+  // should the console be cleared between each compilation? 
+  // default is true 
+  clearConsole: true,
+
+  // add formatters and transformers (see below) 
+  additionalFormatters: [],
+  additionalTransformers: []
 });
 
 module.exports = {
@@ -78,6 +97,7 @@ module.exports = {
     extractSass,
     noBootstrap,
     copyImg,
-    miniImg
+    miniImg,
+    friendlyErrors
   ]
 };
