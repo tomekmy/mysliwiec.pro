@@ -1,7 +1,10 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize', 'angular-google-analytics']);
+myApp.constant('logContent', 'Show content');
 
 myApp.factory('appServices', function ($timeout, $location, $window) {
   return {
+    // In order to see falling letters when leaving main site this function check if all text is shown.
+    // Need to check number of spans in text to fit correct timeout.
     mainLag: function () {
       var spans = 93;
       var lagTime = 4800;
@@ -19,6 +22,7 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
         return mainTimer;
       }
     },
+    // Highlight active link in menu
     activeLink: function () {
       if ($location.path() === '/') {
         $('.menu__item--link').first().css('color', '#990000');
@@ -34,10 +38,12 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
         });
       }
     },
+    // Email validation in contact form
     validateEmail: function (email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
+    // Positioning footer on page bottom
     footerPosition: function () {
       $timeout(function () {
         var footerPos = 0;
@@ -51,6 +57,7 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
   };
 });
 
+// Google Analytics configuration
 myApp.config(['AnalyticsProvider', function (AnalyticsProvider) {
   AnalyticsProvider.setAccount('UA-5968901-19');
 }]).run(['Analytics', function (Analytics) { }]);
@@ -95,6 +102,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
 });
 
 myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
+  // dataJSON is defined in global scope (index.html). Read data from JSON file.
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
     $.each(data.menu, function (key, val) {
@@ -113,14 +121,16 @@ myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
   });
 });
 
-myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, appServices) {
+myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
     $('.content-wrapper__mainText').html(data.main.mainText);
     console.log('Add text to elements');
+    // When JSON is read hide loading circle an show content.
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
-      console.log('Show content');
+      console.log(logContent);
+      // Shows main site text using textillate. Using timeouts in order to see proper animation order.
       $('.content-wrapper__mainText p:eq(0)').show().textillate({ in: {
         effect: 'bounceIn',
         delay: 40
@@ -170,6 +180,8 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
 
       appServices.footerPosition();
 
+      // When leaving main page cancel timers and check if textillate animation has finished.
+      // If yes, fires leave animation. If no, just live the page.
       $scope.$on('$routeChangeStart', function (next, current) {
         $timeout.cancel(timer1);
         $timeout.cancel(timer2);
@@ -184,13 +196,9 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       });
     });
   });
-
-  // $scope.$on('$viewContentLoaded', function (event) {
-
-  // });
 });
 
-myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, appServices) {
+myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
     $('.about-intro__text').html(data.about.introText);
@@ -207,11 +215,13 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
   }).then(function () {
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
-      console.log('Show content');
+      console.log(logContent);
+      // In order to show skills bars when it appears on viewport using enterView
       $window.enterView({
         selector: '.about-skills div div',
         trigger: function (el) {
           $(el).css('width', $(el).find('span').text());
+          // Add a little timeout to show text in bars
           $timeout(function () {
             $(el).css('color', '#1b1b1b');
           }, 350);
@@ -223,7 +233,7 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
   });
 });
 
-myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window, appServices) {
+myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
   var img = new $window.Image();
   img.src = 'img/spinner-animation.gif';
   $(img).load(function () {
@@ -250,7 +260,7 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window
     }).then(function () {
       $('.loading').fadeOut();
       $('.content').fadeIn(function () {
-        console.log('Show content');
+        console.log(logContent);
         $window.enterView({
           selector: '.portfolio-item',
           trigger: function (el) {
@@ -265,7 +275,7 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window
   });
 });
 
-myApp.controller('ContactCtrl', function ($scope, $location, $window, appServices) {
+myApp.controller('ContactCtrl', function ($scope, $location, $window, appServices, logContent) {
   // Put translations data from JSON
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
@@ -358,8 +368,9 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
   }).then(function () {
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
-      console.log('Show content');
+      console.log(logContent);
       appServices.footerPosition();
+      // Add reCaptcha to form
       $.getScript('https://www.google.com/recaptcha/api.js');
     });
   });
