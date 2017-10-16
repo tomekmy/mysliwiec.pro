@@ -466,7 +466,7 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
 /* 3 */
 /***/ (function(module, exports) {
 
-// Hide email address from spam bots
+// Hide email address from spam bots plugin
 (function ($) {
   $.fn.hideEmail = function (user, site, tag) {
     user = user || 'user';
@@ -478,6 +478,7 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
     });
   };
 
+  // Cookie info plugin
   $.cookieInfo = function (options) {
     options = $.extend({
       cookieInfo: 'cookie-info',
@@ -496,6 +497,7 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
   };
 })(jQuery);
 
+// Switch language button text
 function langButton (lang) {
   if (lang === 'pl') {
     $('.footer__lang-icon div').attr('title', 'Switch language').text('EN').css('left', '0.33em');
@@ -505,12 +507,15 @@ function langButton (lang) {
 }
 
 $(document).ready(function () {
+  // Depends on user language displays polish or english cookie info message
   if (window.userLang === 'pl') {
     $.cookieInfo();
   } else {
-    $.cookieInfo({info: 'I use cookes technology for statistical purposes only.', close: 'OK'});
+    $.cookieInfo({info: 'I use cookies technology for statistical purposes only.', close: 'OK'});
   }
+  // Logo textillate animation
   $('.header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
+  // Footer hide email address
   $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
 
   langButton(window.userLang);
@@ -524,6 +529,7 @@ $(document).ready(function () {
     window.location.reload();
   });
 
+  // Show scroll to top
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
       $('.scrollup').fadeIn();
@@ -532,6 +538,7 @@ $(document).ready(function () {
     }
   });
 
+  // Scroll to top on click
   $('.scrollup').click(function (e) {
     e.preventDefault();
     $('html, body').animate({
@@ -540,6 +547,7 @@ $(document).ready(function () {
     return false;
   });
 
+  // Hide small menu icon
   $('.menu__icon').click(function () {
     $(this).toggleClass('menu__icon--change');
     $('.menu__items').toggle(400);
@@ -553,6 +561,7 @@ $(document).ready(function () {
   });
 });
 
+// Fit footer position on every window resize
 $(window).resize(function () {
   var footerPos = 0;
   $('.footer').css('bottom', footerPos + 'px');
