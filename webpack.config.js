@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const BitBarWebpackProgressPlugin = require('bitbar-webpack-progress-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: '../css/style.mini.css',
@@ -98,6 +99,7 @@ module.exports = {
     noBootstrap,
     copyImg,
     miniImg,
+    new BitBarWebpackProgressPlugin(),
     friendlyErrors
   ]
 };
