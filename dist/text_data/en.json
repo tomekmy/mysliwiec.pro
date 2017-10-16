@@ -40,31 +40,31 @@
         {
           "title" : "TechCalc - Pomocnik Inżyniera",
           "url" : "www.techcalc.pl",
-          "description" : "Web application for engineers, technologists, constructors. Thanks to TechCalc you will check the holes for the threads, tolerances of holes and shafts, calculate the mass of materials, calculate the machining parameters. With trigonometric functions you will calculate the parameters of the triangle.",
+          "description" : "<p>Web application for engineers, technologists, builders, with many handful tools.</p><p>The current version of the site is based on CMS Wordpress and all the converters and tools I wrote in JavaScript with jQuery.</p>",
           "img" : "img/techcalc-portfolio.jpg"
         },
         {
           "title" : "Technology Center Warsaw",
           "url" : "www.technologycenter.pl",
-          "description" : "Technology Center is a part of international corporation. We have over twenty years of experience in designing and manufacturing of machines and molds for plastic processing industry.",
+          "description" : "<p>Technology Center is an international corporation with over 20 years of experience in designing and manufacturing machines and molds for plastics processing.</p><p>Site based on CMS Joomla. Most of the photos were taken by one of my clients - <a href='http://www.lagocki.pl/'>Wojciech Łagocki</a>.</p>",
           "img" : "img/centrumtechnologiczne-portfolio.jpg"
         },
         {
           "title" : "BluePhoto | Ireneusz Rek Fotografia",
           "url" : "www.bluephoto.pl",
-          "description" : "Ireneusz Reek's portfolio. Photographer. Favorite topics: work, travel, events.",
+          "description" : "<p>Ireneusz Reek's portfolio. Photographer. Favorite topics: work, travel, events.</p><p>On this site I use CMS Wordpress.</p>",
           "img" : "img/bluephoto-portfolio.jpg"
         },
         {
           "title" : "Wojciech Łagocki - Fotografia",
           "url" : "www.lagocki.pl",
-          "description" : "Wojciech Łagocki's portfolio. Photographer. Favorite topics: wedding photography, baby photography, newborn baby photography, family photography, portrait",
+          "description" : "<p>Wojciech Łagocki's portfolio. Photographer. Favorite topics: wedding photography, baby photography, newborn baby photography, family photography, portrait.</p><p>Website written using JavaScript, jQuery, PHP in SPA technology.</p>",
           "img" : "img/wojtek-portfolio.jpg"
         },
         {
-          "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
+          "title" : ">KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
           "url" : "www.kmpplastics.com.pl",
-          "description" : "KMP Plastics - They offer machines and peripherals for Plastics Processing.",
+          "description" : "<p>KMP Plastics offer machines and peripherals for Plastics Processing.</p><p>One of my older projects based on the Joomla CMS.</p>",
           "img" : "img/kmp-portfolio.jpg"
         }
       ]
@@ -74,17 +74,17 @@
       "works" : [
         {
           "title" : "Maciej Majchrzak - Director of photography",
-          "description" : "In 2006 Maciej Majchrzak graduated from Polish National Film School in Łódź with a degree in cinematography. He is the Director of Photography in recent films: \"Wkręceni\" (2014) directed by Piotr Wereśniak and \"Kochanie, Chyba Cię Zabiłem\" (\"Honey, I’ve Killed You\" 2014) directed by Jakub Nieścierow. On the page background is a movie by Maciej. The movie was embedded using HTML5 video. The site was integrated with YouTube.",
+          "description" : "<p>Maciej Majchrzak's website - film camera operator.</p><p>I have written using HTML5, JavaScript, PHP, MySQL. On the background of the page I put a film by Maciej. Film embedded using HTML5 video. The site was integrated with YouTube through a simple CMS.</p>",
           "img" : "img/maciejmajchrzak-portfolio.jpg"
         },
         {
           "title" : "Skrawek Nieba - Holiday cottages. Dąbki",
-          "description" : "The cottage situated on the Polish sea in Dąbki near Darłowo. Graphic design and Flash animation: Maciej Burkowski.",
+          "description" : "<p>The cottage situated on the Polish sea in Dąbki near Darłowo.</p><p>Site based on CMS Joomla. Graphic design and Flash animation: Maciej Burkowski.</p>",
           "img" : "img/skraweknieba-portfolio.jpg"
         },
         {
           "title" : "Health and Safety Trainings and Services. First Aid Courses",
-          "description" : "Janusz Gawrych site, the owner of GJTECH. GJTECH is a training and consulting company specialized in Safety and Health, as well as supplying safety, health and first aid articles. The site has a simple CMS authoring system.",
+          "description" : "<p>Janusz Gawrych site, the owner of GJTECH. GJTECH is a training and consulting company specialized in Safety and Health, as well as supplying safety, health and first aid articles.</p><p>I have written this site using JavaScript, PHP, MySQL. The site has a simple CMS system.</p>",
           "img" : "img/bhp-portfolio.jpg"
         }
       ]
