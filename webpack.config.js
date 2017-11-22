@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const BitBarWebpackProgressPlugin = require('bitbar-webpack-progress-plugin');
+const UglifyES = require('uglify-es');
 
 const extractSass = new ExtractTextPlugin({
   filename: '../css/style.mini.css',
@@ -22,8 +23,8 @@ const noBootstrap = new MergeIntoSingleFilePlugin({
     ]
   },
   transform: {
-    'jquery-func.mini.js': code => require('uglify-es').minify(code).code,
-    'ang-func.mini.js': code => require('uglify-es').minify(code, {mangle: false}).code
+    'jquery-func.mini.js': code => UglifyES.minify(code).code,
+    'ang-func.mini.js': code => UglifyES.minify(code, {mangle: false}).code
   }
 });
 
@@ -49,24 +50,28 @@ const friendlyErrors = new FriendlyErrorsWebpackPlugin({
     notes: ['No additionnal notes.']
   },
   onErrors: function (severity, errors) {
-    // You can listen to errors transformed and prioritized by the plugin 
-    // severity can be 'error' or 'warning' 
+    // You can listen to errors transformed and prioritized by the plugin
+    // severity can be 'error' or 'warning'
   },
-  // should the console be cleared between each compilation? 
-  // default is true 
+  // should the console be cleared between each compilation?
+  // default is true
   clearConsole: true,
 
-  // add formatters and transformers (see below) 
+  // add formatters and transformers (see below)
   additionalFormatters: [],
   additionalTransformers: []
 });
 
 module.exports = {
   watch: true,
-  entry: ['./src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss'],
+  entry: {
+    index: './src/index.html',
+    partials: ['./src/partials/about.html', './src/partials/contact.html', './src/partials/main.html', './src/partials/portfolio.html'],
+    scripts: ['./src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss']
+  },
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist/js')
+    filename: '[path][name].[ext]',
+    path: path.join(__dirname, 'dist')
   },
   module: {
     rules: [{
@@ -92,6 +97,42 @@ module.exports = {
     {
       test: /\.jpe?g$|\.gif$|\.png$/i,
       loader: 'file-loader'
+    },
+    {
+      test: /\.html$/,
+      use: [ {
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+          removeComments: true,
+          collapseWhitespace: true
+        }
+      }]
+    },
+    {
+      test: /\.html$/,
+      loaders: [
+        'file-loader?publicPath=/,name=[path][name].[ext]',
+        {
+          loader: 'html-minify-loader',
+          options: {
+            quotes: true,
+            dom: { lowerCaseTags: false },
+            plugins: [{
+              id: 'uglify-es',
+              element: function element (node, next) {
+                if (node.type === 'script' && node.children[0] !== undefined) {
+                  let inlineJS = node.children[0].data;
+                  inlineJS = UglifyES.minify(inlineJS);
+                  // console.log(inlineJS.code);
+                  node.children[0].data = inlineJS.code;
+                }
+                next();
+              }
+            }]
+          }
+        }
+      ]
     }]
   },
   plugins: [
