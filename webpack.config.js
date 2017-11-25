@@ -1,3 +1,6 @@
+'use strict';
+
+// Add all required plugins
 const path = require('path');
 const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,13 +9,16 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const BitBarWebpackProgressPlugin = require('bitbar-webpack-progress-plugin');
 const UglifyES = require('uglify-es');
+const WebpackCleanPlugin = require('webpack-clean');
 
+// SASS post processor configuration
 const extractSass = new ExtractTextPlugin({
   filename: '../css/style.mini.css',
   disable: false,
   allChunks: true
 });
 
+// Process and minify scripts files
 const noBootstrap = new MergeIntoSingleFilePlugin({
   files: {
     'jquery-func.mini.js': [
@@ -24,15 +30,19 @@ const noBootstrap = new MergeIntoSingleFilePlugin({
   },
   transform: {
     'jquery-func.mini.js': code => UglifyES.minify(code).code,
-    'ang-func.mini.js': code => UglifyES.minify(code, {mangle: false}).code
+    'ang-func.mini.js': code => UglifyES.minify(code).code
   }
 });
 
-const copyImg = new CopyWebpackPlugin([{
-  from: './src/assets',
-  to: '../img'
-}]);
+// Copy and process image files
+const copyFiles = new CopyWebpackPlugin([
+  {
+    from: './src/assets',
+    to: '../img'
+  }
+]);
 
+// Image mini plugin configuration
 const miniImg = new ImageminPlugin({
   test: /\.(jpe?g|png|gif|svg)$/i,
   minFileSize: 50000,
@@ -44,6 +54,7 @@ const miniImg = new ImageminPlugin({
   }
 });
 
+// Display friendly errors plugin configuration
 const friendlyErrors = new FriendlyErrorsWebpackPlugin({
   compilationSuccessInfo: {
     messages: ['You application is ready!'],
@@ -62,85 +73,112 @@ const friendlyErrors = new FriendlyErrorsWebpackPlugin({
   additionalTransformers: []
 });
 
+// Delete unnecessary files after compile
+const cleanFiles = new WebpackCleanPlugin(['main.js'], path.join(__dirname, 'dist/js'));
+
+// Webpack 2 modules, loaders and plugins call
 module.exports = {
   watch: true,
-  entry: {
-    index: './src/index.html',
-    partials: ['./src/partials/about.html', './src/partials/contact.html', './src/partials/main.html', './src/partials/portfolio.html'],
-    scripts: ['./src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss']
-  },
+  entry: ['./src/index.html', './src/partials/about.html', './src/partials/contact.html', './src/partials/main.html', './src/partials/portfolio.html', './src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss'],
   output: {
-    filename: '[path][name].[ext]',
-    path: path.join(__dirname, 'dist')
+    filename: 'main.js',
+    path: path.join(__dirname, 'dist/js')
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: extractSass.extract({
-        use: [{
-          loader: 'css-loader',
+    rules: [
+      {
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader',
           options: {
             minimize: true,
-            url: false
+            removeComments: true,
+            collapseWhitespace: true
           }
-        },
-        {
-          loader: 'postcss-loader'
-        },
-        {
-          loader: 'sass-loader',
-          options: { url: false }
-        }],
-        fallback: 'style-loader'
-      })
-    },
-    {
-      test: /\.jpe?g$|\.gif$|\.png$/i,
-      loader: 'file-loader'
-    },
-    {
-      test: /\.html$/,
-      use: [ {
-        loader: 'html-loader',
-        options: {
-          minimize: true,
-          removeComments: true,
-          collapseWhitespace: true
-        }
-      }]
-    },
-    {
-      test: /\.html$/,
-      loaders: [
-        'file-loader?publicPath=/,name=[path][name].[ext]',
-        {
-          loader: 'html-minify-loader',
-          options: {
-            quotes: true,
-            dom: { lowerCaseTags: false },
-            plugins: [{
-              id: 'uglify-es',
-              element: function element (node, next) {
-                if (node.type === 'script' && node.children[0] !== undefined) {
-                  let inlineJS = node.children[0].data;
-                  inlineJS = UglifyES.minify(inlineJS);
-                  // console.log(inlineJS.code);
-                  node.children[0].data = inlineJS.code;
+        }]
+      },
+      {
+        test: /\\index.html$/,
+        loaders: [
+          'file-loader?publicPath=/,name=../[name].[ext]',
+          {
+            loader: 'html-minify-loader',
+            options: {
+              quotes: true,
+              dom: { lowerCaseTags: false },
+              plugins: [{
+                id: 'uglify-es',
+                element: function element (node, next) {
+                  if (node.type === 'script' && node.children[0] !== undefined) {
+                    let inlineJS = node.children[0].data;
+                    inlineJS = UglifyES.minify(inlineJS);
+                    // console.log(inlineJS.code);
+                    node.children[0].data = inlineJS.code;
+                  }
+                  next();
                 }
-                next();
-              }
-            }]
+              }]
+            }
           }
-        }
-      ]
-    }]
+        ]
+      },
+      {
+        test: path.resolve(__dirname, './src/partials'),
+        loaders: [
+          'file-loader?publicPath=/,name=../partials/[name].[ext]',
+          {
+            loader: 'html-minify-loader',
+            options: {
+              quotes: true,
+              dom: { lowerCaseTags: false },
+              plugins: [{
+                id: 'uglify-es',
+                element: function element (node, next) {
+                  if (node.type === 'script' && node.children[0] !== undefined) {
+                    let inlineJS = node.children[0].data;
+                    inlineJS = UglifyES.minify(inlineJS);
+                    // console.log(inlineJS.code);
+                    node.children[0].data = inlineJS.code;
+                  }
+                  next();
+                }
+              }]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: extractSass.extract({
+          use: [{
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              url: false
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: { url: false }
+          }],
+          fallback: 'style-loader'
+        })
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$/i,
+        loader: 'file-loader'
+      }]
   },
   plugins: [
     extractSass,
     noBootstrap,
-    copyImg,
+    copyFiles,
     miniImg,
     new BitBarWebpackProgressPlugin(),
+    cleanFiles,
     friendlyErrors
   ]
 };
