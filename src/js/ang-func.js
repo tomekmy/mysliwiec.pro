@@ -13,8 +13,6 @@ myApp.provider('lag', function () {
           spans = 115;
           lagTime = 5700;
         }
-        console.log($('.content-wrapper__mainText span').length);
-        console.log(spans);
         if ($('.content-wrapper__mainText span').length > spans) {
           $('.content-wrapper__mainText span:last').remove();
           $('body').css('overflow', 'hidden');
