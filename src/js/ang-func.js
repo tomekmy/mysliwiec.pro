@@ -8,10 +8,9 @@ myApp.provider('lag', function () {
     return {
       mainLag: function () {
         var spans = 93;
-        var lagTime = 4800;
+        var lagTime = 3500;
         if ($window.userLang === 'pl') {
           spans = 115;
-          lagTime = 5700;
         }
         if ($('.content-wrapper__mainText span').length > spans) {
           $('.content-wrapper__mainText span:last').remove();
@@ -141,11 +140,11 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
       // Shows main site text using textillate. Using timeouts in order to see proper animation order.
       $('.content-wrapper__mainText p:eq(0)').show().textillate({ in: {
         effect: 'bounceIn',
-        delay: 40
+        delay: 30
       },
       out: {
         effect: 'hinge',
-        delay: 70,
+        delay: 40,
         shuffle: true,
         sync: false,
         delayScale: 7
@@ -154,29 +153,29 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
       var timer1 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(1)').show().textillate({ in: {
           effect: 'bounceIn',
-          delay: 40
+          delay: 30
         },
         out: {
           effect: 'hinge',
-          delay: 40,
+          delay: 15,
           shuffle: true,
           sync: false,
           delayScale: 2
         }
         });
         appServices.footerPosition();
-      }, 500);
+      }, 400);
       var timer2 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
           effect: 'bounceIn',
-          delay: 40,
+          delay: 30,
           callback: function () {
             $('.content-wrapper__mainText p:eq(2)').append('<span></span>');
           }
         },
         out: {
           effect: 'hinge',
-          delay: 40,
+          delay: 15,
           shuffle: true,
           sync: false,
           delayScale: 2
@@ -184,7 +183,7 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
         });
         appServices.footerPosition();
         // $('.content-wrapper__mainText p span:contains("/")').parent().after('<br>');
-      }, 3100);
+      }, 2300);
 
       appServices.footerPosition();
 
