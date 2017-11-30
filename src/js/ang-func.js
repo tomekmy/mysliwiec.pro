@@ -1,27 +1,33 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngSanitize', 'angular-google-analytics']);
 myApp.constant('logContent', 'Show content');
 
-myApp.factory('appServices', function ($timeout, $location, $window) {
+myApp.provider('lag', function () {
+  this.$get = ['$window', '$timeout', function ($window, $timeout) {
+  // In order to see falling letters when leaving main site this function check if all text is shown.
+  // Need to check number of spans in text to fit correct timeout.
+    return {
+      mainLag: function () {
+        var spans = 93;
+        var lagTime = 3500;
+        if ($window.userLang === 'pl') {
+          spans = 115;
+        }
+        if ($('.content-wrapper__mainText span').length > spans) {
+          $('.content-wrapper__mainText span:last').remove();
+          $('body').css('overflow', 'hidden');
+          var mainTimer = $timeout(function () {
+            $('body').css('overflow', 'visible');
+          }, lagTime);
+          console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
+          return mainTimer;
+        }
+      }
+    };
+  }];
+});
+
+myApp.service('appServices', ['$timeout', '$location', '$window', function ($timeout, $location, $window) {
   return {
-    // In order to see falling letters when leaving main site this function check if all text is shown.
-    // Need to check number of spans in text to fit correct timeout.
-    mainLag: function () {
-      var spans = 93;
-      var lagTime = 4800;
-      if ($window.userLang === 'pl') {
-        spans = 115;
-        lagTime = 5700;
-      }
-      if ($('.content-wrapper__mainText span').length > spans) {
-        $('.content-wrapper__mainText span:last').remove();
-        $('body').css('overflow', 'hidden');
-        var mainTimer = $timeout(function () {
-          $('body').css('overflow', 'visible');
-        }, lagTime);
-        console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
-        return mainTimer;
-      }
-    },
     // Highlight active link in menu
     activeLink: function () {
       if ($location.path() === '/') {
@@ -40,7 +46,8 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
     },
     // Email validation in contact form
     validateEmail: function (email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      // var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
     // Positioning footer on page bottom
@@ -55,14 +62,14 @@ myApp.factory('appServices', function ($timeout, $location, $window) {
       }, 600);
     }
   };
-});
+}]);
 
 // Google Analytics configuration
 myApp.config(['AnalyticsProvider', function (AnalyticsProvider) {
   AnalyticsProvider.setAccount('UA-5968901-19');
 }]).run(['Analytics', function (Analytics) { }]);
 
-myApp.config(function ($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', 'lagProvider', '$locationProvider', function ($routeProvider, lagProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'partials/main.html',
@@ -72,36 +79,36 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/about.html',
       controller: 'AboutCtrl',
       resolve: {
-        lag: function (appServices) {
-          return appServices.mainLag();
-        }
+        lag: ['lag', function (lagProvider) {
+          return lagProvider.mainLag();
+        }]
       }
     })
     .when('/portfolio', {
       templateUrl: 'partials/portfolio.html',
       controller: 'PortfolioCtrl',
       resolve: {
-        lag: function (appServices) {
-          return appServices.mainLag();
-        }
+        lag: ['lag', function (lagProvider) {
+          return lagProvider.mainLag();
+        }]
       }
     })
     .when('/contact', {
       templateUrl: 'partials/contact.html',
       controller: 'ContactCtrl',
       resolve: {
-        lag: function (appServices) {
-          return appServices.mainLag();
-        }
+        lag: ['lag', function (lagProvider) {
+          return lagProvider.mainLag();
+        }]
       }
     })
     .otherwise({
       redirectTo: '/'
     });
   $locationProvider.html5Mode(true);
-});
+}]);
 
-myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
+myApp.controller('NavCtrl', ['$scope', '$location', '$window', 'appServices', function ($scope, $location, $window, appServices) {
   // dataJSON is defined in global scope (index.html). Read data from JSON file.
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
@@ -119,9 +126,9 @@ myApp.controller('NavCtrl', function ($scope, $location, $window, appServices) {
       appServices.activeLink();
     });
   });
-});
+}]);
 
-myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
+myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'appServices', 'logContent', function ($scope, $location, $timeout, $window, appServices, logContent) {
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
     $('.content-wrapper__mainText').html(data.main.mainText);
@@ -133,11 +140,11 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       // Shows main site text using textillate. Using timeouts in order to see proper animation order.
       $('.content-wrapper__mainText p:eq(0)').show().textillate({ in: {
         effect: 'bounceIn',
-        delay: 40
+        delay: 30
       },
       out: {
         effect: 'hinge',
-        delay: 70,
+        delay: 40,
         shuffle: true,
         sync: false,
         delayScale: 7
@@ -146,29 +153,29 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       var timer1 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(1)').show().textillate({ in: {
           effect: 'bounceIn',
-          delay: 40
+          delay: 30
         },
         out: {
           effect: 'hinge',
-          delay: 40,
+          delay: 15,
           shuffle: true,
           sync: false,
           delayScale: 2
         }
         });
         appServices.footerPosition();
-      }, 500);
+      }, 400);
       var timer2 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
           effect: 'bounceIn',
-          delay: 40,
+          delay: 30,
           callback: function () {
             $('.content-wrapper__mainText p:eq(2)').append('<span></span>');
           }
         },
         out: {
           effect: 'hinge',
-          delay: 40,
+          delay: 15,
           shuffle: true,
           sync: false,
           delayScale: 2
@@ -176,7 +183,7 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
         });
         appServices.footerPosition();
         // $('.content-wrapper__mainText p span:contains("/")').parent().after('<br>');
-      }, 3100);
+      }, 2300);
 
       appServices.footerPosition();
 
@@ -196,9 +203,9 @@ myApp.controller('MainCtrl', function ($scope, $location, $timeout, $window, app
       });
     });
   });
-});
+}]);
 
-myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
+myApp.controller('AboutCtrl', ['$scope', '$location', '$timeout', '$window', 'appServices', 'logContent', function ($scope, $location, $timeout, $window, appServices, logContent) {
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
     $('.about-intro__text').html(data.about.introText);
@@ -231,9 +238,9 @@ myApp.controller('AboutCtrl', function ($scope, $location, $timeout, $window, ap
       appServices.footerPosition();
     });
   });
-});
+}]);
 
-myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window, appServices, logContent) {
+myApp.controller('PortfolioCtrl', ['$scope', '$location', '$timeout', '$window', 'appServices', 'logContent', function ($scope, $location, $timeout, $window, appServices, logContent) {
   var img = new $window.Image();
   img.src = 'img/spinner-animation.gif';
   $(img).load(function () {
@@ -273,9 +280,9 @@ myApp.controller('PortfolioCtrl', function ($scope, $location, $timeout, $window
       });
     });
   });
-});
+}]);
 
-myApp.controller('ContactCtrl', function ($scope, $location, $window, appServices, logContent) {
+myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices', 'logContent', function ($scope, $location, $window, appServices, logContent) {
   // Put translations data from JSON
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
@@ -374,4 +381,4 @@ myApp.controller('ContactCtrl', function ($scope, $location, $window, appService
       $.getScript('https://www.google.com/recaptcha/api.js');
     });
   });
-});
+}]);
