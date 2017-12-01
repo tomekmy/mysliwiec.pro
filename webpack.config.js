@@ -21,16 +21,20 @@ const extractSass = new ExtractTextPlugin({
 // Process and minify scripts files
 const noBootstrap = new MergeIntoSingleFilePlugin({
   files: {
-    'jquery-func.mini.js': [
+    'jquery-func.min.js': [
       './src/js/jquery-func.js'
     ],
-    'ang-func.mini.js': [
+    'ang-func.min.js': [
       './src/js/ang-func.js'
+    ],
+    'jquery.textillate.min.js': [
+      './src/js/jquery.textillate.js'
     ]
   },
   transform: {
-    'jquery-func.mini.js': code => UglifyES.minify(code).code,
-    'ang-func.mini.js': code => UglifyES.minify(code).code
+    'jquery-func.min.js': code => UglifyES.minify(code).code,
+    'ang-func.min.js': code => UglifyES.minify(code).code,
+    'jquery.textillate.min.js': code => UglifyES.minify(code).code
   }
 });
 
@@ -79,7 +83,7 @@ const cleanFiles = new WebpackCleanPlugin(['main.js'], path.join(__dirname, 'dis
 // Webpack 2 modules, loaders and plugins call
 module.exports = {
   watch: true,
-  entry: ['./src/index.html', './src/partials/about.html', './src/partials/contact.html', './src/partials/main.html', './src/partials/portfolio.html', './src/js/main.js', './src/js/ang-func.js', './src/js/jquery-func.js', './src/sass/style.scss'],
+  entry: ['./src/index.html', './src/partials/about.html', './src/partials/contact.html', './src/partials/main.html', './src/partials/portfolio.html', './src/js/main.js', './src/js/ang-func.js', './src/js/jquery.textillate.js', './src/js/jquery-func.js', './src/sass/style.scss'],
   output: {
     filename: 'main.js',
     path: path.join(__dirname, 'dist/js')
