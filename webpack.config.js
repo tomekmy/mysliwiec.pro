@@ -21,20 +21,20 @@ const extractSass = new ExtractTextPlugin({
 // Process and minify scripts files
 const noBootstrap = new MergeIntoSingleFilePlugin({
   files: {
-    'jquery-func.min.js': [
-      './src/js/jquery-func.js'
-    ],
-    'ang-func.min.js': [
+    'ownScriptsBundle.min.js': [
+      './src/js/jquery-func.js',
       './src/js/ang-func.js'
     ],
-    'jquery.textillate.min.js': [
-      './src/js/jquery.textillate.js'
+    'localDependencyBundle.min.js': [
+      './src/js/jquery-ui.min.js',
+      './src/js/jquery.lettering-0.6.1.min.js',
+      './src/js/jquery.textillate.js',
+      './src/js/enter-view.min.js'
     ]
   },
   transform: {
-    'jquery-func.min.js': code => UglifyES.minify(code).code,
-    'ang-func.min.js': code => UglifyES.minify(code).code,
-    'jquery.textillate.min.js': code => UglifyES.minify(code).code
+    'ownScriptsBundle.min.js': code => UglifyES.minify(code).code,
+    'localDependencyBundle.min.js': code => UglifyES.minify(code).code
   }
 });
 
