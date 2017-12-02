@@ -8,28 +8,234 @@
     <meta name="description" content="Nazywam się Tomasz Myśliwiec i jestem Front-end / Web Developerem. Zajmuję kodowaniem stron i aplikacji internetowych oraz kodowaniem newsletterów.">
     <meta property="og:image" content="http://mysliwiec.pro/img/social.png">
     <base href="/">
-    <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/style.mini.css?version=240917">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Jura:400,300,500,600&subset=latin,latin-ext">
+    <!-- Critical CSS -->
+    <style>
+        /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+        
+        body,
+        html {
+            color: #1b1b1b;
+            font-family: Jura, sans-serif;
+            background: #fff;
+            text-align: center;
+            width: 100%;
+            min-width: 290px;
+            height: 100%
+        }
+
+        @media only screen and (min-width:120em) {
+            body,
+            html {
+                font-size: 1.11em
+            }
+        }
+
+        @media only screen and (min-width:160em) {
+            body,
+            html {
+                font-size: 1.3em
+            }
+        }
+
+        @media only screen and (min-width:237.5em) {
+            body,
+            html {
+                font-size: 1.6em
+            }
+        }
+
+        a {
+            color: #300;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: #900
+        }
+
+        .active a,
+        a:focus {
+            color: #900;
+            outline: none
+        }
+
+        p {
+            margin-bottom: .375em
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        strong {
+            color: #000
+        }
+
+        h1 {
+            font-size: 2.375em;
+            margin-bottom: .2em
+        }
+
+        h2 {
+            font-size: 1.1875em
+        }
+
+        h3 {
+            font-size: 1.75em;
+            line-height: 1;
+            margin-bottom: 1.25em
+        }
+
+        h3,
+        h4 {
+            text-align: center
+        }
+
+        h4 {
+            font-size: 1.275em;
+            margin-bottom: 1.875em
+        }
+
+        h5 {
+            font-size: 1.5625em;
+            margin: .125rem 0 1.25rem
+        }
+
+        .loading {
+            position: absolute;
+            margin-top: 20%;
+            width: 100%;
+            text-align: center
+        }
+
+        .loading__ring {
+            position: relative
+        }
+
+        .loading__ring--rings {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 12px solid #000;
+            border-color: #ccc transparent;
+            -webkit-animation: lds-dual-ring 1.3s linear infinite;
+            animation: lds-dual-ring 1.3s linear infinite
+        }
+
+        .content,
+        .loading__ring--rings {
+            position: relative;
+            margin: 0 auto
+        }
+    </style>
+    <link rel="preload" href="css/style.mini.css?version=240917" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jura:400,300,500,600&subset=latin,latin-ext" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.mini.css?version=240917">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Jura:400,300,500,600&subset=latin,latin-ext">
+    </noscript>
+    <script>
+        /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+        (function (w) {
+            "use strict";
+            /* exported loadCSS */
+            var loadCSS = function (href, before, media) {
+                // Arguments explained:
+                // `href` [REQUIRED] is the URL for your CSS file.
+                // `before` [OPTIONAL] is the element the script should use as a reference for injecting our stylesheet <link> before
+                // By default, loadCSS attempts to inject the link after the last stylesheet or script in the DOM. However, you might desire a more specific location in your document.
+                // `media` [OPTIONAL] is the media type or query of the stylesheet. By default it will be 'all'
+                var doc = w.document;
+                var ss = doc.createElement("link");
+                var ref;
+                if (before) {
+                    ref = before;
+                } else {
+                    var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+                    ref = refs[refs.length - 1];
+                }
+
+                var sheets = doc.styleSheets;
+                ss.rel = "stylesheet";
+                ss.href = href;
+                // temporarily set media to something inapplicable to ensure it'll fetch without blocking render
+                ss.media = "only x";
+
+                // wait until body is defined before injecting link. This ensures a non-blocking load in IE11.
+                function ready(cb) {
+                    if (doc.body) {
+                        return cb();
+                    }
+                    setTimeout(function () {
+                        ready(cb);
+                    });
+                }
+                // Inject link
+                // Note: the ternary preserves the existing behavior of "before" argument, but we could choose to change the argument to "after" in a later release and standardize on ref.nextSibling for all refs
+                // Note: `insertBefore` is used instead of `appendChild`, for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
+                ready(function () {
+                    ref.parentNode.insertBefore(ss, (before ? ref : ref.nextSibling));
+                });
+                // A method (exposed on return object for external use) that mimics onload by polling document.styleSheets until it includes the new sheet.
+                var onloadcssdefined = function (cb) {
+                    var resolvedHref = ss.href;
+                    var i = sheets.length;
+                    while (i--) {
+                        if (sheets[i].href === resolvedHref) {
+                            return cb();
+                        }
+                    }
+                    setTimeout(function () {
+                        onloadcssdefined(cb);
+                    });
+                };
+
+                function loadCB() {
+                    if (ss.addEventListener) {
+                        ss.removeEventListener("load", loadCB);
+                    }
+                    ss.media = media || "all";
+                }
+
+                // once loaded, set link's media back to `all` so that the stylesheet applies once it loads
+                if (ss.addEventListener) {
+                    ss.addEventListener("load", loadCB);
+                }
+                ss.onloadcssdefined = onloadcssdefined;
+                onloadcssdefined(loadCB);
+                return ss;
+            };
+            // commonjs
+            if (typeof exports !== "undefined") {
+                exports.loadCSS = loadCSS;
+            } else {
+                w.loadCSS = loadCSS;
+            }
+        }(typeof global !== "undefined" ? global : this));
+    </script>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#575757">
     <meta name="theme-color" content="#000000">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js"></script>
-    <script src="js/angular-google-analytics.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js" defer></script>
+    <script src="js/angular-google-analytics.min.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.textillate.min.js"></script>
-    <script type="text/javascript" src="js/enter-view.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js" defer></script>
+    <script type="text/javascript" src="js/jquery.lettering-0.6.1.min.js" defer></script>
+    <script type="text/javascript" src="js/jquery.textillate.min.js" defer></script>
+    <script type="text/javascript" src="js/enter-view.min.js" defer></script>
     <script type="text/javascript">
-        console.log('%cHello on my site! You can see code of this page at: https://github.com/tomekmy/mysliwiec.pro', 'color: green; font-size: 1.1em');
+        console.log('%cHello on my site! You can see code of this page at: https://github.com/tomekmy/mysliwiec.pro',
+            'color: green; font-size: 1.1em');
         // Detect user language
         var userLang = navigator.language || navigator.userLanguage;
         // If user selected language before use it from local storage
@@ -69,7 +275,10 @@
         <header class="header">
             <div class="header__logo">
                 <h1>
-                    <a class="header__link" href="/main" title="Start"><span class="header__link--distinction">T</span>omasz <span class="header__link--distinction"><br>M</span>yśliwiec</a>
+                    <a class="header__link" href="/main" title="Start">
+                        <span class="header__link--distinction">T</span>omasz
+                        <span class="header__link--distinction">
+                            <br>M</span>yśliwiec</a>
                 </h1>
                 <h2>Front-end Developer</h2>
             </div>
@@ -96,7 +305,9 @@
         </nav>
 
         <main ng-view class="main animate"></main>
-        <a class="scrollup" href="#top" title="Scroll to top">Top</a>
+        <div class="scrollup">
+            <a class="scrollup__link" href="#top" title="Scroll to top">Top</a>
+        </div>
         <footer class="footer">
             <div class="footer__icons">
                 <a href="https://www.facebook.com/mysliwiec.pro/" title="Facebook fanpage">
@@ -141,8 +352,8 @@
             <div class="footer__vline-right"></div>
         </footer>
     </div>
-    <script type="text/javascript" src="js/ang-func.min.js"></script>
-    <script type="text/javascript" src="js/jquery-func.min.js"></script>
+    <script type="text/javascript" src="js/ang-func.min.js" defer></script>
+    <script type="text/javascript" src="js/jquery-func.min.js" defer></script>
 </body>
 
 </html>
