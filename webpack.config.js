@@ -106,22 +106,11 @@ module.exports = {
         loaders: [
           'file-loader?publicPath=/,name=../[name].[ext]',
           {
-            loader: 'html-minify-loader',
+            loader: 'html-minifier-loader',
             options: {
-              quotes: true,
-              dom: { lowerCaseTags: false },
-              plugins: [{
-                id: 'uglify-es',
-                element: function element (node, next) {
-                  if (node.type === 'script' && node.children[0] !== undefined) {
-                    let inlineJS = node.children[0].data;
-                    inlineJS = UglifyES.minify(inlineJS);
-                    // console.log(inlineJS.code);
-                    node.children[0].data = inlineJS.code;
-                  }
-                  next();
-                }
-              }]
+              removeComments: false,
+              minifyCSS: true,
+              minifyJS: true
             }
           }
         ]
@@ -131,22 +120,11 @@ module.exports = {
         loaders: [
           'file-loader?publicPath=/,name=../partials/[name].[ext]',
           {
-            loader: 'html-minify-loader',
+            loader: 'html-minifier-loader',
             options: {
-              quotes: true,
-              dom: { lowerCaseTags: false },
-              plugins: [{
-                id: 'uglify-es',
-                element: function element (node, next) {
-                  if (node.type === 'script' && node.children[0] !== undefined) {
-                    let inlineJS = node.children[0].data;
-                    inlineJS = UglifyES.minify(inlineJS);
-                    // console.log(inlineJS.code);
-                    node.children[0].data = inlineJS.code;
-                  }
-                  next();
-                }
-              }]
+              removeComments: false,
+              minifyCSS: true,
+              minifyJS: true
             }
           }
         ]
