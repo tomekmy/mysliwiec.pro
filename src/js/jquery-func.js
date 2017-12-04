@@ -65,6 +65,12 @@ $(document).ready(function () {
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
       $('.scrollup').fadeIn();
+      var topButtonShift = $(document).height() - $(this).height() - $('.footer').height();
+      if ($(this).scrollTop() > topButtonShift) {
+        $('.scrollup').css('bottom', $(this).scrollTop() - topButtonShift + 20 + 'px');
+      } else {
+        $('.scrollup').css('bottom', '1.25em');
+      }
     } else {
       $('.scrollup').fadeOut();
     }
@@ -101,4 +107,5 @@ $(window).resize(function () {
     footerPos = $(window).height() - $(document).height() - 40;
   }
   $('.footer').css('bottom', footerPos + 'px');
+  $('.scrollup').css('bottom', '1.25em');
 });
