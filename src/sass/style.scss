@@ -99,17 +99,7 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 }
 
 // } Logo
-// { No script and old IE
-.no-script,
-.oldie {
-  position: relative;
-  display: block;
-  margin-top: 30%;
-  color: $active-link-color;
-  font-size: rem(14);
-}
 
-// } No script and old IE
 // { Menu
 .menu {
   position: relative;

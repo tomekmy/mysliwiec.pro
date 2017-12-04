@@ -8,7 +8,7 @@
     <title>Tomasz Myśliwiec - Front-end Developer | Web Developer</title>
     <meta name="description" content="Nazywam się Tomasz Myśliwiec i jestem Front-end / Web Developerem. Zajmuję kodowaniem stron i aplikacji internetowych oraz kodowaniem newsletterów.">
     <meta property="og:image" content="http://mysliwiec.pro/img/social.png">
-    <base href="/">
+    <base href="/dist/">
     <!-- Critical CSS -->
     <style type="text/css">
         /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
@@ -22,47 +22,47 @@
             text-align: center;
             width: 100%;
             min-width: 290px;
-            height: 100%
+            height: 100%;
         }
 
         @media only screen and (min-width:120em) {
             body,
             html {
-                font-size: 1.11em
+                font-size: 1.11em;
             }
         }
 
         @media only screen and (min-width:160em) {
             body,
             html {
-                font-size: 1.3em
+                font-size: 1.3em;
             }
         }
 
         @media only screen and (min-width:237.5em) {
             body,
             html {
-                font-size: 1.6em
+                font-size: 1.6em;
             }
         }
 
         a {
             color: #300;
-            text-decoration: none
+            text-decoration: none;
         }
 
         a:hover {
-            color: #900
+            color: #900;
         }
 
         .active a,
         a:focus {
             color: #900;
-            outline: none
+            outline: none;
         }
 
         p {
-            margin-bottom: .375em
+            margin-bottom: .375em;
         }
 
         h1,
@@ -71,48 +71,53 @@
         h4,
         h5,
         strong {
-            color: #000
+            color: #000;
         }
 
         h1 {
             font-size: 2.375em;
-            margin-bottom: .2em
+            margin-bottom: .2em;
         }
 
         h2 {
-            font-size: 1.1875em
+            font-size: 1.1875em;
         }
 
         h3 {
             font-size: 1.75em;
             line-height: 1;
-            margin-bottom: 1.25em
+            margin-bottom: 1.25em;
         }
 
         h3,
         h4 {
-            text-align: center
+            text-align: center;
         }
 
         h4 {
             font-size: 1.275em;
-            margin-bottom: 1.875em
+            margin-bottom: 1.875em;
         }
 
         h5 {
             font-size: 1.5625em;
-            margin: .125rem 0 1.25rem
+            margin: .125rem 0 1.25rem;
         }
 
         .loading {
             position: absolute;
-            margin-top: 20%;
+            display: table;
             width: 100%;
-            text-align: center
+            height: 100%;
+            text-align: center;
+            background: #ffffff;
+            z-index: 99999;
         }
 
         .loading__ring {
-            position: relative
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
         }
 
         .loading__ring--rings {
@@ -122,17 +127,24 @@
             border: 12px solid #000;
             border-color: #ccc transparent;
             -webkit-animation: lds-dual-ring 1.3s linear infinite;
-            animation: lds-dual-ring 1.3s linear infinite
+            animation: lds-dual-ring 1.3s linear infinite;
         }
 
-        .loading__font-hack {
+        .loading__ring--font-hack {
             opacity: 0;
         }
 
         .content,
         .loading__ring--rings {
             position: relative;
-            margin: 0 auto
+            margin: 0 auto;
+        }
+
+        .no-script,
+        .oldie {
+        position: relative;
+        color: #990000;
+        font-size: 0.9em;
         }
 
         @-webkit-keyframes lds-dual-ring {
@@ -321,9 +333,12 @@
     <div class="loading">
         <div class="loading__ring">
             <div class="loading__ring--rings"></div>
+            <!-- Using this only for speed up font files download -->
+            <div class="loading__ring--font-hack">Loadnig... śćąź</div>
+            <noscript class="no-script">
+                To view the full content of this site please enable JavaScript!
+            </noscript>
         </div>
-        <!-- Using this only for speed up font files download -->
-        <div class="loading__font-hack">Loadnig... śćąź</div>
     </div>
     <div class="content">
         <header class="header">
@@ -339,9 +354,6 @@
             <div class="header__top-vline"></div>
             <div class="header__top-hline1"></div>
         </header>
-        <noscript class="no-script">
-            To view the full content of this site please enable JavaScript!
-        </noscript>
         <!--[if lte IE 9]>
             <div class="oldie">You are using a very old version of your web browser! Please update your browser to view the page properly.</div>
         <![endif]-->
