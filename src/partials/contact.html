@@ -3,22 +3,22 @@
         <div class="contact__details"></div>
         <form class="form" action="php/mail.php">
             <div class="form__row">
-                <input class="form__name" type="text" tabindex="1">
-                <label></label>                
+                <input name="name" id="formName" class="form__name" type="text" tabindex="0" required autocomplete="name">
+                <label for="formName"></label>
             </div>
             <div class="form__row">
-                <input class="form__email" type="email" tabindex="2">
-                <label></label>                
+                <input name="email" id="formEmail" class="form__email" type="email" tabindex="0" required  autocomplete="email">
+                <label for="formEmail"></label>                
             </div>
             <div class="form__row">
-                <input class="form__subject" type="text" tabindex="3">
-                <label></label>                
+                <input name="subject" id="formSubject" class="form__subject" type="text" required tabindex="0">
+                <label for="formSubject"></label>                
             </div>
             <div class="form__row">
-                <textarea class="form__message" rows="7" cols="15" tabindex="4"></textarea>
-                <label></label>                
+                <textarea name="message" id="formMessage" class="form__message" rows="7" cols="15" tabindex="0"></textarea>
+                <label for="formMessage"></label>                
             </div>
-            <a class="g-recaptcha form__submit" data-sitekey="6Lf6qDAUAAAAADvexiP5Y5O9VgAv-xxWpNTxz9K6" data-callback="sendData" data-size="invisible" tabindex="5"></a>
+            <a class="g-recaptcha form__submit" data-sitekey="6Lf6qDAUAAAAADvexiP5Y5O9VgAv-xxWpNTxz9K6" data-callback="sendData" data-size="invisible" tabindex="0"></a>
         </form>
     </div>
 </div>
