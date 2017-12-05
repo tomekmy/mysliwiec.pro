@@ -524,8 +524,7 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
       min-height: 80px;
       text-align: left;
     }
-    input,
-    textarea {
+    & input, textarea {
       font-family: 'Jura', sans-serif;
       color: #1b1b1b;
       background-color: transparent;
@@ -571,7 +570,7 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
       top: -1em;
       font-size: em(19);
       text-indent: 15px;
-      color: $border-input;
+      color: #595959;
       span {
         font-size: em(12);
       }
@@ -630,13 +629,12 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 // } Contact page
 // } Main tag
 .scrollup {
-  position: fixed;
+  position: absolute;
   text-align: right;
   left: 0;
   width: 100%;
-  bottom: 20px;
+  top: 100px;
   display: none;
-  z-index: 999;
   &__link {
     padding-right: 1.5em;
   }

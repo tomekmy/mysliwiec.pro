@@ -67,9 +67,9 @@ $(document).ready(function () {
       $('.scrollup').fadeIn();
       var topButtonShift = $(document).height() - $(this).height() - $('.footer').height();
       if ($(this).scrollTop() > topButtonShift) {
-        $('.scrollup').css('bottom', $(this).scrollTop() - topButtonShift + 20 + 'px');
+        $('.scrollup').css('top', topButtonShift + $(this).height() - 30 + 'px');
       } else {
-        $('.scrollup').css('bottom', '1.25em');
+        $('.scrollup').css('top', $(this).scrollTop() + $(this).height() - 30 + 'px');
       }
     } else {
       $('.scrollup').fadeOut();
