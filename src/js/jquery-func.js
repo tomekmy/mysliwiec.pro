@@ -65,11 +65,11 @@ $(document).ready(function () {
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
       $('.scrollup').fadeIn();
-      var topButtonShift = $(document).height() - $(this).height() - $('.footer').height();
+      var topButtonShift = $(document).height() - window.innerHeight - $('.footer').height();
       if ($(this).scrollTop() > topButtonShift) {
-        $('.scrollup').css('top', topButtonShift + $(this).height() - 30 + 'px');
+        $('.scrollup').css('top', topButtonShift + window.innerHeight - 30 + 'px');
       } else {
-        $('.scrollup').css('top', $(this).scrollTop() + $(this).height() - 30 + 'px');
+        $('.scrollup').css('top', $(this).scrollTop() + window.innerHeight - 30 + 'px');
       }
     } else {
       $('.scrollup').fadeOut();
