@@ -41,31 +41,31 @@
           "title" : "TechCalc - Pomocnik Inżyniera",
           "url" : "www.techcalc.pl",
           "description" : "<p>Aplikacja internetowa dla inżynierów, technologów, konstruktorów, zawierająca dużo przydatnych dla nich narzędzi i materiałów.</p><p>Obecną wersję strony oparłem o CMS Wordpress a wszystkie przeliczniki i narzędzia napisałem w JavaScript z jQuery.</p>",
-          "img" : "img/techcalc-portfolio.jpg"
+          "img" : "img/techcalc-portfolio"
         },
         {
           "title" : "Centrum Technologiczne Warszawa",
           "url" : "www.centrumtechnologiczne.pl",
           "description" : "<p>Centrum Technologiczne jest międzynarodową korporacją z ponad 20-letnim doświadczeniem w projektowaniu i produkcji maszyn i form do przetwórstwa tworzyw sztucznych.</p><p>Strona oparta na CMS Joomla. Większość zdjęć na stronie wykonał jeden z moich klientów – <a href='http://www.lagocki.pl/'>Wojciech Łagocki</a>.</p>",
-          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+          "img" : "img/centrumtechnologiczne-portfolio"
         },
         {
           "title" : "BluePhoto | Ireneusz Rek Fotografia",
           "url" : "www.bluephoto.pl",
           "description" : "<p>Ireneusz Rek - reportaż, dokument, fotograficzne spostrzeżenia autora. Portfolio autora, wybór zdjęć z wykonanych prac jak i relacje z podróży, wydarzeń.</p><p>Na stronie wykorzystałem CMS Wordpress.</p>",
-          "img" : "img/bluephoto-portfolio.jpg"
+          "img" : "img/bluephoto-portfolio"
         },
         {
           "title" : "Wojciech Łagocki - Fotografia",
           "url" : "www.lagocki.pl",
           "description" : "<p>Wojciech Łagocki pasja - Fotografia. Ulubione tematy: fotografia ślubna fotografia niemowlaków noworodków fotografia dziecięca fotografia rodzinna portret.</p><p>Strona napisana przy użyciu JavaScript, jQuery, PHP w technologii SPA.</p>",
-          "img" : "img/wojtek-portfolio.jpg"
+          "img" : "img/wojtek-portfolio"
         },
         {
           "title" : "KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
           "url" : "www.kmpplastics.com.pl",
           "description" : "<p>KMP Plastics - oferuje maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.</p><p>Jeden z moich starszych projektów oparty o CMS Joomla</p>",
-          "img" : "img/kmp-portfolio.jpg"
+          "img" : "img/kmp-portfolio"
         }
       ]
     },

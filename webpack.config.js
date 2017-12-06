@@ -96,7 +96,7 @@ module.exports = {
           loader: 'html-loader',
           options: {
             minimize: true,
-            removeComments: true,
+            removeComments: false,
             collapseWhitespace: true
           }
         }]

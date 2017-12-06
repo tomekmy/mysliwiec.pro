@@ -41,31 +41,31 @@
           "title" : "TechCalc - Pomocnik Inżyniera",
           "url" : "www.techcalc.pl",
           "description" : "<p>Web application for engineers, technologists, builders, with many handful tools.</p><p>The current version of the site is based on CMS Wordpress and all the converters and tools I wrote in JavaScript with jQuery.</p>",
-          "img" : "img/techcalc-portfolio.jpg"
+          "img" : "img/techcalc-portfolio"
         },
         {
           "title" : "Technology Center Warsaw",
           "url" : "www.technologycenter.pl",
           "description" : "<p>Technology Center is an international corporation with over 20 years of experience in designing and manufacturing machines and molds for plastics processing.</p><p>Site based on CMS Joomla. Most of the photos were taken by one of my clients - <a href='http://www.lagocki.pl/'>Wojciech Łagocki</a>.</p>",
-          "img" : "img/centrumtechnologiczne-portfolio.jpg"
+          "img" : "img/centrumtechnologiczne-portfolio"
         },
         {
           "title" : "BluePhoto | Ireneusz Rek Fotografia",
           "url" : "www.bluephoto.pl",
           "description" : "<p>Ireneusz Reek's portfolio. Photographer. Favorite topics: work, travel, events.</p><p>On this site I use CMS Wordpress.</p>",
-          "img" : "img/bluephoto-portfolio.jpg"
+          "img" : "img/bluephoto-portfolio"
         },
         {
           "title" : "Wojciech Łagocki - Fotografia",
           "url" : "www.lagocki.pl",
           "description" : "<p>Wojciech Łagocki's portfolio. Photographer. Favorite topics: wedding photography, baby photography, newborn baby photography, family photography, portrait.</p><p>Website written using JavaScript, jQuery, PHP in SPA technology.</p>",
-          "img" : "img/wojtek-portfolio.jpg"
+          "img" : "img/wojtek-portfolio"
         },
         {
           "title" : ">KMP Plastics - maszyny i urządzenia peryferyjne dla Przetwórstwa Tworzyw Sztucznych.",
           "url" : "www.kmpplastics.com.pl",
           "description" : "<p>KMP Plastics offer machines and peripherals for Plastics Processing.</p><p>One of my older projects based on the Joomla CMS.</p>",
-          "img" : "img/kmp-portfolio.jpg"
+          "img" : "img/kmp-portfolio"
         }
       ]
     },
