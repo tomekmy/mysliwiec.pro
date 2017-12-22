@@ -130,8 +130,16 @@
             animation: lds-dual-ring 1.3s linear infinite;
         }
 
-        .loading__ring--font-hack {
+        .loading__ring--font-hack-normal {
             opacity: 0;
+        }
+
+        .loading__ring--font-hack-500 {
+            font-weight: 500;
+        }
+
+        .loading__ring--font-hack-600 {
+            font-weight: 600;
         }
 
         .content,
@@ -292,8 +300,8 @@
     <meta name="theme-color" content="#000000">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-analytics/1.1.9/angular-google-analytics.min.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/localDependencyBundle.min.js" defer></script>
@@ -334,7 +342,11 @@
         <div class="loading__ring">
             <div class="loading__ring--rings"></div>
             <!-- Using this only for speed up font files download -->
-            <div class="loading__ring--font-hack">Loadnig... śćąź</div>
+            <div class="loading__ring--font-hack-normal">
+                Loadnig... śćąź
+                <span class="loading__ring--font-hack-500">śćąźsci</span>
+                <span class="loading__ring--font-hack-600">śćąźsci</span>
+            </div>
             <noscript class="no-script">
                 To view the full content of this site please enable JavaScript!
             </noscript>
@@ -369,9 +381,11 @@
             </ul>
             <div class="menu__top-hline2"></div>
         </nav>
-
-        <main ng-view class="main animate"></main>
+        <main ng-view class="main"></main>
         <footer class="footer">
+            <div class="scrollup">
+                <a class="scrollup__link" href="#top" title="Scroll to top">Top</a>
+            </div>
             <div class="footer__icons">
                 <a href="https://www.facebook.com/mysliwiec.pro/" title="Facebook fanpage">
                     <div class="facebook-icon"></div>
@@ -414,9 +428,6 @@
             <div class="footer__hline-right"></div>
             <div class="footer__vline-right"></div>
         </footer>
-    </div>
-    <div class="scrollup">
-        <a class="scrollup__link" href="#top" title="Scroll to top">Top</a>
     </div>
     <script type="text/javascript" src="js/ownScriptsBundle.min.js" defer></script>
 </body>

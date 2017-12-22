@@ -29,6 +29,12 @@
   };
 })(jQuery);
 
+// Preload images function
+function preloadImage (url) {
+  var img = new Image();
+  img.src = url;
+}
+
 // Switch language button text
 function langButton (lang) {
   if (lang === 'pl') {
@@ -39,6 +45,8 @@ function langButton (lang) {
 }
 
 $(document).ready(function () {
+  preloadImage('img/spinner-animation.gif');
+
   // Depends on user language displays polish or english cookie info message
   if (window.userLang === 'pl') {
     $.cookieInfo();
@@ -67,9 +75,9 @@ $(document).ready(function () {
       $('.scrollup').fadeIn();
       var topButtonShift = $(document).height() - window.innerHeight - $('.footer').height();
       if ($(this).scrollTop() > topButtonShift) {
-        $('.scrollup').css('top', topButtonShift + window.innerHeight - 30 + 'px');
+        $('.scrollup').css('bottom', $(this).scrollTop() - topButtonShift + 21 + 'px');
       } else {
-        $('.scrollup').css('top', $(this).scrollTop() + window.innerHeight - 30 + 'px');
+        $('.scrollup').css('bottom', '1.1em');
       }
     } else {
       $('.scrollup').fadeOut();
@@ -97,15 +105,4 @@ $(document).ready(function () {
       $('.menu__items').fadeOut(400);
     }
   });
-});
-
-// Fit footer position on every window resize
-$(window).resize(function () {
-  var footerPos = 0;
-  $('.footer').css('bottom', footerPos + 'px');
-  if ($(document).height() > $(window).height()) {
-    footerPos = $(window).height() - $(document).height() - 40;
-  }
-  $('.footer').css('bottom', footerPos + 'px');
-  $('.scrollup').css('bottom', '1.25em');
 });
