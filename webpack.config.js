@@ -26,6 +26,7 @@ const noBootstrap = new MergeIntoSingleFilePlugin({
       './src/js/ang-func.js'
     ],
     'localDependencyBundle.min.js': [
+      './src/js/angular-google-analytics.min.js',
       './src/js/jquery-ui.min.js',
       './src/js/jquery.lettering-0.6.1.min.js',
       './src/js/jquery.textillate.js',
