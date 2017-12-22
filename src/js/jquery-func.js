@@ -75,7 +75,7 @@ $(document).ready(function () {
       $('.scrollup').fadeIn();
       var topButtonShift = $(document).height() - window.innerHeight - $('.footer').height();
       if ($(this).scrollTop() > topButtonShift) {
-        $('.scrollup').css('bottom', $(this).scrollTop() - topButtonShift + 21 + 'px');
+        $('.scrollup').css('bottom', '5.5em');
       } else {
         $('.scrollup').css('bottom', '1.1em');
       }
