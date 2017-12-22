@@ -17,9 +17,12 @@ myApp.provider('lag', function () {
           $('body').css('overflow', 'hidden');
           var mainTimer = $timeout(function () {
             $('body').css('overflow', 'visible');
+            $('.contentSpinner').removeClass('ng-hide');
           }, lagTime);
           console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
           return mainTimer;
+        } else {
+          $('.contentSpinner').removeClass('ng-hide');
         }
       }
     };
@@ -49,17 +52,6 @@ myApp.service('appServices', ['$timeout', '$location', '$window', function ($tim
       // var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    },
-    // Positioning footer on page bottom
-    footerPosition: function () {
-      $timeout(function () {
-        var footerPos = 0;
-        $('.footer').css('bottom', footerPos + 'px');
-        if ($(document).height() > $($window).height()) {
-          footerPos = $($window).height() - $(document).height() - 40;
-        }
-        $('.footer').css('bottom', footerPos + 'px');
-      }, 600);
     }
   };
 }]);
@@ -163,7 +155,6 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
           delayScale: 2
         }
         });
-        appServices.footerPosition();
       }, 400);
       var timer2 = $timeout(function () {
         $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
@@ -181,11 +172,7 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
           delayScale: 2
         }
         });
-        appServices.footerPosition();
-        // $('.content-wrapper__mainText p span:contains("/")').parent().after('<br>');
       }, 2300);
-
-      appServices.footerPosition();
 
       // When leaving main page cancel timers and check if textillate animation has finished.
       // If yes, fires leave animation. If no, just live the page.
@@ -224,18 +211,19 @@ myApp.controller('AboutCtrl', ['$scope', '$location', '$timeout', '$window', 'ap
     $('.content').fadeIn(function () {
       console.log(logContent);
       // In order to show skills bars when it appears on viewport using enterView
-      $window.enterView({
-        selector: '.about-skills div div',
-        trigger: function (el) {
-          $(el).css('width', $(el).find('span').text());
-          // Add a little timeout to show text in bars
-          $timeout(function () {
-            $(el).css('color', '#1b1b1b');
-          }, 350);
-          console.log('On screen: ' + el);
-        }
-      });
-      appServices.footerPosition();
+      $timeout(function () {
+        $window.enterView({
+          selector: '.about-skills div div',
+          trigger: function (el) {
+            $(el).css('width', $(el).find('span').text());
+            // Add a little timeout to show text in bars
+            $timeout(function () {
+              $(el).css('color', '#1b1b1b');
+            }, 350);
+            console.log('On screen: ' + el);
+          }
+        });
+      }, 700);
     });
   });
 }]);
@@ -268,15 +256,16 @@ myApp.controller('PortfolioCtrl', ['$scope', '$location', '$timeout', '$window',
       $('.loading').fadeOut();
       $('.content').fadeIn(function () {
         console.log(logContent);
-        $window.enterView({
-          selector: '.portfolio-item',
-          trigger: function (el) {
-            $(el).css('opacity', '1');
-            $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
-            console.log('On screen: ' + el);
-          }
-        });
-        appServices.footerPosition();
+        $timeout(function () {
+          $window.enterView({
+            selector: '.portfolio-item',
+            trigger: function (el) {
+              $(el).css('opacity', '1');
+              $(el).find('img').attr('src', $(el).find('img').attr('data-src'));
+              console.log('On screen: ' + el);
+            }
+          });
+        }, 700);
       });
     });
   });
@@ -376,7 +365,6 @@ myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices'
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
       console.log(logContent);
-      appServices.footerPosition();
       // Add reCaptcha to form
       $.getScript('https://www.google.com/recaptcha/api.js');
     });
