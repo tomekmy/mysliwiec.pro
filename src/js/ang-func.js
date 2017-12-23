@@ -16,13 +16,13 @@ myApp.provider('lag', function () {
           $('.content-wrapper__mainText span:last').remove();
           $('body').css('overflow', 'hidden');
           var mainTimer = $timeout(function () {
+            // To hide jumping scroll bar when letters are falling
             $('body').css('overflow', 'visible');
-            $('.contentSpinner').removeClass('ng-hide');
+            // To prevent jumping content when entering from main after animation
+            $('main').hide();
           }, lagTime);
           console.log('Enter from Main. Timeout ID: ' + mainTimer.$$timeoutId);
           return mainTimer;
-        } else {
-          $('.contentSpinner').removeClass('ng-hide');
         }
       }
     };
