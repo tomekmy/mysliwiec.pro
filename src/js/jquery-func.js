@@ -56,7 +56,7 @@ $(document).ready(function () {
   // Logo textillate animation
   $('.header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   // Footer hide email address
-  $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<img src="/dist/img/mail_icon_black.svg" alt="E-mail">');
+  $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<img src="img/mail_icon_black.svg" alt="E-mail">');
 
   langButton(window.userLang);
 
