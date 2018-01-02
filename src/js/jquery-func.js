@@ -38,9 +38,9 @@ function preloadImage (url) {
 // Switch language button text
 function langButton (lang) {
   if (lang === 'pl') {
-    $('.footer__lang-icon div').attr('title', 'Switch language').text('EN').css('left', '0.33em');
+    $('.footer__lang-icon img').attr('src', 'img/en_icon_black.svg');
   } else {
-    $('.footer__lang-icon div').attr('title', 'Zmień język').text('PL').css('left', '0.41em');
+    $('.footer__lang-icon img').attr('src', 'img/pl_icon_black.svg');
   }
 }
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
   // Logo textillate animation
   $('.header__logo h2').textillate({ in: { effect: 'fadeInLeftBig' } });
   // Footer hide email address
-  $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<div class="circle"><div class="email"></div></div>');
+  $('.footer__icons').hideEmail('tomek', 'mysliwiec.pro', '<img src="/dist/img/mail_icon_black.svg" alt="E-mail">');
 
   langButton(window.userLang);
 

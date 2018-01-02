@@ -646,7 +646,6 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 }
 
 // { Footer
-// A lot of borrowed code so I don't use BEM here
 .footer {
   position: absolute;
   bottom: 0;
@@ -657,275 +656,27 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
   display: table;
 }
 
+.footer img {
+  width: em(25);
+  height: em(25);
+}
+
+.footer a {
+  width: em(25);
+  height: em(25);
+  margin: 0 em(5);
+  display: inline-block;
+}
+
 .footer__icons {
   padding-left: rem(20);
   display: table-cell;
   vertical-align: middle;
-  a {
-    width: em(25);
-    height: em(25);
-    margin: 0 em(5);
-    background: #171516;
-    border-radius: em(50);
-    display: inline-block;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-box-shadow: 0 0 1px transparent;
-    box-shadow: 0 0 1px transparent;
-  }
 }
 
 .footer__languages {
   float: right;
   padding: em(26) em(20);
-  a {
-    width: em(25);
-    height: em(25);
-    margin: 0 em(5);
-    background: #171516;
-    border-radius: em(50);
-    display: inline-block;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    -webkit-box-shadow: 0 0 1px transparent;
-    box-shadow: 0 0 1px transparent;
-  }
-}
-
-footer img {
-  margin: 0 em(5);
-  width: em(25);
-  height: em(25);
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-box-shadow: 0 0 1px transparent;
-  box-shadow: 0 0 1px transparent;
-}
-
-.facebook-icon:after {
-  content: "f";
-  color: #ffffff;
-  font: bold em(22) arial;
-  position: absolute;
-  left: em(6.2);
-  top: em(1);
-}
-
-.linkedin-icon:after {
-  content: "in";
-  color: #ffffff;
-  font: bold em(19) arial;
-  position: absolute;
-  left: em(4);
-  top: em(2);
-}
-
-.footer__lang-icon div {
-  color: #ffffff;
-  font: bold em(12) arial;
-  position: absolute;
-  left: em(4);
-  top: em(8);
-}
-
-
-/* gitHub logo */
-
-.logo-github-small {
-  background-color: #171516;
-  width: em(25);
-  height: em(25);
-  position: relative;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  border-radius: em(12.5);
-  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  div {
-    position: absolute;
-    border-radius: 100%;
-    background-color: #ffffff;
-    &[class*=-none] {
-      background-color: #171516;
-    }
-  }
-  .head {
-    width: em(15.66666667);
-    height: em(11.66666667);
-    left: em(4.66666667);
-    top: em(6.25);
-  }
-  .chin-left {
-    width: em(10.41666667);
-    height: em(11.33333333);
-    left: em(4.5);
-    top: em(6.83333333);
-  }
-  .chin-right {
-    width: em(10.41666667);
-    height: em(11.33333333);
-    left: em(10.08333333);
-    top: em(6.83333333);
-  }
-  .ear-one-left {
-    width: em(5.83333333);
-    height: em(7.5);
-    left: em(5.58333333);
-    top: em(3.5);
-  }
-  .ear-one-right {
-    width: em(3.83333333);
-    height: em(1);
-    left: em(5.75);
-    top: em(5.75);
-    -webkit-transform: rotate(23deg);
-    transform: rotate(23deg);
-  }
-  .ear-one-none {
-    width: em(8.5);
-    height: em(3.75);
-    left: em(5.83333333);
-    top: em(3.08333333);
-  }
-  .ear-two-left {
-    width: em(3.83333333);
-    height: em(1);
-    left: em(15.41666667);
-    top: em(5.75);
-    -webkit-transform: rotate(-23deg);
-    transform: rotate(-23deg);
-  }
-  .ear-two-right {
-    width: em(5.83333333);
-    height: em(7.5);
-    left: em(13.58333333);
-    top: em(3.5);
-  }
-  .ear-two-none {
-    width: em(8.5);
-    height: em(3.75);
-    left: em(10.66666667);
-    top: em(3.08333333);
-  }
-  .body-left {
-    border-radius: 100% 100% 0 0;
-    width: em(4.66666667);
-    height: em(7.33333333);
-    left: em(9.33333333);
-    top: em(17.41666667);
-  }
-  .body-left-none {
-    width: em(0.66666667);
-    height: em(3.33333333);
-    left: em(8.66666667);
-    top: em(21.16666667);
-    border-radius: em(0.33333333) 0 em(0.33333333) 0;
-  }
-  .body-right {
-    border-radius: 100% 100% 0 0;
-    width: em(4.66666667);
-    height: em(7.33333333);
-    left: em(11);
-    top: em(17.41666667);
-  }
-  .body-right-none {
-    width: em(0.66666667);
-    height: em(3.33333333);
-    left: em(15.66666667);
-    top: em(21.16666667);
-    border-radius: 0 em(0.33333333) 0 em(0.33333333);
-  }
-  .body-bottom {
-    width: em(7.33333333);
-    height: em(1.5);
-    left: em(8.83333333);
-    top: em(23.75);
-  }
-  .tail-end {
-    -webkit-transform: rotate(-35deg);
-    transform: rotate(-35deg);
-    width: em(1.33333333);
-    height: em(2.91666667);
-    left: em(4.41666667);
-    top: em(17.58333333);
-  }
-  .tail-body {
-    width: em(6.5);
-    height: em(4);
-    left: em(5.25);
-    top: em(17.75);
-  }
-  .tail-body-spots {
-    border: em(0.41666667) #171516 dotted;
-    background: transparent;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border-radius: 0 0 em(12.08333333) em(10.83333333);
-    width: em(8.33333333);
-    height: em(4.91666667);
-    left: em(4.33333333);
-    top: em(15.83333333);
-  }
-  .tail-end-none {
-    -webkit-transform: rotate(-24deg);
-    transform: rotate(-24deg);
-    width: em(1.41666667);
-    height: em(4);
-    left: em(3.83333333);
-    top: em(18.16666667);
-  }
-  .tail-body-none {
-    width: em(5.58333333);
-    height: em(4);
-    left: em(5.58333333);
-    top: em(16.16666667);
-  }
-  .tail-tip {
-    -webkit-transform: rotate(12deg);
-    transform: rotate(12deg);
-    width: em(1.66666667);
-    height: em(0.75);
-    left: em(3.41666667);
-    top: em(17.66666667);
-  }
-}
-
-
-/* Mail Icon */
-
-.email {
-  position: absolute;
-  display: inline-block;
-  top: em(6);
-  left: em(4);
-  width: em(15);
-  height: em(11);
-  background-color: #171516;
-  border: rem(1) solid #ffffff;
-  &:after,
-  &:before {
-    position: absolute;
-    border-top: none;
-    border: rem(1) solid #ffffff;
-    top: em(3);
-    width: em(8);
-    content: '';
-  }
-  &:after {
-    left: rem(-1);
-    -webkit-transform: rotate(25deg);
-    transform: rotate(25deg);
-  }
-  &:before {
-    right: rem(-1);
-    -webkit-transform: rotate(-25deg);
-    transform: rotate(-25deg);
-  }
 }
 
 .footer__hline {
