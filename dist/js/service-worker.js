@@ -1,0 +1,1 @@
+const cacheName="mysliwiecPWA-v1";let filesToCache=[];self.addEventListener("install",function(e){console.log("[ServiceWorker] Install"),e.waitUntil(caches.open(cacheName).then(function(e){return console.log("[ServiceWorker] Caching app shell"),e.addAll(filesToCache)}))});

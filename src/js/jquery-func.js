@@ -45,6 +45,12 @@ function langButton (lang) {
 }
 
 $(document).ready(function () {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('js/service-worker.js')
+      .then(function () { console.log('Service Worker Registered'); });
+  }
+
   preloadImage('img/spinner-animation.gif');
 
   // Depends on user language displays polish or english cookie info message
