@@ -38,6 +38,12 @@
       "header" : "Prace online",
       "works" : [
         {
+          "title" : "Wystaw śmieci",
+          "url" : "wystaw-smieci.pl",
+          "description" : "<p>Landing Page aplikacji powiadamiającej o terminach odbioru śmieci w mieście Zielonka. Aplikacja przeznaczona jest dla systemów Android i oprócz powiadomień umożliwia przegląd terminów odbiorów nieczystości.</p><p>W przyszłości na miejscu tej strony powstanie odpowiednik webowy tej aplikacji.</p><p>W projekcie wykorzystałem: <a href='https://github.com/vuetifyjs/pwa'>vuetify.js</a></p>",
+          "img" : "img/wystaw-smieci-portfolio"
+        },
+        {
           "title" : "TechCalc - Pomocnik Inżyniera",
           "url" : "www.techcalc.pl",
           "description" : "<p>Aplikacja internetowa dla inżynierów, technologów, konstruktorów, zawierająca dużo przydatnych dla nich narzędzi i materiałów.</p><p>Obecną wersję strony oparłem o CMS Wordpress a wszystkie przeliczniki i narzędzia napisałem w JavaScript z jQuery.</p>",
