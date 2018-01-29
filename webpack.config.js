@@ -9,6 +9,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const BitBarWebpackProgressPlugin = require('bitbar-webpack-progress-plugin');
 const UglifyES = require('uglify-es');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackCleanPlugin = require('webpack-clean');
 
 // SASS post processor configuration
@@ -16,6 +17,28 @@ const extractSass = new ExtractTextPlugin({
   filename: '../css/style.mini.css',
   disable: false,
   allChunks: true
+});
+
+const swPrecache = new SWPrecacheWebpackPlugin({
+  cacheId: 'mysliwiecPWA-v1',
+  filename: '../service-worker.js',
+  staticFileGlobs: [
+    'dist/index.html',
+    'dist/manifest.json',
+    'dist/js/localDependencyBundle.min.js',
+    'dist/js/ownScriptsBundle.min.js',
+    'dist/css/*.css',
+    'dist/partials/*.html',
+    'dist/text_data/*.json',
+    'dist/img/*.{jpg,png,webp,svg,gif}'
+  ],
+  runtimeCaching: [{
+    urlPattern: /^https:/,
+    handler: 'cacheFirst'
+  }],
+  minify: true,
+  stripPrefix: 'dist/',
+  staticFileGlobsIgnorePatterns: [/\.map$/]
 });
 
 // Process and minify scripts files
@@ -32,7 +55,7 @@ const noBootstrap = new MergeIntoSingleFilePlugin({
       './src/js/jquery.textillate.js',
       './src/js/enter-view.min.js'
     ],
-    'service-worker.js': ['./src/js/service-worker.js']
+    '../service-worker.js': ['./src/js/service-worker.js']
   },
   transform: {
     'ownScriptsBundle.min.js': code => UglifyES.minify(code).code,
@@ -162,6 +185,7 @@ module.exports = {
     noBootstrap,
     copyFiles,
     miniImg,
+    swPrecache,
     new BitBarWebpackProgressPlugin(),
     cleanFiles,
     friendlyErrors
