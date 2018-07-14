@@ -320,6 +320,11 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
   &__bars {
     margin-bottom: em(40);
   }
+  &__percent {
+    display: inline;
+    visibility: hidden;
+    font-size: 0.05em !important;
+  }
   &__bars div {
     margin: em(10) 0;
     padding: em(7);
