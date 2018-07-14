@@ -404,6 +404,7 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
     font-size: em(20.4);
     margin: rem(15) 0 rem(10) 0;
     font-weight: 500;
+    text-align: inherit;
     @include respond-to($large-desktop) {
       margin-bottom: rem(10);
     }

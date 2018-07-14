@@ -235,9 +235,9 @@ myApp.controller('PortfolioCtrl', ['$scope', '$location', '$timeout', '$window',
       var data = $window.dataJSON.responseJSON;
       $('.portfolio__online-header').html(data.portfolio.online.header);
       for (let i = 0; i < data.portfolio.online.works.length; i++) {
-        $('.portfolio__online-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.online.works[i].img + '.webp" src="img/spinner-animation.gif" onerror="this.onerror=null; this.src=\'' + data.portfolio.online.works[i].img + '.jpg\'" alt="Portfolio img"><div class="portfolio-item__wrapper"><div class="portfolio-item__header">' +
+        $('.portfolio__online-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.online.works[i].img + '.webp" src="img/spinner-animation.gif" onerror="this.onerror=null; this.src=\'' + data.portfolio.online.works[i].img + '.jpg\'" alt="Portfolio img"><div class="portfolio-item__wrapper"><h4 class="portfolio-item__header">' +
         data.portfolio.online.works[i].title +
-        '</div><a class="portfolio-item__url" href="http://' + data.portfolio.online.works[i].url + '">' +
+        '</h4><a class="portfolio-item__url" href="http://' + data.portfolio.online.works[i].url + '">' +
         data.portfolio.online.works[i].url +
         '</a><div class="portfolio-item__description">' +
         data.portfolio.online.works[i].description +
@@ -245,9 +245,9 @@ myApp.controller('PortfolioCtrl', ['$scope', '$location', '$timeout', '$window',
       }
       $('.portfolio__offline-header').html(data.portfolio.offline.header);
       for (let i = 0; i < data.portfolio.offline.works.length; i++) {
-        $('.portfolio__offline-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.offline.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img"><div class="portfolio-item__wrapper"><div class="portfolio-item__header">' +
+        $('.portfolio__offline-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.offline.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img"><div class="portfolio-item__wrapper"><h4 class="portfolio-item__header">' +
         data.portfolio.offline.works[i].title +
-        '</div><div class="portfolio-item__description">' +
+        '</h4><div class="portfolio-item__description">' +
         data.portfolio.offline.works[i].description +
         '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
       }
