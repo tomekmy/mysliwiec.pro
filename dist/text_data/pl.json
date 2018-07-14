@@ -39,6 +39,12 @@
       "works" : [
         {
           "title" : "Wystaw śmieci",
+          "url" : "zielonka.wystaw-smieci.pl",
+          "description" : "<p>Aplikacja PWA przypominająca o terminach odbioru nieczystości w mieście Zielonka. Aplikacja pozwala na przegląd terminów odbioru śmieci oraz umożliwia włączanie i wyłączanie powiadomień dla poszczególnych sektorów.</p><p>Apka została napisana w Angular 5 oraz zintegrowana z <a href='https://onesignal.com/'>OneSignal</a> API.</p>",
+          "img" : "img/wystaw-smieci-pwa"
+        },
+        {
+          "title" : "Wystaw śmieci",
           "url" : "wystaw-smieci.pl",
           "description" : "<p>Landing Page aplikacji powiadamiającej o terminach odbioru śmieci w mieście Zielonka. Aplikacja przeznaczona jest dla systemów Android i oprócz powiadomień umożliwia przegląd terminów odbiorów nieczystości.</p><p>W przyszłości na miejscu tej strony powstanie odpowiednik webowy tej aplikacji.</p><p>W projekcie wykorzystałem: <a href='https://github.com/vuetifyjs/pwa'>vuetify.js</a></p>",
           "img" : "img/wystaw-smieci-portfolio"
