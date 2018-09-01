@@ -344,7 +344,7 @@ myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices'
 
       // Put the results in a div
       posting.done(function (answer) {
-        $('.form__submit').text(answer);
+        $('.g-recaptcha').text(answer);
         // $window.grecaptcha.reset();
       });
     }
