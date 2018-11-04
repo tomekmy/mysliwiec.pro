@@ -194,11 +194,15 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
 myApp.controller('AboutCtrl', ['$scope', '$location', '$timeout', '$window', 'appServices', 'logContent', function ($scope, $location, $timeout, $window, appServices, logContent) {
   $window.dataJSON.done(function () {
     var data = $window.dataJSON.responseJSON;
+    var certificates = '';
     $('.about-intro__text').html(data.about.introText);
     $('.about-intro__site-header').html(data.about.introSiteHeader);
     $('.about-intro__site-text').html(data.about.introSiteText);
     $('.about-intro__certificates-header').html(data.about.introCertificatesHeader);
-    $('.about-intro__certificates-text').html(data.about.introCertificatesText);
+    data.about.introCertificate.map(function (item) {
+      certificates += '<li><a href="' + item.link + '">' + item.description + '</a></li>';
+    });
+    $('.about-intro__certificates-text').html('<ul>' + certificates + '</ul>');
     $('.about-skills__header-coding').html(data.about.headerCoding);
     $('.about-skills__header-frameworks').html(data.about.headerFrameworks);
     $('.about-skills__header-technologies').html(data.about.headerTechnologies);
