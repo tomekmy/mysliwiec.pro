@@ -200,7 +200,8 @@ myApp.controller('AboutCtrl', ['$scope', '$location', '$timeout', '$window', 'ap
     $('.about-intro__site-text').html(data.about.introSiteText);
     $('.about-intro__certificates-header').html(data.about.introCertificatesHeader);
     data.about.introCertificate.map(function (item) {
-      certificates += '<li><a href="' + item.link + '">' + item.description + '</a></li>';
+      console.log(item.target || '_self');
+      certificates += '<li><a href="' + item.link + '" target="' + (item.target || '_self') + '">' + item.description + '</a></li>';
     });
     $('.about-intro__certificates-text').html('<ul>' + certificates + '</ul>');
     $('.about-skills__header-coding').html(data.about.headerCoding);
