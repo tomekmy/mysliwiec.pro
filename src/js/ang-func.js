@@ -360,11 +360,11 @@ myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices'
       formSender();
     });
 
-    $('.form').keyup(function (event) {
-      if (event.keyCode === 13) {
-        formSender();
-      }
-    });
+    // $('.form').keyup(function (event) {
+    //   if (event.keyCode === 13) {
+    //     formSender();
+    //   }
+    // });
   }).then(function () {
     $('.loading').fadeOut();
     $('.content').fadeIn(function () {
