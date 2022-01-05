@@ -3,8 +3,8 @@ myApp.constant('logContent', 'Show content');
 
 myApp.provider('lag', function () {
   this.$get = ['$window', '$timeout', function ($window, $timeout) {
-  // In order to see falling letters when leaving main site this function check if all text is shown.
-  // Need to check number of spans in text to fit correct timeout.
+    // In order to see falling letters when leaving main site this function check if all text is shown.
+    // Need to check number of spans in text to fit correct timeout.
     return {
       mainLag: function () {
         var spans = 93;
@@ -58,7 +58,7 @@ myApp.service('appServices', ['$timeout', '$location', '$window', function ($tim
 // Google Analytics configuration
 myApp.config(['AnalyticsProvider', function (AnalyticsProvider) {
   AnalyticsProvider.setAccount('UA-5968901-19');
-}]).run(['Analytics', function (Analytics) { }]);
+}]).run(['Analytics', function (Analytics) {}]);
 
 myApp.config(['$routeProvider', 'lagProvider', '$locationProvider', function ($routeProvider, lagProvider, $locationProvider) {
   $routeProvider
@@ -106,11 +106,15 @@ myApp.controller('NavCtrl', ['$scope', '$location', '$window', 'appServices', fu
     $.each(data.menu, function (key, val) {
       $('.menu__items').append('<li class="menu__item"><a class="menu__item--link" href="#/' + key + '">' + val + '</a></li>');
       $('.menu__item--link').hover(function () {
-        $(this).parent().stop(true, false).animate({'left': '20px'}, 500);
-      },
-      function () {
-        $(this).parent().stop(true, false).animate({'left': '0px'}, 500, 'easeOutBounce');
-      });
+          $(this).parent().stop(true, false).animate({
+            'left': '20px'
+          }, 500);
+        },
+        function () {
+          $(this).parent().stop(true, false).animate({
+            'left': '0px'
+          }, 500, 'easeOutBounce');
+        });
     });
     appServices.activeLink();
     $scope.$on('$routeChangeStart', function (next, current) {
@@ -129,47 +133,50 @@ myApp.controller('MainCtrl', ['$scope', '$location', '$timeout', '$window', 'app
     $('.content').fadeIn(function () {
       console.log(logContent);
       // Shows main site text using textillate. Using timeouts in order to see proper animation order.
-      $('.content-wrapper__mainText p:eq(0)').show().textillate({ in: {
-        effect: 'bounceIn',
-        delay: 30
-      },
-      out: {
-        effect: 'hinge',
-        delay: 40,
-        shuffle: true,
-        sync: false,
-        delayScale: 7
-      }
-      });
-      var timer1 = $timeout(function () {
-        $('.content-wrapper__mainText p:eq(1)').show().textillate({ in: {
+      $('.content-wrapper__mainText p:eq(0)').show().textillate({
+        in: {
           effect: 'bounceIn',
           delay: 30
         },
         out: {
           effect: 'hinge',
-          delay: 15,
+          delay: 40,
           shuffle: true,
           sync: false,
-          delayScale: 2
+          delayScale: 7
         }
+      });
+      var timer1 = $timeout(function () {
+        $('.content-wrapper__mainText p:eq(1)').show().textillate({
+          in: {
+            effect: 'bounceIn',
+            delay: 30
+          },
+          out: {
+            effect: 'hinge',
+            delay: 15,
+            shuffle: true,
+            sync: false,
+            delayScale: 2
+          }
         });
       }, 400);
       var timer2 = $timeout(function () {
-        $('.content-wrapper__mainText p:eq(2)').show().textillate({ in: {
-          effect: 'bounceIn',
-          delay: 30,
-          callback: function () {
-            $('.content-wrapper__mainText p:eq(2)').append('<span></span>');
+        $('.content-wrapper__mainText p:eq(2)').show().textillate({
+          in: {
+            effect: 'bounceIn',
+            delay: 30,
+            callback: function () {
+              $('.content-wrapper__mainText p:eq(2)').append('<span></span>');
+            }
+          },
+          out: {
+            effect: 'hinge',
+            delay: 15,
+            shuffle: true,
+            sync: false,
+            delayScale: 2
           }
-        },
-        out: {
-          effect: 'hinge',
-          delay: 15,
-          shuffle: true,
-          sync: false,
-          delayScale: 2
-        }
         });
       }, 2300);
 
@@ -238,23 +245,24 @@ myApp.controller('PortfolioCtrl', ['$scope', '$location', '$timeout', '$window',
   $(img).load(function () {
     $window.dataJSON.done(function () {
       var data = $window.dataJSON.responseJSON;
+      $('.portfolio__intro').html(data.portfolio.intro);
       $('.portfolio__online-header').html(data.portfolio.online.header);
       for (let i = 0; i < data.portfolio.online.works.length; i++) {
         $('.portfolio__online-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.online.works[i].img + '.webp" src="img/spinner-animation.gif" onerror="this.onerror=null; this.src=\'' + data.portfolio.online.works[i].img + '.jpg\'" alt="Portfolio img"><div class="portfolio-item__wrapper"><h4 class="portfolio-item__header">' +
-        data.portfolio.online.works[i].title +
-        '</h4><a class="portfolio-item__url" href="http://' + data.portfolio.online.works[i].url + '">' +
-        data.portfolio.online.works[i].url +
-        '</a><div class="portfolio-item__description">' +
-        data.portfolio.online.works[i].description +
-        '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
+          data.portfolio.online.works[i].title +
+          '</h4><a class="portfolio-item__url" href="http://' + data.portfolio.online.works[i].url + '">' +
+          data.portfolio.online.works[i].url +
+          '</a><div class="portfolio-item__description">' +
+          data.portfolio.online.works[i].description +
+          '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
       }
       $('.portfolio__offline-header').html(data.portfolio.offline.header);
       for (let i = 0; i < data.portfolio.offline.works.length; i++) {
         $('.portfolio__offline-items').append('<div class="portfolio-item"><img class="portfolio-item__img" data-src="' + data.portfolio.offline.works[i].img + '" src="img/spinner-animation.gif" alt="Portfolio img"><div class="portfolio-item__wrapper"><h4 class="portfolio-item__header">' +
-        data.portfolio.offline.works[i].title +
-        '</h4><div class="portfolio-item__description">' +
-        data.portfolio.offline.works[i].description +
-        '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
+          data.portfolio.offline.works[i].title +
+          '</h4><div class="portfolio-item__description">' +
+          data.portfolio.offline.works[i].description +
+          '</div></div><div class="portfolio-item__vline-left"></div><div class="portfolio-item__hline-left"></div><div class="portfolio-item__vline-right"></div><div class="portfolio-item__hline-right"></div></div>');
       }
     }).then(function () {
       $('.loading').fadeOut();
@@ -287,7 +295,7 @@ myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices'
     $('.form__message  + label').html(data.contact.message);
     $('.form__submit').html(data.contact.submit);
 
-    function formSender () {
+    function formSender() {
       var errors = 0;
       var $subject = $('.form__subject');
       if (!$subject.val()) {
@@ -327,7 +335,7 @@ myApp.controller('ContactCtrl', ['$scope', '$location', '$window', 'appServices'
       }
     }
 
-    function sendData () {
+    function sendData() {
       // Get some values from elements on the page:
       var url = $('form').attr('action');
       var formData = {

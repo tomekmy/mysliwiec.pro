@@ -1,25 +1,26 @@
 <div class="content-wrapper">
-    <div class="contact">
-        <div class="contact__details"></div>
-        <form class="form" action="php/mail.php">
-            <div class="form__row">
-                <input name="name" id="formName" class="form__name" type="text" tabindex="0" required autocomplete="name">
-                <label for="formName"></label>
-            </div>
-            <div class="form__row">
-                <input name="email" id="formEmail" class="form__email" type="email" tabindex="0" required  autocomplete="email">
-                <label for="formEmail"></label>                
-            </div>
-            <div class="form__row">
-                <input name="subject" id="formSubject" class="form__subject" type="text" required tabindex="0">
-                <label for="formSubject"></label>                
-            </div>
-            <div class="form__row">
-                <textarea name="message" id="formMessage" class="form__message" rows="7" cols="15" tabindex="0"></textarea>
-                <label for="formMessage"></label>                
-            </div>
-            <a class="form__submit" tabindex="0"></a>
-            <div class="g-recaptcha" data-sitekey="6Lf6qDAUAAAAADvexiP5Y5O9VgAv-xxWpNTxz9K6" data-callback="sendData" data-size="invisible"></div>
-        </form>
-    </div>
+  <div class="contact">
+    <div class="contact__details"></div>
+    <form class="form" action="php/mail.php">
+      <div class="form__row">
+        <input name="name" id="formName" class="form__name" type="text" tabindex="0" required
+          autocomplete="name" /><label for="formName"></label>
+      </div>
+      <div class="form__row">
+        <input name="email" id="formEmail" class="form__email" type="email" tabindex="0" required
+          autocomplete="email" /><label for="formEmail"></label>
+      </div>
+      <div class="form__row">
+        <input name="subject" id="formSubject" class="form__subject" type="text" required tabindex="0" /><label
+          for="formSubject"></label>
+      </div>
+      <div class="form__row">
+        <textarea name="message" id="formMessage" class="form__message" rows="7" cols="15"
+          tabindex="0"></textarea><label for="formMessage"></label>
+      </div>
+      <a class="form__submit" tabindex="0"></a>
+      <div class="g-recaptcha" data-sitekey="6Lf6qDAUAAAAADvexiP5Y5O9VgAv-xxWpNTxz9K6" data-callback="sendData"
+        data-size="invisible"></div>
+    </form>
+  </div>
 </div>

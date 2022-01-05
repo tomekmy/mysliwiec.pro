@@ -366,6 +366,12 @@ $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
 // { Portfolio page
 .portfolio {
   padding-bottom: rem(40);
+  &__intro {
+    margin: rem(10) auto rem(30) auto;
+    max-width: 1100px;
+    font-size: em(18.7);
+    line-height: 1.1;
+  }
 }
 
 .portfolio-item {
